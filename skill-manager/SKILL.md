@@ -1,5 +1,6 @@
 ---
 name: skill-manager
+version: v2.1
 description: Comprehensive skill management system for Claude Code. Lists installed skills, evaluates quality against Anthropic best practices, backs up skills with timestamps, restores from backups, and logs modification history. Use when user wants to manage skills (list, evaluate, backup, restore, log changes), check skill quality, optimize skills, or maintain the skills ecosystem. Trigger words: '列出 skills', '评估 XXX', '优化 XXX', '备份 XXX', '回退 XXX', 'skills 管理'.
 ---
 
@@ -51,12 +52,12 @@ D:\my tool\skills log\            # 日志目录
 
 ### 功能 4: 备份技能
 
-1. 从 SKILL.md 更新日志提取版本号（匹配最后一条 `vX.Y`）
+1. 从 SKILL.md YAML frontmatter 提取版本号（`version: vX.Y`）
 2. 创建备份目录: `backups/YYYYMMDD-skill-name-vX.Y/`
 3. 复制 SKILL.md + references/ + scripts/ + assets/
 4. 记录到 skills修改日志.md
 
-**版本号提取**: 优先从更新日志匹配 `vX.Y`，无法提取则回退为无版本号目录名。
+**版本号提取**: 优先从 frontmatter `version` 字段读取，其次从更新日志匹配 `vX.Y`，均无则回退为无版本号目录名。
 
 ### 功能 5: 回退技能
 
@@ -93,11 +94,3 @@ Skill 应遵循的核心结构:
 3. **路径处理**: Windows 路径使用双反斜杠 `\\` 或正斜杠 `/`
 4. **权限检查**: 操作前检查文件读写权限
 5. **迭代计划**: 详见 `D:\my tool\skills log\skills迭代计划.md`
-
----
-
-## 更新日志
-
-- **2026-03-03 v1.0**: 初始版本，含列出/评估/备份/回退/记录 5 个功能 + 优化功能
-- **2026-03-05 v1.1**: 备份目录支持版本号自动提取（`YYYYMMDD-skill-name-vX.Y`）
-- **2026-03-05 v2.0**: 渐进式披露重构，拆分 6 个功能详解到 references/functions/，SKILL.md 从 297 行精简至当前
