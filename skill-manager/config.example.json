@@ -1,0 +1,22 @@
+{
+  "git": {
+    "autoCommit": false,
+    "autoPush": false,
+    "commitTemplate": "chore(skills): {message}",
+    "alwaysSignoff": false
+  },
+  "backup": {
+    "skipUnchanged": true,
+    "includeRefs": true,
+    "includeScripts": true,
+    "includeAssets": true
+  },
+  "evaluate": {
+    "exportReport": true,
+    "showDetail": false
+  },
+  "diff": {
+    "defaultMode": "stat",
+    "contextLines": 3
+  }
+}

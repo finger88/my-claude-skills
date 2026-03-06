@@ -1,7 +1,7 @@
 ---
 name: skill-manager
-version: v2.2
-description: Comprehensive skill management system for Claude Code. Lists installed skills, evaluates quality against Anthropic best practices, backs up skills with timestamps, restores from backups, and logs modification history. Use when user wants to manage skills (list, evaluate, backup, restore, log changes), check skill quality, optimize skills, or maintain the skills ecosystem. Trigger words: '列出 skills', '评估 XXX', '优化 XXX', '备份 XXX', '回退 XXX', 'skills 管理'.
+version: v3.0
+description: Comprehensive skill management system for Claude Code. 10 core functions: list, evaluate, optimize, backup, rollback, log, auto-git-commit, batch-backup, batch-evaluate, and version diff. Use when user wants to manage skills or maintain the skills ecosystem. Trigger words: '列出 skills', '评估 XXX', '优化 XXX', '备份 XXX', '回退 XXX', '自动提交', '批量备份', '批量评估', '版本对比'.
 ---
 
 # Skill Manager | 技能管理器
@@ -18,6 +18,10 @@ description: Comprehensive skill management system for Claude Code. Lists instal
 | 4 | **备份技能** | "备份 xxx" | [references/functions/backup.md](references/functions/backup.md) |
 | 5 | **回退技能** | "回退 xxx" | [references/functions/rollback.md](references/functions/rollback.md) |
 | 6 | **记录日志** | "记录修改了 xxx" | [references/functions/log.md](references/functions/log.md) |
+| 7 | **自动 Git 提交** | "自动提交" / "git 提交" | [references/functions/git-auto.md](references/functions/git-auto.md) |
+| 8 | **批量备份** | "批量备份" / "备份所有 skills" | [references/functions/batch-backup.md](references/functions/batch-backup.md) |
+| 9 | **批量评估** | "批量评估" / "检查 skills 质量" | [references/functions/batch-evaluate.md](references/functions/batch-evaluate.md) |
+| 10 | **版本 Diff 对比** | "diff 对比" / "版本对比" | [references/functions/diff.md](references/functions/diff.md) |
 
 ---
 
@@ -80,6 +84,22 @@ D:\my tool\skills log\            # 日志与备份目录
 
 读取 `D:\my tool\skills log\skills修改日志.md`，追加修改记录（类型、内容、验证结果、回退方法）。
 
+### 功能 7: 自动 Git 提交
+
+支持手动触发或配置自动提交。配置 `config.json` 中 `git.autoCommit: true` 后，修改操作完成后自动执行 git commit/push。
+
+### 功能 8: 批量备份
+
+一键备份所有已安装 skills，支持增量检测（跳过无变更技能），生成汇总报告。
+
+### 功能 9: 批量评估
+
+批量评估所有 skills 的 5 个维度质量，生成评分汇总和改进建议，支持导出报告。
+
+### 功能 10: 版本 Diff 对比
+
+对比同一 skill 的两个备份版本或当前版本与历史备份，输出结构化差异报告。
+
 ---
 
 ## 三层渐进式披露原则
@@ -101,8 +121,11 @@ Skill 应遵循的核心结构:
 ## 注意事项
 
 1. **Junction 架构**: `~/.claude/skills/` 下均为 Junction，修改即写入 Git 仓库
-2. **备份策略**: 备份到 `skills log/backups/`（独立于 Git），每次修改前自动备份
-3. **Git 提交**: 备份/回退/优化完成后，提醒用户在 `~/my-claude-skills/` 执行 git commit/push
-4. **日志格式**: 严格按照模板格式记录，便于后续追溯
-5. **路径处理**: Windows 路径使用双反斜杠 `\\` 或正斜杠 `/`
-6. **迭代计划**: 详见 `D:\my tool\skills log\skills迭代计划.md`
+2. **备份策略**: 备份到 `skills log\backups\`（独立于 Git），每次修改前自动备份
+3. **Git 提交**:
+   - 手动模式：备份/回退/优化完成后提醒用户执行 git commit/push
+   - 自动模式：配置 `config.json` 中 `git.autoCommit: true` 后自动提交
+4. **批量操作**: 批量备份/评估时单个 skill 失败不影响其他 skill
+5. **日志格式**: 严格按照模板格式记录，便于后续追溯
+6. **路径处理**: Windows 路径使用双反斜杠 `\\` 或正斜杠 `/`
+7. **迭代计划**: 详见 `D:\my tool\skills log\skills迭代计划.md`
