@@ -780,3 +780,72 @@ D:\my tool\skills log\
 - [x] 符合三层渐进式披露结构
 
 ---
+
+### 2026-03-05 | skill-manager
+
+**修改类型**: 版本管理优化
+**修改前版本**: v2.0 (backups/20260305-skill-manager-v2.0/)
+**修改内容**:
+- 添加 `version: v2.1` 到 YAML frontmatter
+- 移除 SKILL.md 中的更新日志段落（版本号改由 frontmatter 统一管理）
+- 更新 backup.md 版本号提取优先级：frontmatter > changelog > 无版本号
+
+**文件变更**:
+- 修改: SKILL.md（frontmatter 新增 version 字段，移除更新日志）
+- 修改: references/functions/backup.md（版本号提取规则更新）
+
+**验证结果**:
+- [x] SKILL.md 96 行，< 150 行
+- [x] frontmatter version 字段可正常读取
+- [x] 备份功能可提取版本号
+
+---
+
+### 2026-03-06 10:33 | 全局 - Junction 迁移
+
+**修改类型**: P2 Git 版本管理 - 本地 + Git 同步机制
+**修改内容**:
+- 将 `~/.claude/skills/` 下所有 16 个 skill 目录替换为 Windows Junction（目录联接）
+- 所有 junction 指向 `C:\Users\HONOR\my-claude-skills\` Git 仓库
+- 实现单一数据源：编辑 skill 文件自动反映到 Git 仓库，无需手动同步
+- 清理 ljg-xray-article 中的嵌套 .git 目录
+- skill-manager v2.1 变更同步到 Git 仓库并 push
+
+**迁移清单**:
+
+| Skill | 状态 | Junction 指向 |
+|-------|------|---------------|
+| daily-review | Junction | my-claude-skills/daily-review |
+| datetime-tool | Junction | my-claude-skills/datetime-tool |
+| ljg-clip | Junction | my-claude-skills/ljg-clip |
+| ljg-explain-concept | Junction | my-claude-skills/ljg-explain-concept |
+| ljg-explain-words | Junction | my-claude-skills/ljg-explain-words |
+| ljg-paper | Junction | my-claude-skills/ljg-paper |
+| ljg-xray-article | Junction | my-claude-skills/ljg-xray-article |
+| ljg-xray-book | Junction | my-claude-skills/ljg-xray-book |
+| memory-review | Junction | my-claude-skills/memory-review |
+| skill-creator | Junction | my-claude-skills/skill-creator |
+| skill-hub | Junction | my-claude-skills/skill-hub |
+| skill-manager | Junction | my-claude-skills/skill-manager |
+| weather | Junction | my-claude-skills/weather |
+| web-content-extraction | Junction | my-claude-skills/web-content-extraction |
+| weekly-review | Junction | my-claude-skills/weekly-review |
+| xlsx | Junction | my-claude-skills/xlsx |
+
+**技术说明**:
+- 使用 Windows `mklink /J` 创建 Junction（不需要管理员权限）
+- Junction 对 Claude Code 和 Git 完全透明，读写均正常
+- 编辑 `~/.claude/skills/xxx/SKILL.md` 等同于编辑 `my-claude-skills/xxx/SKILL.md`
+- Git commit/push 只需在 `my-claude-skills/` 目录操作
+
+**验证结果**:
+- [x] 所有 16 个 junction 创建成功
+- [x] Claude Code 可通过 junction 正常读取所有 SKILL.md
+- [x] references/ scripts/ 子目录可正常访问
+- [x] Git commit 和 push 成功
+
+**回退方法**:
+- 删除 junction: `rmdir C:\Users\HONOR\.claude\skills\skill-name`
+- 从 Git repo 复制: `cp -r my-claude-skills/skill-name ~/.claude/skills/`
+
+---

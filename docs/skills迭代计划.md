@@ -252,13 +252,15 @@ Git push 到 my-claude-skills
 - **备注**: P2 实施时需验证日志记录功能可正常跑通
 
 ### Git 版本管理
-- [ ] 初始化 my-claude-skills 仓库结构
-- [ ] 编写同步脚本
-- [ ] 迁移所有 skills 到 Git
-- [ ] 为每个 skill 添加版本号
-- [ ] 设置 GitHub Actions 验证
-- [ ] 编写 README 和使用说明
-- [ ] 首次 commit 和 push
+- [x] 初始化 my-claude-skills 仓库结构
+- [x] ~~编写同步脚本~~ → 改用 Junction 方案，无需同步脚本
+- [x] 迁移所有 skills 到 Git（16 个 skills + docs/）
+- [ ] 为每个 skill 添加版本号（后续逐步补充）
+- [ ] 设置 GitHub Actions 验证（后续按需）
+- [x] 编写 README 和使用说明
+- [x] 首次 commit 和 push
+- [x] Junction 迁移：16 个 skill 目录全部改为指向 Git 仓库的 Junction
+- [x] 验证 Junction 读写正常（Claude Code + Git 均透明访问）
 
 ---
 
@@ -276,8 +278,8 @@ Git push 到 my-claude-skills
 
 **Git 版本管理完成标志**:
 - my-claude-skills 仓库正常运行
-- 本地和 Git 双备份机制建立
-- 同步脚本可用
+- ~~本地和 Git 双备份机制建立~~ → Junction 方案实现单一数据源
+- ~~同步脚本可用~~ → Junction 无需同步
 - 版本号和 CHANGELOG 规范
 
 ---
