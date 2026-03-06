@@ -28,4 +28,5 @@
 
 **回退方法**:
 - 从 `backups/YYYYMMDD-skill-name-vX.Y/` 恢复
+- Git: `cd ~/my-claude-skills && git checkout -- skill-name/`
 ```

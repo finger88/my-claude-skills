@@ -1,6 +1,6 @@
 ---
 name: skill-manager
-version: v2.1
+version: v2.2
 description: Comprehensive skill management system for Claude Code. Lists installed skills, evaluates quality against Anthropic best practices, backs up skills with timestamps, restores from backups, and logs modification history. Use when user wants to manage skills (list, evaluate, backup, restore, log changes), check skill quality, optimize skills, or maintain the skills ecosystem. Trigger words: '列出 skills', '评估 XXX', '优化 XXX', '备份 XXX', '回退 XXX', 'skills 管理'.
 ---
 
@@ -24,15 +24,26 @@ description: Comprehensive skill management system for Claude Code. Lists instal
 ## 目录结构
 
 ```
-~/.claude/skills/                 # Skills 安装目录
-D:\my tool\skills log\            # 日志目录
-├── backups\                      # 备份目录
-│   └── YYYYMMDD-skill-name-vX.Y\ # 带时间戳+版本号的备份
-│       └── SKILL.md
-├── skills评估与修改建议.md        # 评估报告
-├── skills修改日志.md              # 修改记录
-└── skills迭代计划.md              # 迭代路线图
+~/my-claude-skills/               # Git 仓库（单一数据源）
+├── skill-name/                   # 每个 skill 目录
+│   ├── SKILL.md
+│   ├── references/
+│   ├── scripts/
+│   └── assets/
+├── docs/                         # 管理文档
+└── README.md
+
+~/.claude/skills/                 # Claude 加载目录（全部为 Junction）
+└── skill-name -> my-claude-skills/skill-name  # Windows Junction
+
+D:\my tool\skills log\            # 日志与备份目录
+├── backups\                      # 备份目录（独立于 Git）
+│   └── YYYYMMDD-skill-name-vX.Y\
+├── skills修改日志.md
+└── skills迭代计划.md
 ```
+
+**架构说明**: `~/.claude/skills/` 下所有目录均为 Junction，指向 `~/my-claude-skills/` Git 仓库。编辑任何 skill 文件会直接修改 Git 仓库中的文件。
 
 ---
 
@@ -89,8 +100,9 @@ Skill 应遵循的核心结构:
 
 ## 注意事项
 
-1. **备份策略**: 每次修改前自动备份，回退前再次备份当前版本
-2. **日志格式**: 严格按照模板格式记录，便于后续追溯
-3. **路径处理**: Windows 路径使用双反斜杠 `\\` 或正斜杠 `/`
-4. **权限检查**: 操作前检查文件读写权限
-5. **迭代计划**: 详见 `D:\my tool\skills log\skills迭代计划.md`
+1. **Junction 架构**: `~/.claude/skills/` 下均为 Junction，修改即写入 Git 仓库
+2. **备份策略**: 备份到 `skills log/backups/`（独立于 Git），每次修改前自动备份
+3. **Git 提交**: 备份/回退/优化完成后，提醒用户在 `~/my-claude-skills/` 执行 git commit/push
+4. **日志格式**: 严格按照模板格式记录，便于后续追溯
+5. **路径处理**: Windows 路径使用双反斜杠 `\\` 或正斜杠 `/`
+6. **迭代计划**: 详见 `D:\my tool\skills log\skills迭代计划.md`

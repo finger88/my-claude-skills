@@ -41,6 +41,9 @@
 ### 5. 记录阶段
 调用功能 6 记录优化操作
 
+### 6. Git 提醒
+提醒用户在 `~/my-claude-skills/` 执行 git commit/push 保存优化结果
+
 ## 输出格式
 
 ```markdown
