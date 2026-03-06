@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Temporary files
+*.tmp
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Skill runtime artifacts
+*.md.backup
+
+# web-content-extraction runtime outputs
+web-content-extraction/article_*.md
+web-content-extraction/search_*.md
+web-content-extraction/search_*.json
+web-content-extraction/verify_*.md
+web-content-extraction/verify_*.json
+
+# Editor files
+.vscode/
+.idea/

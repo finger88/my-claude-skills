@@ -1,75 +1,71 @@
 # My Claude Skills
 
-个人 Claude Code 技能集合，基于 [lijigang/ljg-skill-clip](https://github.com/lijigang/ljg-skill-clip) 修改和扩展。
+个人 Claude Code 技能集合。包含内容提取、深度阅读、知识管理、日程复盘等多领域 skills。
 
 ## Skills 列表
 
-### 1. ljg-clip
-
-内容剪藏工具，用于快速保存 URL 或文本到统一的收件箱。
-
-**修改内容：**
-- ✅ 存档路径改为 `D:\my tool\clip\inbox.org`
-- ✅ 集成 web-content-extraction 作为 fallback，支持微信公众号等受限网站
-
-**使用方法：**
-```
-clip https://example.com/article
-剪藏 https://mp.weixin.qq.com/s/xxx
-```
-
-### 2. web-content-extraction
-
-网页内容提取工具，支持多种提取策略自动降级。
-
-**修改内容：**
-- ✅ 新增 `scripts/extract.py`：统一提取接口，自动策略降级
-- ✅ 新增 `scripts/setup.sh`：一键安装依赖
-- ✅ 内置编码自动检测（UTF-8/GBK）
-- ✅ 支持微信公众号等受限域名提取
-
-**使用方法：**
-```bash
-python scripts/extract.py "https://example.com" -o result.json
-```
-
-**提取策略（自动降级）：**
-1. WebFetch（内置）
-2. Python requests + BeautifulSoup
-3. curl
-4. Playwright（动态页面）
+| Skill | 用途 | 来源 |
+|-------|------|------|
+| **web-content-extraction** | 8 层网页内容提取工具，自动降级 | 自建 |
+| **ljg-clip** | 内容剪藏到 inbox.org | 社区改 |
+| **ljg-xray-article** | 文章深度解剖（4 层漏斗） | 社区 |
+| **ljg-xray-book** | 书籍核心结构提取（Epiplexity） | 社区 |
+| **ljg-paper** | 论文深度阅读（原子管线） | 社区 |
+| **ljg-explain-concept** | 概念 8 维解构 | 社区 |
+| **ljg-explain-words** | 英文单词深度解析 + HTML 卡片 | 社区 |
+| **skill-manager** | Skills 生态管理（评估/备份/优化/回退） | 自建 |
+| **skill-hub** | 跨平台技能搜索安装 | 自建 |
+| **skill-creator** | Skill 创建指南 | 官方 |
+| **daily-review** | 飞书日历日记生成 | 自建 |
+| **weekly-review** | 周报复盘生成 | 自建 |
+| **datetime-tool** | 时间日期工具 | 自建 |
+| **memory-review** | 记忆校准 | 自建 |
+| **weather** | 天气查询 | 社区 |
+| **xlsx** | 电子表格处理 | 社区 |
 
 ## 安装
 
-1. 克隆仓库到本地：
 ```bash
-git clone https://github.com/YOUR_USERNAME/my-claude-skills.git
+# 克隆仓库
+git clone https://github.com/finger88/my-claude-skills.git
 cd my-claude-skills
-```
 
-2. 安装依赖（针对 web-content-extraction）：
-```bash
-bash web-content-extraction/scripts/setup.sh
-```
+# 复制全部 skills 到 Claude 目录
+cp -r */ ~/.claude/skills/
 
-3. 将 skills 复制到 Claude 目录：
-```bash
-cp -r ljg-clip ~/.claude/skills/
+# 或只安装单个 skill
 cp -r web-content-extraction ~/.claude/skills/
 ```
 
-## 更新日志
+## 目录结构
 
-### 2026-02-15
-- 🎉 创建个人 skills 仓库
-- 修改 `ljg-clip`：自定义存档路径，添加 fallback 机制
-- 升级 `web-content-extraction`：添加可执行脚本层
+```
+my-claude-skills/
+├── skill-name/
+│   ├── SKILL.md              # 核心配置（< 150 行）
+│   ├── references/            # 参考资料（按需加载）
+│   ├── scripts/               # 可执行脚本
+│   └── assets/                # 资源文件
+├── docs/
+│   ├── skills修改日志.md       # 修改历史
+│   ├── skills迭代计划.md       # 迭代路线图
+│   └── skills评估与修改建议.md  # 评估报告
+└── README.md
+```
+
+## 管理工具
+
+本仓库配套 **skill-manager** 技能，提供：
+- 评估 skill 质量（基于 Anthropic 最佳实践）
+- 带版本号的备份（`YYYYMMDD-skill-name-vX.Y`）
+- 一键回退到任意历史版本
+- 修改日志自动记录
 
 ## 致谢
 
-- 原始 skills 来自 [lijigang/ljg-skill-clip](https://github.com/lijigang/ljg-skill-clip)
-- 感谢 lijigang 的优秀设计
+- ljg 系列 skills 来自 [lijigang](https://github.com/lijigang) 的优秀设计
+- 基于 Anthropic 官方 skill 最佳实践构建
 
 ## License
 
-参考原始仓库许可证
+MIT
