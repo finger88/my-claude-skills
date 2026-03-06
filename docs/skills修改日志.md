@@ -849,3 +849,32 @@ D:\my tool\skills log\
 - 从 Git repo 复制: `cp -r my-claude-skills/skill-name ~/.claude/skills/`
 
 ---
+
+### 2026-03-06 11:00 | skill-manager
+
+| 项目 | 内容 |
+|------|------|
+| 修改类型 | 功能更新 |
+| 影响范围 | SKILL.md, references/functions/ (5 个文件) |
+| 版本变化 | v2.1 -> v2.2 |
+
+**修改内容**:
+- [x] SKILL.md 目录结构更新为 Junction 架构（Git 仓库 + Junction + 备份三层）
+- [x] 注意事项新增 Junction 架构说明和 Git 提交提醒
+- [x] list.md 输出格式新增版本号列和 Junction 状态列
+- [x] backup.md 新增 Junction 透传说明和 Git commit 提醒
+- [x] rollback.md 新增 Junction 注意事项和 Git 回退方案
+- [x] optimize.md 新增 Git 提醒步骤
+- [x] log.md 回退方法新增 Git checkout 方案
+
+**验证结果**: 全部通过
+- [x] SKILL.md 108 行，< 150 行
+- [x] 通过 Junction 读写正常
+
+**备份路径**: `backups/20260306-skill-manager-v2.1/`
+
+**回退方法**:
+- 从 `backups/20260306-skill-manager-v2.1/` 恢复
+- Git: `cd ~/my-claude-skills && git checkout -- skill-manager/`
+
+---
