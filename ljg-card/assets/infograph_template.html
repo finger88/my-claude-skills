@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root {
+    --bg: #F2F2F2;
+    --green: #B8D8BE;
+    --green-dark: #8FB89A;
+    --pink: #E91E63;
+    --yellow: #FFF200;
+    --brown: #2D2926;
+    --brown-light: #5C5350;
+    --white: #FFFFFF;
+    --grid-line: rgba(45,41,38,0.06);
+    --font: -apple-system, 'PingFang SC', 'Hiragino Sans GB', system-ui, sans-serif;
+    --font-mono: 'SF Mono', 'Menlo', 'Monaco', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 1080px;
+    background: var(--bg);
+  }
+
+  .infograph {
+    width: 1080px;
+    background: var(--bg);
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+    position: relative;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    padding: 56px 60px 40px;
+    border-bottom: 2px solid var(--brown);
+    position: relative;
+  }
+
+  .header::before {
+    content: '◎';
+    position: absolute;
+    top: 20px;
+    right: 60px;
+    font-size: 28px;
+    color: var(--pink);
+    opacity: 0.6;
+  }
+
+  .header::after {
+    content: '{{REF_CODE}}';
+    position: absolute;
+    top: 26px;
+    right: 100px;
+    font: 400 10px/1 var(--font-mono);
+    color: var(--brown-light);
+    letter-spacing: 0.15em;
+  }
+
+  .header h1 {
+    font: 900 64px/1.15 var(--font);
+    color: var(--brown);
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+
+  .header .subtitle {
+    font: 400 20px/1.6 var(--font);
+    color: var(--brown-light);
+    padding-left: 4px;
+  }
+
+  .header .ruler {
+    display: flex;
+    gap: 0;
+    margin-top: 20px;
+    height: 16px;
+    align-items: flex-end;
+  }
+
+  .header .ruler span {
+    display: block;
+    width: 40px;
+    border-left: 1px solid var(--brown);
+    height: 8px;
+    font: 400 7px/1 var(--font-mono);
+    color: var(--brown-light);
+    padding-left: 2px;
+    padding-top: 9px;
+  }
+
+  .header .ruler span:nth-child(5n+1) {
+    height: 16px;
+  }
+
+  /* ── CANVAS: 空白画布，由内容定制 ── */
+  .canvas {
+    padding: 32px 40px;
+  }
+
+  /* ── UTILITIES ── */
+  mark {
+    background: rgba(255,242,0,0.35);
+    color: inherit;
+    padding: 0 2px;
+  }
+
+  .big-num {
+    font: 900 48px/1 var(--font);
+    color: var(--brown);
+    letter-spacing: -0.03em;
+  }
+
+  .big-num .unit {
+    font: 400 18px/1 var(--font);
+    color: var(--brown-light);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px 28px;
+    border-top: 1px solid rgba(45,41,38,0.1);
+  }
+
+  .footer .author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer .avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .footer .author-name {
+    font: 400 12px/1.5 var(--font);
+    color: var(--brown-light);
+  }
+
+  .footer .watermark {
+    font: 400 9px/1 var(--font-mono);
+    color: rgba(45,41,38,0.25);
+    letter-spacing: 0.1em;
+  }
+
+  .footer .arxiv {
+    font: 400 11px/1.5 var(--font-mono);
+    color: var(--brown-light);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Registration Marks ── */
+  .infograph::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 16px;
+    height: 16px;
+    border-top: 1px solid rgba(45,41,38,0.18);
+    border-left: 1px solid rgba(45,41,38,0.18);
+    z-index: 1;
+  }
+
+  .infograph::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 16px;
+    height: 16px;
+    border-bottom: 1px solid rgba(45,41,38,0.18);
+    border-right: 1px solid rgba(45,41,38,0.18);
+    z-index: 1;
+  }
+
+  /* ── CUSTOM CSS ── */
+  {{CUSTOM_CSS}}
+</style>
+</head>
+<body>
+  <div class="infograph">
+    <div class="header">
+      <h1>{{TITLE}}</h1>
+      <p class="subtitle">{{SUBTITLE}}</p>
+      <div class="ruler">
+        <span>0</span><span></span><span></span><span></span><span></span>
+        <span>5</span><span></span><span></span><span></span><span></span>
+        <span>10</span><span></span><span></span><span></span><span></span>
+        <span>15</span><span></span><span></span><span></span><span></span>
+        <span>20</span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="canvas">
+      {{CONTENT_HTML}}
+    </div>
+    <div class="footer">
+      <div class="author">
+        <img class="avatar" src="file:///Users/lijigang/.claude/skills/ljg-card/assets/logo.png" alt="">
+        <span class="author-name">{{SOURCE}}</span>
+      </div>
+      <!-- WaytoAGI 模板致敬 -->
+      {{ARXIV_LINE}}
+    </div>
+  </div>
+</body>
+</html>
