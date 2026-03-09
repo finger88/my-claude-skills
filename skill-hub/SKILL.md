@@ -1,15 +1,16 @@
 ---
 name: skill-hub
+version: "1.1.0"
 description: |
-  统一技能管理器，整合 clawhub.ai 和 skills.sh 两个生态系统。
+  统一技能管理器，整合 clawhub.ai、skills.sh 和 GitHub 仓库三个来源。
   提供跨平台搜索、安装、列表和智能推荐功能。
   当用户想要查找技能、安装技能、管理已安装技能，或说"帮我找个做 X 的技能"时使用此技能。
-  关键词：找技能、搜索技能、安装技能、技能列表、skill search、skill install
+  关键词：找技能、搜索技能、安装技能、技能列表、skill search、skill install、clone、GitHub
 ---
 
 # Skill Hub | 统一技能管理器
 
-跨生态系统的技能管理工具。不关心技能来自 clawhub 还是 skills.sh，只给你最好的匹配。
+跨生态系统的技能管理工具。不关心技能来自 clawhub、skills.sh 还是 GitHub，只给你最好的匹配。
 
 ## 生态系统
 
@@ -17,6 +18,7 @@ description: |
 |------|----------|----------|------|
 | **clawhub** | `~/.claude/skills/` | `npx clawhub install <name>` | ~11,000+ skills |
 | **skills.sh** | `~/.agents/skills/` | `npx skills add <owner/repo@skill>` | ~100-500 skills |
+| **GitHub** | `~/my-claude-skills/` | `python scripts/install.py <url>` | 任意仓库 |
 
 ## 核心功能
 
@@ -46,6 +48,18 @@ python scripts/install.py <skill-identifier>
 支持格式：
 - clawhub: `skill-name`
 - skills.sh: `owner/repo@skill-name`
+- github: `https://github.com/user/repo.git`
+
+GitHub 安装示例：
+```bash
+# 列出仓库中所有可用技能
+python scripts/install.py https://github.com/user/repo.git
+
+# 指定安装某个技能
+python scripts/install.py https://github.com/user/repo.git --skill skill-name
+```
+
+GitHub 安装流程：clone → 扫描 SKILL.md → 复制到 `~/my-claude-skills/` → 创建 symlink → npm install（如需要）→ git commit+push。
 
 ### 3. 统一列表
 
