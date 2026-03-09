@@ -1,6 +1,6 @@
 # Web Content Extraction Toolkit | 详细工具手册
 
-本文件包含 7 层工具提取策略的详细说明和代码示例。
+本文件包含 9 层工具提取策略的详细说明和代码示例。
 仅在需要具体工具命令时加载此文件。
 
 ---
@@ -31,6 +31,49 @@ curl -sL "URL" | \
   sed 's/^[[:space:]]*//' | \
   grep -v "^[[:space:]]*$"
 ```
+
+---
+
+## 1.5. defuddle（智能正文提取）
+
+基于评分算法的网页正文识别工具，内置站点专用提取器，输出原生 Markdown。
+
+### 直接使用 CLI
+```bash
+# Markdown + JSON 元数据（最常用）
+defuddle parse "https://example.com/article" -j -m
+
+# 仅输出 Markdown 正文
+defuddle parse "https://example.com/article" -m
+
+# 仅提取标题
+defuddle parse "https://example.com" -p title
+
+# 调试模式（查看评分和移除细节）
+defuddle parse "https://example.com/article" -j -m --debug
+
+# 保存到文件
+defuddle parse "https://example.com/article" -m -o output.md
+```
+
+### 通过 extract.py
+```bash
+# 自动模式（defuddle 作为 L2 自动尝试）
+python scripts/extract.py "URL"
+
+# 显式指定 defuddle
+python scripts/extract.py "URL" --method defuddle
+
+# defuddle + Markdown 输出
+python scripts/extract.py "URL" --method defuddle --format md
+```
+
+### 内置站点专用提取器
+GitHub, Reddit, Twitter/X, YouTube, ChatGPT, Claude, Gemini, HackerNews
+
+### 局限
+- 无法处理 JS 动态渲染的 SPA 页面（微信公众号、小红书等）
+- 需要 Node.js：`npm install -g defuddle jsdom`
 
 ---
 

@@ -4,12 +4,13 @@
 Web Content Extraction Script
 统一网页内容提取脚本，支持多种策略自动降级
 
-8层提取策略（按优先级排序）：
+9层提取策略（按优先级排序）：
     L0: brave      - 快速摘要（需 API key），适合已知 URL 的快速提取
     L1: jina.ai    - 免费快速，适合大多数网页
-    L2: requests   - 本地解析，提取结构化信息（标题、作者等）
-    L3: curl       - 备用方案，绕过部分限制
-    L4: playwright - 动态渲染页面，执行 JavaScript
+    L2: defuddle   - 智能正文识别 + 站点专用提取器（GitHub/Reddit/YouTube 等）
+    L3: requests   - 本地解析，提取结构化信息（标题、作者等）
+    L4: curl       - 备用方案，绕过部分限制
+    L5: playwright - 动态渲染页面，执行 JavaScript
 
 搜索模式：
     --search    使用 Brave Search 从关键词发现 URL
@@ -303,6 +304,66 @@ def extract_with_jina(url, timeout=30):
         return None, str(e)
 
 
+def extract_with_defuddle(url, timeout=30):
+    """
+    使用 defuddle (npm CLI) 提取 — L2 智能正文识别
+    优势：评分算法识别正文 + 站点专用提取器（GitHub/Reddit/Twitter/YouTube 等）
+    限制：无法处理 JS 动态渲染的 SPA 页面
+    """
+    try:
+        # Windows 上 npm 全局命令需要通过 shell 调用（.cmd 包装）
+        cmd = f'defuddle parse "{url}" -j -m'
+        # 继承当前环境变量（含代理设置），确保 JSDOM 请求能走代理
+        env = os.environ.copy()
+        # 如果未设置代理但本机有常用代理端口，自动配置
+        if not env.get('https_proxy') and not env.get('HTTPS_PROXY'):
+            proxy = 'http://127.0.0.1:6789'
+            env['http_proxy'] = proxy
+            env['https_proxy'] = proxy
+        result = subprocess.run(
+            cmd, shell=True,
+            capture_output=True, text=True,
+            encoding='utf-8', errors='ignore',
+            timeout=timeout + 5,
+            env=env
+        )
+        if result.returncode != 0:
+            stderr = result.stderr.strip()
+            if 'not recognized' in stderr or 'not found' in stderr or 'command not found' in stderr:
+                return None, "defuddle 未安装，运行: npm install -g defuddle jsdom"
+            return None, f"defuddle failed: {stderr}"
+
+        data = json.loads(result.stdout)
+        content = data.get('content', '').strip()
+
+        if not content or len(content) < 50:
+            return None, f"defuddle: content too short ({len(content or '')} chars)"
+
+        return {
+            'success': True,
+            'method': 'defuddle',
+            'title': data.get('title', ''),
+            'author': data.get('author', ''),
+            'content': content,
+            'url': url,
+            'description': data.get('description', ''),
+            'published': data.get('published', ''),
+            'wordCount': data.get('wordCount', 0),
+            'domain': data.get('domain', ''),
+            'image': data.get('image', ''),
+            'site': data.get('site', ''),
+        }, None
+
+    except subprocess.TimeoutExpired:
+        return None, "defuddle: timeout"
+    except json.JSONDecodeError as e:
+        return None, f"defuddle: invalid JSON: {e}"
+    except FileNotFoundError:
+        return None, "defuddle 未安装，运行: npm install -g defuddle jsdom"
+    except Exception as e:
+        return None, str(e)
+
+
 def extract_with_requests(url, timeout=30):
     """
     使用 requests + BeautifulSoup 提取
@@ -510,18 +571,19 @@ def extract_url(url, method='auto', timeout=30):
     降级顺序：
     L0: brave       - 快速摘要（需 BRAVE_API_KEY），适合已知 URL 的快速提取
     L1: jina.ai     - 免费快速，适合大多数网页
-    L2: requests    - 本地解析，适合需要提取结构化信息的页面
-    L3: curl        - 备用方案
-    L4: playwright  - 动态渲染页面
+    L2: defuddle    - 智能正文识别 + 站点专用提取器
+    L3: requests    - 本地解析，适合需要提取结构化信息的页面
+    L4: curl        - 备用方案
+    L5: playwright  - 动态渲染页面
     """
     methods = []
 
     if method == 'auto':
         # 智能选择方法顺序：如果有 Brave API key，优先尝试
         if get_brave_api_key():
-            methods = ['brave', 'jina', 'requests', 'curl', 'playwright']
+            methods = ['brave', 'jina', 'defuddle', 'requests', 'curl', 'playwright']
         else:
-            methods = ['jina', 'requests', 'curl', 'playwright']
+            methods = ['jina', 'defuddle', 'requests', 'curl', 'playwright']
     else:
         methods = [method]
 
@@ -548,6 +610,8 @@ def extract_url(url, method='auto', timeout=30):
                     continue
         elif m == 'jina':
             result, error = extract_with_jina(url, timeout)
+        elif m == 'defuddle':
+            result, error = extract_with_defuddle(url, timeout)
         elif m == 'requests':
             result, error = extract_with_requests(url, timeout)
         elif m == 'curl':
@@ -632,12 +696,12 @@ def generate_markdown(result):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='网页内容提取工具 - 8层降级策略 (含 Brave Search)')
+    parser = argparse.ArgumentParser(description='网页内容提取工具 - 9层降级策略 (含 Brave Search + defuddle)')
     parser.add_argument('url', nargs='?', help='要提取的 URL')
     parser.add_argument('--search', '-s', help='搜索关键词（发现模式，需 BRAVE_API_KEY）')
     parser.add_argument('--method', default='auto',
-                        choices=['auto', 'brave', 'jina', 'requests', 'curl', 'playwright'],
-                        help='提取方法: brave(快速摘要需API), jina(免费快速), requests(本地解析), curl(备用), playwright(动态渲染) (默认: auto)')
+                        choices=['auto', 'brave', 'jina', 'defuddle', 'requests', 'curl', 'playwright'],
+                        help='提取方法: brave(快速摘要需API), jina(免费快速), defuddle(智能正文识别), requests(本地解析), curl(备用), playwright(动态渲染) (默认: auto)')
     parser.add_argument('--output', '-o', help='输出文件路径 (默认: stdout; Markdown 格式未指定时保存到 ~/Downloads/)')
     parser.add_argument('--format', '-f', default='json',
                         choices=['json', 'md', 'markdown'],

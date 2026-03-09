@@ -1,6 +1,6 @@
 ---
 name: web-content-extraction
-description: 8-layer toolkit for extracting web content from restricted or dynamic domains. Use when WebFetch fails, user needs content from JavaScript-heavy pages, or when dealing with blocked domains. Provides fallback strategies from Brave Summary (L0) → jina.ai (L1) → requests (L2) → curl (L3) → Playwright (L4), plus Brave Search discovery mode. Now includes executable scripts for automated extraction.
+description: 9-layer toolkit for extracting web content from restricted or dynamic domains. Use when WebFetch fails, user needs content from JavaScript-heavy pages, or when dealing with blocked domains. Provides fallback strategies from Brave Summary (L0) → jina.ai (L1) → defuddle (L2) → requests (L3) → curl (L4) → Playwright (L5), plus Brave Search discovery mode. Now includes executable scripts for automated extraction.
 ---
 
 # Web Content Extraction Skill（网页内容提取技能）
@@ -18,7 +18,7 @@ description: 8-layer toolkit for extracting web content from restricted or dynam
 ```bash
 # ===== 提取模式（URL → 内容）=====
 
-# 自动提取（智能降级：brave → jina → requests → curl → playwright）
+# 自动提取（智能降级：brave → jina → defuddle → requests → curl → playwright）
 python scripts/extract.py "https://example.com/article"
 
 # 使用 Brave 快速摘要（需 BRAVE_API_KEY，速度最快）
@@ -89,7 +89,7 @@ bash scripts/setup.sh
 
 ---
 
-## 8层提取策略详解
+## 9层提取策略详解
 
 ### 各层适用场景与实战指南
 
@@ -97,9 +97,10 @@ bash scripts/setup.sh
 |:----:|------|---------|-------------|-------------|-------------|
 | **L0** | **Brave** | **元信息验证**：速度极快（<1s）、验证 URL 有效性、获取标题 | 热门网页、快速验证 URL 是否存在 | 知乎文章标题获取、链接有效性检查 | 摘要过短（<500字）时自动降级，冷门页面 |
 | **L1** | **jina.ai** | **完整内容提取**：免费免 API key、绕过付费墙、能抓 X/Twitter | 微信公众号、付费墙内容、社交媒体、个人博客 | 微信公众号文章、Every.to 付费内容 | 需要登录态的页面、重度 JS 渲染页面 |
-| **L2** | **requests** | 结构化提取（标题/作者/正文分离）、可定制化 | 需要提取元信息的页面、标准化网站、微信公众号 | 标准博客、新闻站、公众号 | Cloudflare 拦截、复杂反爬 |
-| **L3** | **curl** | 轻量快速、无需 Python 依赖、某些环境唯一选择 | 简单静态页面、服务器环境只有 curl | 简单的 HTML 页面 | 知乎等强反爬站点、JS 渲染页面 |
-| **L4** | **Playwright** | 执行 JavaScript、模拟真实浏览器、最后兜底 | React/Vue 单页应用、动态加载内容 | SPA 站点、需要滚动加载的页面 | 验证码拦截、需要登录态、极度复杂的反爬 |
+| **L2** | **defuddle** | **智能正文识别**：评分算法 + 站点专用提取器、输出原生 Markdown | GitHub/Reddit/Twitter/YouTube/arXiv 等有专用提取器的站点、通用静态页面 | GitHub README、arxiv 论文摘要、Reddit 帖子 | JS 动态渲染的 SPA 页面（微信、小红书等） |
+| **L3** | **requests** | 结构化提取（标题/作者/正文分离）、可定制化 | 需要提取元信息的页面、标准化网站、微信公众号 | 标准博客、新闻站、公众号 | Cloudflare 拦截、复杂反爬 |
+| **L4** | **curl** | 轻量快速、无需 Python 依赖、某些环境唯一选择 | 简单静态页面、服务器环境只有 curl | 简单的 HTML 页面 | 知乎等强反爬站点、JS 渲染页面 |
+| **L5** | **Playwright** | 执行 JavaScript、模拟真实浏览器、最后兜底 | React/Vue 单页应用、动态加载内容 | SPA 站点、需要滚动加载的页面 | 验证码拦截、需要登录态、极度复杂的反爬 |
 | **搜索** | **Brave Search** | 从关键词到 URL 列表、发现未知内容 | 只有主题没有具体 URL 时 | 论文搜索、资料收集 | - |
 
 ### 选择策略
@@ -112,9 +113,10 @@ bash scripts/setup.sh
 - 使用 `--search` 搜索发现，获取 URL 后再进入提取流程
 
 **场景3：特定网站**
+- GitHub/Reddit/YouTube → L2 defuddle（有专用提取器）
 - 微信公众号 → L1 jina.ai（最强）
-- 知乎 → L0 Brave（索引已收录）或 L4 Playwright
-- 小红书/抖音 → L4 Playwright（截图+视觉提取）
+- 知乎 → L0 Brave（索引已收录）或 L5 Playwright
+- 小红书/抖音 → L5 Playwright（截图+视觉提取）
 - 付费内容（Every.to/Substack）→ L1 jina.ai（绕过付费墙）
 
 ---
@@ -127,9 +129,10 @@ bash scripts/setup.sh
 |:----:|------|------|---------|------|:----------:|
 | L0 | **Brave** | 云服务 | 已知 URL 快速摘要 | 速度最快、有全球 CDN | ✅ |
 | L1 | **jina.ai** | 云服务 | 快速提取大多数网页 | 免费、免API key、绕过付费墙 | ❌ |
-| L2 | **requests** | 脚本 | 结构化提取（标题/作者/正文） | 最灵活，可定制化 | ❌ |
-| L3 | **curl** | 命令行 | 备用方案，绕过部分限制 | 轻量快速 | ❌ |
-| L4 | **Playwright** | 脚本 | JavaScript动态渲染页面 | 资源占用高，兜底方案 | ❌ |
+| L2 | **defuddle** | CLI (npm) | 智能正文识别 + Markdown | 站点专用提取器、评分算法 | ❌ |
+| L3 | **requests** | 脚本 | 结构化提取（标题/作者/正文） | 最灵活，可定制化 | ❌ |
+| L4 | **curl** | 命令行 | 备用方案，绕过部分限制 | 轻量快速 | ❌ |
+| L5 | **Playwright** | 脚本 | JavaScript动态渲染页面 | 资源占用高，兜底方案 | ❌ |
 
 ### 搜索模式（关键词 → URL 列表）
 
@@ -155,12 +158,14 @@ bash scripts/setup.sh
 使用 Brave（L0 - 快速摘要，适合热门网页）
     ↓ 未收录或摘要不足
 使用 jina.ai（L1 - 免费快速，绕过付费墙）
-    ↓ 需要结构化信息（标题/作者/正文分离）
-使用 requests（L2 - 本地解析，最灵活）
+    ↓ jina 失败或内容不完整
+使用 defuddle（L2 - 智能正文识别，GitHub/Reddit/YouTube 等有专用提取器）
+    ↓ defuddle 失败（JS 渲染页面等）
+使用 requests（L3 - 本地解析，最灵活）
     ↓ 简单备用方案
-使用 curl（L3 - 轻量快速）
+使用 curl（L4 - 轻量快速）
     ↓ 需要执行JS
-使用 Playwright（L4 - 动态渲染兜底）
+使用 Playwright（L5 - 动态渲染兜底）
 ```
 
 **未配置 BRAVE_API_KEY：**
@@ -187,7 +192,7 @@ bash scripts/setup.sh
 直接调用封装好的提取脚本：
 
 ```bash
-# 自动模式（推荐）- 按 L0→L1→L2→L3 自动降级
+# 自动模式（推荐）- 按 L0→L1→L2→L3→L4→L5 自动降级
 python scripts/extract.py "<URL>" -o result.json
 
 # 指定使用 jina.ai（最快，适合大多数网页）
@@ -198,7 +203,7 @@ python scripts/extract.py "<URL>" --method requests
 ```
 
 **脚本特点：**
-- ✅ **8层自动降级**：brave → jina → requests → curl → playwright
+- ✅ **9层自动降级**：brave → jina → defuddle → requests → curl → playwright
 - ✅ **L0 Brave 摘要**：配置 API key 后速度最快，适合热门网页
 - ✅ **搜索发现模式**：`--search` 关键词直接获取相关 URL 列表
 - ✅ **L1 jina.ai**：免费、免 API key、绕过付费墙
@@ -266,10 +271,11 @@ python -c "import json; d=json.load(open('result.json')); print(d['content'])"
 | 如果你需要... | 使用工具 | 备选工具 | 需 API Key |
 |-------------|---------|---------|:----------:|
 | 已知 URL 快速摘要（最快） | **Brave** (L0) | jina.ai | ✅ |
-| 绕过付费墙/抓推特 | **jina.ai** (L1) | requests | ❌ |
-| 提取结构化信息（标题/作者/正文） | **requests** (L2) | jina.ai | ❌ |
-| 绕过简单反爬 | **curl** (L3) | requests | ❌ |
-| JavaScript 动态页面 | **Playwright** (L4) | - | ❌ |
+| 绕过付费墙/抓推特 | **jina.ai** (L1) | defuddle | ❌ |
+| 智能正文识别 + Markdown（GitHub/Reddit/YouTube 等） | **defuddle** (L2) | requests | ❌ |
+| 提取结构化信息（标题/作者/正文） | **requests** (L3) | jina.ai | ❌ |
+| 绕过简单反爬 | **curl** (L4) | requests | ❌ |
+| JavaScript 动态页面 | **Playwright** (L5) | - | ❌ |
 
 ### 搜索场景（关键词 → URL）
 
@@ -302,11 +308,13 @@ python scripts/extract.py "URL" --method auto
 │
 ├── jina.ai 尝试 ──→ 成功 ✅ （L1：免费快速，适合大多数网页）
 │
-├── requests 尝试 ──→ 成功 ✅ （L2：结构化提取，需作者/标题信息时）
+├── defuddle 尝试 ──→ 成功 ✅ （L2：智能正文识别，GitHub/Reddit/YouTube 等有专用提取器）
 │
-├── curl 尝试 ──→ 成功 ✅ （L3：备用方案）
+├── requests 尝试 ──→ 成功 ✅ （L3：结构化提取，需作者/标题信息时）
 │
-├── playwright 尝试 ──→ 成功 ✅ （L4：JS动态页面，兜底方案）
+├── curl 尝试 ──→ 成功 ✅ （L4：备用方案）
+│
+├── playwright 尝试 ──→ 成功 ✅ （L5：JS动态页面，兜底方案）
 │
 └── 全部失败 ──→ 返回错误信息 ❌
 ```
@@ -367,3 +375,9 @@ extract.py 失败
   - 新增 **搜索发现模式**：`--search` 参数从关键词获取 URL 列表
   - 自动降级链更新：brave → jina → requests → curl → playwright
   - 通过 `BRAVE_API_KEY` 环境变量配置
+- **2026-03-09 v3.1**: 🧠 **集成 defuddle 智能提取层**
+  - 新增 L2 层 **defuddle**（npm CLI）：基于评分算法的正文识别
+  - 内置站点专用提取器：GitHub/Reddit/Twitter/YouTube/ChatGPT/Claude/Gemini/HackerNews
+  - 输出原生 Markdown + 丰富元数据（wordCount/image/published 等）
+  - 降级链更新：brave → jina → defuddle → requests → curl → playwright
+  - 前置条件：`npm install -g defuddle jsdom`
