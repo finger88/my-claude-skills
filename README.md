@@ -4,24 +4,27 @@
 
 ## Skills 列表
 
-| Skill | 用途 | 来源 |
-|-------|------|------|
-| **web-content-extraction** | 8 层网页内容提取工具，自动降级 | 自建 |
-| **ljg-clip** | 内容剪藏到 inbox.org | 社区改 |
-| **ljg-xray-article** | 文章深度解剖（4 层漏斗） | 社区 |
-| **ljg-xray-book** | 书籍核心结构提取（Epiplexity） | 社区 |
-| **ljg-paper** | 论文深度阅读（原子管线） | 社区 |
-| **ljg-explain-concept** | 概念 8 维解构 | 社区 |
-| **ljg-explain-words** | 英文单词深度解析 + HTML 卡片 | 社区 |
-| **skill-manager** | Skills 生态管理（评估/备份/优化/回退） | 自建 |
-| **skill-hub** | 跨平台技能搜索安装 | 自建 |
-| **skill-creator** | Skill 创建指南 | 官方 |
-| **daily-review** | 飞书日历日记生成 | 自建 |
-| **weekly-review** | 周报复盘生成 | 自建 |
-| **datetime-tool** | 时间日期工具 | 自建 |
-| **memory-review** | 记忆校准 | 自建 |
-| **weather** | 天气查询 | 社区 |
-| **xlsx** | 电子表格处理 | 社区 |
+<!-- SKILLS-TABLE-START -->
+| Skill | 版本 | 用途 | 来源 |
+|-------|------|------|------|
+| **daily-review** | - | 飞书日历日记生成器 | 自建 |
+| **datetime-tool** | - | 获取当前时间、格式化日期、计算日期差值、时区转换 | 自建 |
+| **feifei-reading** | - | 沉浸式物理共读搭子 | 自建 |
+| **ljg-clip** | - | 内容剪藏到 inbox.org | 社区改 |
+| **ljg-explain-concept** | - | 概念 8 维解构 | 社区 |
+| **ljg-explain-words** | - | 英文单词深度解析 + HTML 卡片 | 社区 |
+| **ljg-paper** | v2.2.0 | 论文深度阅读（原子管线） | 社区 |
+| **ljg-xray-article** | - | 文章深度解剖（4 层漏斗） | 社区 |
+| **ljg-xray-book** | - | 书籍核心结构提取（Epiplexity） | 社区 |
+| **memory-review** | - | 周期性记忆校准 | 自建 |
+| **skill-creator** | - | Skill 创建指南 | 官方 |
+| **skill-hub** | - | 跨平台技能搜索安装 | 自建 |
+| **skill-manager** | v3.0 | Skills 生态管理（评估/备份/优化/回退/Git 自动提交） | 自建 |
+| **weather** | - | 天气查询 | 社区 |
+| **web-content-extraction** | - | 9 层网页内容提取工具，自动降级 | 自建 |
+| **weekly-review** | - | 周报复盘生成器 | 自建 |
+| **xlsx** | - | 电子表格处理 | 社区 |
+<!-- SKILLS-TABLE-END -->
 
 ## 安装
 

@@ -11,6 +11,7 @@
   "git": {
     "autoCommit": false,        // 是否启用自动提交
     "autoPush": false,          // 提交后是否自动 push
+    "autoUpdateReadme": false,  // push 后是否自动更新 README skills 表格
     "commitTemplate": "chore(skills): {message}",  // 提交模板，{message}为占位符
     "alwaysSignoff": false      // 是否添加 Signed-off-by
   }
@@ -87,3 +88,49 @@ git push
 2. **钩子检查**: 不跳过 pre-commit hooks（除非用户明确要求）
 3. **冲突处理**: 如有冲突，提示用户手动解决
 4. **远程检查**: push 前检查是否有远程分支
+
+---
+
+## 模式 C: README 自动更新（push 后触发）
+
+**配置**: `config.json` 中 `git.autoUpdateReadme: true`
+
+**前提**: README.md 中使用标记注释划定自动生成区域：
+```markdown
+<!-- SKILLS-TABLE-START -->
+（表格内容）
+<!-- SKILLS-TABLE-END -->
+```
+
+**执行步骤**:
+
+1. push 完成后，检查 `config.json` 中 `autoUpdateReadme` 是否为 `true`
+2. 扫描 `~/my-claude-skills/*/SKILL.md`
+3. 解析每个文件的 YAML frontmatter（`name`, `version`, `description`）
+4. 生成 Skills 列表表格：
+   - **Skill**: frontmatter `name`（加粗）
+   - **版本**: frontmatter `version`（无则显示 `-`）
+   - **用途**: frontmatter `description` 第一句话（到第一个 `.` 或 `。`），最长 50 中文字符
+   - **来源**: `ljg-*` → 社区，`skill-creator` → 官方，其余 → 自建
+   - **排序**: 按 skill 名称字母顺序
+5. 替换 README.md 中 `<!-- SKILLS-TABLE-START -->` 到 `<!-- SKILLS-TABLE-END -->` 之间的内容
+6. 如有变更：
+   ```bash
+   git add README.md
+   git commit -m "docs: update README skills table"
+   git push
+   ```
+7. 如无变更，跳过（README 已是最新）
+
+**输出格式**:
+
+```markdown
+### README 更新完成
+
+| 项目 | 内容 |
+|------|------|
+| Skills 数量 | 17 |
+| 新增 | feifei-reading |
+| 移除 | (无) |
+| Commit | b2c3d4e |
+```
