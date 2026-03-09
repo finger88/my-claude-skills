@@ -72,7 +72,7 @@ D:\my tool\skills log\            # 日志与备份目录
 3. 复制 SKILL.md + references/ + scripts/ + assets/
 4. 记录到 skills修改日志.md
 
-**版本号提取**: 优先从 frontmatter `version` 字段读取，其次从更新日志匹配 `vX.Y`，均无则回退为无版本号目录名。
+**版本号提取**: 优先从 frontmatter `version` 字段读取，其次从更新日志匹配 `vX.Y`，均无则自动分配 `1.0.0` 并写入 frontmatter。
 
 ### 功能 5: 回退技能
 

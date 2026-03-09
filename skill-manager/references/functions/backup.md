@@ -20,7 +20,14 @@
 优先级从高到低:
 1. YAML frontmatter 的 `version` 字段（推荐）
 2. 更新日志最后一条匹配 `vX.Y` 或 `vX.Y.Z`（兼容旧格式）
-3. 均无则回退为无版本号目录名
+3. 均无则**自动分配 `1.0.0`**，写入 SKILL.md frontmatter 的 `version` 字段，然后用此版本号备份
+
+### 自动分配版本号
+
+当 SKILL.md 的 YAML frontmatter 中没有 `version` 字段时：
+1. 在 frontmatter 中添加 `version: "1.0.0"`（插入在 `description:` 之前）
+2. 使用 `1.0.0` 作为备份目录名中的版本号
+3. 在日志中标注"版本号由系统自动分配"
 
 ## 备份说明
 
