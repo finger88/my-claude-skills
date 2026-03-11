@@ -17,7 +17,7 @@
 | **ljg-xray-article** | - | 文章深度解剖（4 层漏斗） | 社区 |
 | **ljg-xray-book** | - | 书籍核心结构提取（Epiplexity） | 社区 |
 | **memory-review** | - | 周期性记忆校准 | 自建 |
-| **skill-creator** | - | Skill 创建、迭代与 eval 测评（官方最新） | 官方 |
+| **skill-creator** | v2.1.0 | Skill 创建、迭代与 eval 测评（官方最新） | 官方 |
 | **skill-hub** | - | 跨平台技能搜索安装 | 自建 |
 | **skill-manager** | v3.1 | Skills 生态管理（评估/备份/优化/回退/Git 自动提交） | 自建 |
 | **weather** | - | 天气查询 | 社区 |
