@@ -1,0 +1,23 @@
+{
+  "skill_name": "skill-creator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to create a skill called 'standup-formatter' that takes my raw bullet-point standup notes and formats them into a clean daily standup message. Here's what I need:\n- Input: user pastes freeform bullet points about what they did\n- Output: a formatted message with three sections: Yesterday / Today / Blockers\n- Trigger when: user mentions 'standup', 'daily update', 'scrum notes', 'format my notes', or pastes bullet points asking for standup format\n- Output should be concise, max ~100 words\n- No test cases or evals needed for now — just write the complete SKILL.md for me.",
+      "expected_output": "A complete SKILL.md file with proper YAML frontmatter (name, description with Use-when language, version), a clear body under 500 lines, at least one usage example, and output format specification.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I have a skill that's gotten too bloated and isn't triggering well. Here's the current SKILL.md:\n\n---\nname: code-helper\n---\n\n# Code Helper\n\nThis skill helps with all kinds of coding tasks.\n\n## Writing Code\nWhen the user wants to write code, first ask what language they want. Then ask about requirements. Then write pseudocode. Then write the actual code. Then add comments. Then add tests. Always use best practices. Always handle errors. Always add documentation.\n\n## Debugging Code\nWhen the user has a bug, ask them to paste the code. Then ask what the expected behavior is. Then ask what the actual behavior is. Then read through the code line by line. Then identify potential issues. Then suggest fixes. Then verify the fix works.\n\n## Code Review\nWhen the user wants code reviewed, ask for the code. Then check for: style issues, logic errors, security vulnerabilities, performance problems, missing tests, missing documentation. Then provide feedback on each category.\n\n## Refactoring\nWhen the user wants to refactor, understand what they want to improve. Then analyze the current code. Then suggest a refactoring plan. Then implement it step by step.\n\n## Explaining Code\nWhen the user wants code explained, read it carefully. Then explain what it does at a high level. Then go through it section by section. Then highlight any interesting patterns.\n\nPlease improve this skill. Problems I see: no version, description doesn't say when to use it, body is repetitive and too prescriptive. Make it lean and well-structured.",
+      "expected_output": "An improved SKILL.md with: (1) YAML frontmatter including version and a description with 'Use when' language, (2) leaner body that explains the why rather than rigid step-by-step instructions, (3) under 300 lines total.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "My 'ljg-paper' skill works but I want to optimize its description for better triggering. Users sometimes ask to 'read a paper' or 'analyze this arxiv link' and the skill doesn't trigger. The current description is:\n\n\"Paper deep reader. Takes an academic paper (URL, PDF, or file), runs the atom pipeline (split→squeeze→plain→feynman→博导审稿), and synthesizes a fluent analysis. Focus: what gap does it fill, and would a seasoned advisor take it seriously? Use when user shares an arxiv link, paper URL, PDF, or asks to analyze a research paper. Output to Markdown with customizable path (default: ~/Downloads/). Trigger words: '读论文', '分析论文', 'paper', 'deep read', or when user shares an academic paper.\"\n\nPlease: (1) generate 10 trigger eval queries (mix of should-trigger and should-not-trigger) for this skill, (2) suggest an improved description that would trigger better for casual English requests like 'can you read this paper for me'.",
+      "expected_output": "A list of 10 eval queries (JSON format or clear list) with should_trigger labels, plus a revised description that includes casual English trigger phrases while preserving the Chinese trigger words.",
+      "files": []
+    }
+  ]
+}
