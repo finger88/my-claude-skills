@@ -1,0 +1,71 @@
+{
+  "skill_name": "debate",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "debate whether AI will replace most knowledge workers by 2030",
+      "should_trigger": true,
+      "expected_behavior": "Launch multi-agent debate with evidence gathering, Pro/Con rounds, and final report"
+    },
+    {
+      "id": 2,
+      "prompt": "start a debate on Bitcoin vs Gold as store of value",
+      "should_trigger": true,
+      "expected_behavior": "Parse topic and launch debate-orchestrator with default settings"
+    },
+    {
+      "id": 3,
+      "prompt": "red team our cloud migration plan",
+      "should_trigger": true,
+      "expected_behavior": "Launch debate in red_team mode with risk assessment structure"
+    },
+    {
+      "id": 4,
+      "prompt": "argue about whether remote work increases productivity",
+      "should_trigger": true,
+      "expected_behavior": "Recognize 'argue about' trigger and launch balanced debate"
+    },
+    {
+      "id": 5,
+      "prompt": "analyze from multiple perspectives whether nuclear energy should replace fossil fuels",
+      "should_trigger": true,
+      "expected_behavior": "Launch debate with domain auto-detected as energy/general"
+    },
+    {
+      "id": 6,
+      "prompt": "run a debate on 中美科技竞争的未来走向 --rounds 5 --domain geopolitics",
+      "should_trigger": true,
+      "expected_behavior": "Parse Chinese topic with explicit flags and launch 5-round geopolitics debate"
+    },
+    {
+      "id": 7,
+      "prompt": "prepare for my debate class presentation on climate change",
+      "should_trigger": false,
+      "expected_behavior": "This is a request for presentation help, not launching the debate system"
+    },
+    {
+      "id": 8,
+      "prompt": "what does the word 'debate' mean in political science?",
+      "should_trigger": false,
+      "expected_behavior": "This is a definition question, not a request to run a debate"
+    },
+    {
+      "id": 9,
+      "prompt": "compare React vs Vue for our frontend project",
+      "should_trigger": false,
+      "expected_behavior": "This is a technical comparison request, not a structured debate"
+    },
+    {
+      "id": 10,
+      "prompt": "help me write arguments for my college debate team",
+      "should_trigger": false,
+      "expected_behavior": "This is academic writing help, not the multi-agent debate system"
+    },
+    {
+      "id": 11,
+      "prompt": "summarize the pros and cons of electric vehicles",
+      "should_trigger": false,
+      "expected_behavior": "This is a summary request, not a full evidence-verified debate"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "skill_name": "analogy-safeguard",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "validate the analogies used in the pro side's debate turn",
+      "should_trigger": true,
+      "expected_behavior": "Check structural requirements, content share, classify pass/fail"
+    },
+    {
+      "id": 2,
+      "prompt": "check if the 2008 financial crisis analogy has enough similarities and differences",
+      "should_trigger": true,
+      "expected_behavior": "Verify >=2 similarities, >=1 key difference, assess relevance"
+    },
+    {
+      "id": 3,
+      "prompt": "audit historical references in round 2 for classical reference compliance",
+      "should_trigger": true,
+      "expected_behavior": "Apply strict or advisory mode rules based on section context"
+    },
+    {
+      "id": 4,
+      "prompt": "assess the analogy content share percentage in this debate turn",
+      "should_trigger": true,
+      "expected_behavior": "Estimate ~15% threshold via LLM semantic judgment"
+    },
+    {
+      "id": 5,
+      "prompt": "validate historical parallel structure in the con argument",
+      "should_trigger": true,
+      "expected_behavior": "Check structural completeness, flag heuristic-only analogies"
+    },
+    {
+      "id": 6,
+      "prompt": "verify the historical wisdom section meets advisory mode requirements",
+      "should_trigger": true,
+      "expected_behavior": "Check key_differences and applicability_caveat fields, grade quality"
+    },
+    {
+      "id": 7,
+      "prompt": "write an analogy to explain recursion to a beginner",
+      "should_trigger": false,
+      "expected_behavior": "This is pedagogy, not debate analogy validation"
+    },
+    {
+      "id": 8,
+      "prompt": "give me a historical example of successful tech migrations",
+      "should_trigger": false,
+      "expected_behavior": "This is a research request, not analogy compliance checking"
+    },
+    {
+      "id": 9,
+      "prompt": "compare these two code patterns and tell me which is better",
+      "should_trigger": false,
+      "expected_behavior": "This is code comparison, not historical analogy validation"
+    },
+    {
+      "id": 10,
+      "prompt": "use a metaphor to explain this complex concept",
+      "should_trigger": false,
+      "expected_behavior": "This is explanation request, not debate analogy safeguard"
+    }
+  ]
+}

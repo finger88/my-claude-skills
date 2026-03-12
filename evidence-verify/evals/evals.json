@@ -1,0 +1,65 @@
+{
+  "skill_name": "evidence-verify",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "cross-check this Twitter claim about market crash predictions",
+      "should_trigger": true,
+      "expected_behavior": "Check social_credibility_flag, search for independent corroboration"
+    },
+    {
+      "id": 2,
+      "prompt": "verify the evidence independently for claim clm_2_pro_1",
+      "should_trigger": true,
+      "expected_behavior": "Run independent WebSearch, compare against debater-provided evidence"
+    },
+    {
+      "id": 3,
+      "prompt": "validate the claim's supporting evidence from the evidence store",
+      "should_trigger": true,
+      "expected_behavior": "Resolve evidence_ids, check source independence, cross-source agreement"
+    },
+    {
+      "id": 4,
+      "prompt": "check if Twitter-only claims have independent non-social corroboration",
+      "should_trigger": true,
+      "expected_behavior": "Search for tier1/tier2 sources confirming Twitter claims"
+    },
+    {
+      "id": 5,
+      "prompt": "assess evidence credibility and determine verification status",
+      "should_trigger": true,
+      "expected_behavior": "Apply verification rules, recommend claim status (verified/contested/unverified)"
+    },
+    {
+      "id": 6,
+      "prompt": "perform independent source verification for the contested claims",
+      "should_trigger": true,
+      "expected_behavior": "Fresh WebSearch verification, source independence check"
+    },
+    {
+      "id": 7,
+      "prompt": "verify my code compiles without errors",
+      "should_trigger": false,
+      "expected_behavior": "This is a build verification, not debate evidence verification"
+    },
+    {
+      "id": 8,
+      "prompt": "check if the JSON schema is valid",
+      "should_trigger": false,
+      "expected_behavior": "This is schema validation, not evidence credibility assessment"
+    },
+    {
+      "id": 9,
+      "prompt": "validate the form input against business rules",
+      "should_trigger": false,
+      "expected_behavior": "This is input validation, not cross-source evidence verification"
+    },
+    {
+      "id": 10,
+      "prompt": "verify the SSL certificate is correctly configured",
+      "should_trigger": false,
+      "expected_behavior": "This is infrastructure verification, not debate evidence checking"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "skill_name": "freshness-check",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "check if the evidence in the store is still current",
+      "should_trigger": true,
+      "expected_behavior": "Classify evidence tracks, apply freshness rules, update freshness_status"
+    },
+    {
+      "id": 2,
+      "prompt": "tag freshness status for all evidence items",
+      "should_trigger": true,
+      "expected_behavior": "Tag each item as current/stale/timeless based on track and age"
+    },
+    {
+      "id": 3,
+      "prompt": "is this 2024 economic data still valid for the debate?",
+      "should_trigger": true,
+      "expected_behavior": "Assess whether fact-track evidence has aged beyond freshness threshold"
+    },
+    {
+      "id": 4,
+      "prompt": "validate timeliness of claims before the refresh cycle",
+      "should_trigger": true,
+      "expected_behavior": "Re-evaluate freshness for scheduled refresh"
+    },
+    {
+      "id": 5,
+      "prompt": "verify real-time information capability for current debate",
+      "should_trigger": true,
+      "expected_behavior": "Run WebSearch capability check, verify 24h data access"
+    },
+    {
+      "id": 6,
+      "prompt": "distinguish fact-track from reasoning-track evidence for freshness",
+      "should_trigger": true,
+      "expected_behavior": "Use LLM to classify evidence tracks, reasoning-track always timeless"
+    },
+    {
+      "id": 7,
+      "prompt": "check if this npm package is outdated",
+      "should_trigger": false,
+      "expected_behavior": "This is dependency management, not evidence freshness checking"
+    },
+    {
+      "id": 8,
+      "prompt": "is this food still fresh and safe to eat?",
+      "should_trigger": false,
+      "expected_behavior": "This is a food safety question, not evidence timeliness"
+    },
+    {
+      "id": 9,
+      "prompt": "when was this file last modified?",
+      "should_trigger": false,
+      "expected_behavior": "This is file metadata query, not evidence freshness assessment"
+    },
+    {
+      "id": 10,
+      "prompt": "check if the cache has expired and needs refreshing",
+      "should_trigger": false,
+      "expected_behavior": "This is cache management, not debate evidence freshness"
+    }
+  ]
+}

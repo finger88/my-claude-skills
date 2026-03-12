@@ -1,0 +1,65 @@
+{
+  "skill_name": "debate-turn",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "construct the pro argument for round 2 of the debate",
+      "should_trigger": true,
+      "expected_behavior": "Build structured debate turn with reasoning chains, rebuttals, and evidence refs"
+    },
+    {
+      "id": 2,
+      "prompt": "respond to the judge's mandatory response points for the con side",
+      "should_trigger": true,
+      "expected_behavior": "Address mandatory points first, then construct new arguments"
+    },
+    {
+      "id": 3,
+      "prompt": "build a rebuttal against the con side's arguments from round 1",
+      "should_trigger": true,
+      "expected_behavior": "Identify opponent's strongest arguments and construct targeted rebuttals"
+    },
+    {
+      "id": 4,
+      "prompt": "generate the debate round output with reasoning chains and evidence",
+      "should_trigger": true,
+      "expected_behavior": "Produce complete DebateTurn JSON with 5-element reasoning chains"
+    },
+    {
+      "id": 5,
+      "prompt": "create a structured argument with historical wisdom and speculative scenarios",
+      "should_trigger": true,
+      "expected_behavior": "Build turn including historical_wisdom and speculative_scenarios sections"
+    },
+    {
+      "id": 6,
+      "prompt": "construct arguments for the red team analysis in round 1",
+      "should_trigger": true,
+      "expected_behavior": "Build red-team style arguments identifying risks and vulnerabilities"
+    },
+    {
+      "id": 7,
+      "prompt": "write a persuasive essay about climate change for my class",
+      "should_trigger": false,
+      "expected_behavior": "This is academic essay writing, not a structured debate turn"
+    },
+    {
+      "id": 8,
+      "prompt": "outline my presentation on company strategy",
+      "should_trigger": false,
+      "expected_behavior": "This is presentation preparation, not debate turn construction"
+    },
+    {
+      "id": 9,
+      "prompt": "generate talking points for the team meeting",
+      "should_trigger": false,
+      "expected_behavior": "This is meeting prep, not a debate system argument"
+    },
+    {
+      "id": 10,
+      "prompt": "help me argue my case in the customer support ticket",
+      "should_trigger": false,
+      "expected_behavior": "This is customer service communication, not debate turn construction"
+    }
+  ]
+}

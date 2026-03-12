@@ -1,0 +1,13 @@
+{
+  "eval_id": 1,
+  "eval_name": "create-standup-skill",
+  "prompt": "Create a SKILL.md for 'standup-formatter' skill that formats bullet-point standup notes into Yesterday/Today/Blockers sections.",
+  "assertions": [
+    {"text": "Output SKILL.md has YAML frontmatter (--- delimiters)", "check": "file_contains_pattern", "pattern": "^---"},
+    {"text": "Frontmatter contains a 'name:' field", "check": "file_contains_pattern", "pattern": "^name:"},
+    {"text": "Frontmatter contains a 'version:' field", "check": "file_contains_pattern", "pattern": "version:"},
+    {"text": "Description contains 'Use when' or trigger language", "check": "file_contains_pattern", "pattern": "[Uu]se when|[Tt]rigger"},
+    {"text": "Body defines Yesterday / Today / Blockers output sections", "check": "file_contains_pattern", "pattern": "[Yy]esterday|[Tt]oday|[Bb]locker"},
+    {"text": "Total line count is under 200 lines", "check": "line_count_lt", "threshold": 200}
+  ]
+}

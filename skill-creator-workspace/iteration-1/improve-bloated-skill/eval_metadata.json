@@ -1,0 +1,12 @@
+{
+  "eval_id": 2,
+  "eval_name": "improve-bloated-skill",
+  "prompt": "Improve a bloated 'code-helper' skill: add version, fix description, remove rigid step-by-step instructions.",
+  "assertions": [
+    {"text": "Improved SKILL.md has a 'version:' field in frontmatter", "check": "file_contains_pattern", "pattern": "version:"},
+    {"text": "Description contains 'Use when' or explicit trigger language", "check": "file_contains_pattern", "pattern": "[Uu]se when|[Tt]rigger when"},
+    {"text": "Rigid 'Then ask/write/add' chains reduced (fewer than 5 occurrences)", "check": "pattern_count_lt", "pattern": "Then ask|Then write|Then add|Then check|Then explain", "threshold": 5},
+    {"text": "Output has a 'name:' field", "check": "file_contains_pattern", "pattern": "^name:"},
+    {"text": "Body is under 150 lines", "check": "line_count_lt", "threshold": 150}
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "skill_name": "source-ingest",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "search for evidence on climate policy effectiveness",
+      "should_trigger": true,
+      "expected_behavior": "Generate search queries, fetch web sources, normalize into EvidenceItem format"
+    },
+    {
+      "id": 2,
+      "prompt": "build the initial evidence store for a debate on AI regulation",
+      "should_trigger": true,
+      "expected_behavior": "Broad-scope evidence gathering with domain-aware credibility tiering"
+    },
+    {
+      "id": 3,
+      "prompt": "gather sources on cryptocurrency market trends for the debate",
+      "should_trigger": true,
+      "expected_behavior": "Finance-domain search with appropriate tier1/tier2 source prioritization"
+    },
+    {
+      "id": 4,
+      "prompt": "find supporting data for arguments about remote work productivity",
+      "should_trigger": true,
+      "expected_behavior": "Focused evidence search targeting both fact-track and reasoning-track evidence"
+    },
+    {
+      "id": 5,
+      "prompt": "ingest and normalize these web sources into the evidence store",
+      "should_trigger": true,
+      "expected_behavior": "Normalize provided sources into EvidenceItem format with hash and deduplication"
+    },
+    {
+      "id": 6,
+      "prompt": "fetch web content for evidence on healthcare reform outcomes",
+      "should_trigger": true,
+      "expected_behavior": "WebFetch content, apply health-domain credibility assessment"
+    },
+    {
+      "id": 7,
+      "prompt": "search my codebase for bugs in the authentication module",
+      "should_trigger": false,
+      "expected_behavior": "This is a code search request, not debate evidence gathering"
+    },
+    {
+      "id": 8,
+      "prompt": "ingest this CSV file into the PostgreSQL database",
+      "should_trigger": false,
+      "expected_behavior": "This is a database import task, not debate evidence ingestion"
+    },
+    {
+      "id": 9,
+      "prompt": "find files matching *.json in the project directory",
+      "should_trigger": false,
+      "expected_behavior": "This is a file search operation, not evidence source gathering"
+    },
+    {
+      "id": 10,
+      "prompt": "scrape this website and save the data as JSON",
+      "should_trigger": false,
+      "expected_behavior": "This is general web scraping, not debate evidence normalization"
+    }
+  ]
+}

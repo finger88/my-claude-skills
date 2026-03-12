@@ -1,0 +1,71 @@
+{
+  "skill_name": "judge-audit",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "audit round 2 claims independently and produce a ruling",
+      "should_trigger": true,
+      "expected_behavior": "Independent source verification, causal chain audit, structured JudgeRuling output"
+    },
+    {
+      "id": 2,
+      "prompt": "verify both sides' evidence and check causal validity",
+      "should_trigger": true,
+      "expected_behavior": "Cross-verify claims from both Pro and Con, flag causal issues"
+    },
+    {
+      "id": 3,
+      "prompt": "produce the judge ruling with mandatory response points for round 3",
+      "should_trigger": true,
+      "expected_behavior": "Generate JudgeRuling JSON with verification_results and mandatory_response_points"
+    },
+    {
+      "id": 4,
+      "prompt": "perform independent second-pass verification of debate claims",
+      "should_trigger": true,
+      "expected_behavior": "Use WebSearch for independent verification, not trusting debater citations"
+    },
+    {
+      "id": 5,
+      "prompt": "evaluate reasoning quality and assess historical wisdom references",
+      "should_trigger": true,
+      "expected_behavior": "Audit causal chains, assess historical_wisdom relevance grades"
+    },
+    {
+      "id": 6,
+      "prompt": "review speculative scenarios from both sides for internal consistency",
+      "should_trigger": true,
+      "expected_behavior": "Assess scenario quality without scoring, note reasoning quality"
+    },
+    {
+      "id": 7,
+      "prompt": "review my pull request for code quality issues",
+      "should_trigger": false,
+      "expected_behavior": "This is a code review request, not a debate round audit"
+    },
+    {
+      "id": 8,
+      "prompt": "audit the codebase for security vulnerabilities",
+      "should_trigger": false,
+      "expected_behavior": "This is a security audit, not a debate judge audit"
+    },
+    {
+      "id": 9,
+      "prompt": "judge which JavaScript framework is better for our project",
+      "should_trigger": false,
+      "expected_behavior": "This is a tech evaluation, not a structured debate ruling"
+    },
+    {
+      "id": 10,
+      "prompt": "verify that the API endpoints return correct responses",
+      "should_trigger": false,
+      "expected_behavior": "This is API testing, not debate evidence verification"
+    },
+    {
+      "id": 11,
+      "prompt": "check if the test cases cover all edge cases",
+      "should_trigger": false,
+      "expected_behavior": "This is test coverage analysis, not debate causal audit"
+    }
+  ]
+}

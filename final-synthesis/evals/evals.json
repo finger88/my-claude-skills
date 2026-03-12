@@ -1,0 +1,65 @@
+{
+  "skill_name": "final-synthesis",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "generate the final debate report after all 3 rounds",
+      "should_trigger": true,
+      "expected_behavior": "Aggregate rounds, categorize claims, build scenario outlook, generate Markdown report"
+    },
+    {
+      "id": 2,
+      "prompt": "synthesize all rounds into conclusions with conclusion profiles",
+      "should_trigger": true,
+      "expected_behavior": "Build 10-dimension conclusion profiles, verified facts, contested points"
+    },
+    {
+      "id": 3,
+      "prompt": "create the final output with watchlist and scenario outlook",
+      "should_trigger": true,
+      "expected_behavior": "Generate 24h watchlist, base case/upside/downside scenarios"
+    },
+    {
+      "id": 4,
+      "prompt": "compile verified facts, contested points, and recommendations",
+      "should_trigger": true,
+      "expected_behavior": "Categorize claims by status, enrich contested points with per-point subsections"
+    },
+    {
+      "id": 5,
+      "prompt": "generate bilingual Markdown and English JSON reports for the debate",
+      "should_trigger": true,
+      "expected_behavior": "Write final_report.json (English) and debate_report.md (EN + CN)"
+    },
+    {
+      "id": 6,
+      "prompt": "produce the executive summary version of the debate report",
+      "should_trigger": true,
+      "expected_behavior": "Generate condensed report with top facts, contested points, and watchlist"
+    },
+    {
+      "id": 7,
+      "prompt": "summarize this meeting's action items and decisions",
+      "should_trigger": false,
+      "expected_behavior": "This is meeting summarization, not debate synthesis"
+    },
+    {
+      "id": 8,
+      "prompt": "write the conclusion for my research paper",
+      "should_trigger": false,
+      "expected_behavior": "This is academic writing, not debate report generation"
+    },
+    {
+      "id": 9,
+      "prompt": "generate a project status report for stakeholders",
+      "should_trigger": false,
+      "expected_behavior": "This is project management reporting, not debate synthesis"
+    },
+    {
+      "id": 10,
+      "prompt": "create a summary of the quarterly financial results",
+      "should_trigger": false,
+      "expected_behavior": "This is financial reporting, not debate round synthesis"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{"eval_id": 3, "config": "with_skill", "expectations": [
+  {"text": "Output contains at least 8 trigger label occurrences", "passed": true, "evidence": "10 queries with should_trigger boolean, 10+ true/false labels"},
+  {"text": "Output includes negative (should-not-trigger) cases", "passed": true, "evidence": "4 queries with should_trigger: false, covering near-misses like 'write a paper' and 'search arxiv'"},
+  {"text": "Output includes a revised/improved description", "passed": true, "evidence": "## Improved Description section present with full replacement text"},
+  {"text": "New description covers casual English paper-reading phrases", "passed": true, "evidence": "'can you read this paper for me', 'take a look', 'go through this for me', 'what does this say'"},
+  {"text": "New description preserves Chinese trigger words", "passed": true, "evidence": "读论文, 分析论文, 深度解读, 帮我看看这篇论文 all present"}
+]}

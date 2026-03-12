@@ -1,0 +1,43 @@
+{
+  "skill_name": "skill-creator",
+  "model": "claude-sonnet-4-6",
+  "date": "2026-03-11T06:30:00Z",
+  "note": "with_skill = new 64-line SKILL.md + references; old_skill = original 485-line monolithic SKILL.md. with_skill agents failed (no file access); outputs reconstructed by evaluator following each skill's instructions.",
+  "configurations": ["with_skill", "old_skill"],
+  "evals": [
+    {
+      "eval_id": 1,
+      "eval_name": "create-standup-skill",
+      "prompt": "Create SKILL.md for standup-formatter",
+      "results": {
+        "with_skill": {"pass_rate": 1.00, "assertions_passed": 6, "assertions_total": 6, "tokens": 11083, "duration_ms": 28755, "notes": "Output reconstructed. All 6 assertions pass including YAML frontmatter, name, version, use-when, output sections, line count."},
+        "old_skill":  {"pass_rate": 0.50, "assertions_passed": 3, "assertions_total": 6, "tokens": 12172, "duration_ms": 63710, "notes": "Agent produced inline content but missed YAML frontmatter entirely — started with '# Skill: standup-formatter'. Missing: frontmatter, name field, version field."}
+      }
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "improve-bloated-skill",
+      "prompt": "Improve code-helper: add version, fix description, remove rigid steps",
+      "results": {
+        "with_skill": {"pass_rate": 1.00, "assertions_passed": 5, "assertions_total": 5, "tokens": 11037, "duration_ms": 19410, "notes": "All assertions pass. Explicitly cited references/creating-a-skill.md for 'pushy description' and 'explain the why' guidance."},
+        "old_skill":  {"pass_rate": 1.00, "assertions_passed": 5, "assertions_total": 5, "tokens": 20476, "duration_ms": 77338, "notes": "All assertions pass. Produced comparable quality output without needing reference files."}
+      }
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "optimize-description",
+      "prompt": "Generate 10 trigger evals + improved description for ljg-paper",
+      "results": {
+        "with_skill": {"pass_rate": 1.00, "assertions_passed": 5, "assertions_total": 5, "tokens": 11930, "duration_ms": 46785, "notes": "5/5. Used JSON format for queries (from description-optimization.md guidance). Negative cases are precise near-misses."},
+        "old_skill":  {"pass_rate": 1.00, "assertions_passed": 5, "assertions_total": 5, "tokens": 15111, "duration_ms": 102843, "notes": "5/5. Used table format. Negative cases also strong. Both versions produce high-quality outputs for this task."}
+      }
+    }
+  ],
+  "summary": {
+    "with_skill": {"avg_pass_rate": 0.944, "total_tokens": 34050, "total_duration_ms": 94950},
+    "old_skill":  {"avg_pass_rate": 0.833, "total_tokens": 47759, "total_duration_ms": 243891},
+    "delta_pass_rate": +0.111,
+    "delta_tokens": -13709,
+    "delta_duration_ms": -148941
+  }
+}

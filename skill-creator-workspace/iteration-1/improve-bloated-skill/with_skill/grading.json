@@ -1,0 +1,7 @@
+{"eval_id": 2, "config": "with_skill", "expectations": [
+  {"text": "Improved SKILL.md has a 'version:' field in frontmatter", "passed": true, "evidence": "version: \"1.1.0\" present"},
+  {"text": "Description contains 'Use when' or explicit trigger language", "passed": true, "evidence": "description: 'Use this skill whenever the user wants to write, debug...'"},
+  {"text": "Rigid 'Then ask/write/add' chains reduced (<5 occurrences)", "passed": true, "evidence": "0 occurrences of 'Then ask/write/add/check/explain' chains"},
+  {"text": "Output has a 'name:' field", "passed": true, "evidence": "name: code-helper present"},
+  {"text": "Body is under 150 lines", "passed": true, "evidence": "29 lines"}
+]}

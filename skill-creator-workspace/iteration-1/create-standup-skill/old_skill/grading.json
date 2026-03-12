@@ -1,0 +1,8 @@
+{"eval_id": 1, "config": "old_skill", "expectations": [
+  {"text": "Output SKILL.md has YAML frontmatter", "passed": false, "evidence": "File starts with '# Skill: standup-formatter' — no --- delimiters, no frontmatter block"},
+  {"text": "Frontmatter contains a 'name:' field", "passed": false, "evidence": "No YAML frontmatter at all"},
+  {"text": "Frontmatter contains a 'version:' field", "passed": false, "evidence": "No YAML frontmatter at all"},
+  {"text": "Description contains 'Use when' or trigger language", "passed": true, "evidence": "Trigger Conditions section present with bullet list"},
+  {"text": "Body defines Yesterday / Today / Blockers sections", "passed": true, "evidence": "**Yesterday**, **Today**, **Blockers** template present"},
+  {"text": "Total line count is under 200 lines", "passed": true, "evidence": "48 lines"}
+]}

@@ -1,0 +1,12 @@
+{
+  "eval_id": 3,
+  "eval_name": "optimize-description",
+  "prompt": "Generate 10 trigger eval queries + improved description for 'ljg-paper' to trigger better on casual English.",
+  "assertions": [
+    {"text": "Output contains at least 8 occurrences of trigger label keywords", "check": "pattern_count_gte", "pattern": "should_trigger|should-trigger|true|false", "threshold": 8},
+    {"text": "Output includes negative (should-not-trigger) cases", "check": "file_contains_pattern", "pattern": "false|not.trigger|should.not"},
+    {"text": "Output includes a revised/improved description", "check": "file_contains_pattern", "pattern": "[Ii]mproved|[Nn]ew [Dd]escription|[Rr]evised|[Ss]uggested"},
+    {"text": "New description covers casual English paper-reading phrases", "check": "file_contains_pattern", "pattern": "read.*paper|paper.*for me|check.*paper|analyze.*paper"},
+    {"text": "New description preserves Chinese trigger words", "check": "file_contains_pattern", "pattern": "读论文|分析论文|论文"}
+  ]
+}

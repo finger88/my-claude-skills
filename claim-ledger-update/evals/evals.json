@@ -1,0 +1,65 @@
+{
+  "skill_name": "claim-ledger-update",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "extract claims from the pro turn and register them in the ledger",
+      "should_trigger": true,
+      "expected_behavior": "Parse pro_turn.json, create ClaimItems, append to claim_ledger.json"
+    },
+    {
+      "id": 2,
+      "prompt": "update claim status to verified based on judge ruling",
+      "should_trigger": true,
+      "expected_behavior": "Validate state transition, update status, log to audit trail"
+    },
+    {
+      "id": 3,
+      "prompt": "batch update claims from the judge's ruling for round 2",
+      "should_trigger": true,
+      "expected_behavior": "Process all verification_results and mandatory_response_points"
+    },
+    {
+      "id": 4,
+      "prompt": "track claim state transitions after the latest round",
+      "should_trigger": true,
+      "expected_behavior": "Apply state machine rules, reject illegal transitions"
+    },
+    {
+      "id": 5,
+      "prompt": "record new claims from the con debate turn",
+      "should_trigger": true,
+      "expected_behavior": "Extract claims, assign IDs, classify types, set initial status"
+    },
+    {
+      "id": 6,
+      "prompt": "manage the claim lifecycle with audit trail for this debate",
+      "should_trigger": true,
+      "expected_behavior": "Full claim management with append-audit.sh persistence"
+    },
+    {
+      "id": 7,
+      "prompt": "update the changelog with today's changes",
+      "should_trigger": false,
+      "expected_behavior": "This is documentation update, not claim ledger management"
+    },
+    {
+      "id": 8,
+      "prompt": "track this issue in our Jira board",
+      "should_trigger": false,
+      "expected_behavior": "This is project management, not debate claim tracking"
+    },
+    {
+      "id": 9,
+      "prompt": "log this event to our monitoring system",
+      "should_trigger": false,
+      "expected_behavior": "This is system monitoring, not debate claim audit trail"
+    },
+    {
+      "id": 10,
+      "prompt": "update the status of my pull request",
+      "should_trigger": false,
+      "expected_behavior": "This is PR management, not debate claim state machine"
+    }
+  ]
+}

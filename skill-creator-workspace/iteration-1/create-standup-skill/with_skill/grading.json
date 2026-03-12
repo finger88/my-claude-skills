@@ -1,0 +1,8 @@
+{"eval_id": 1, "config": "with_skill", "expectations": [
+  {"text": "Output SKILL.md has YAML frontmatter", "passed": true, "evidence": "File starts with --- delimiter, valid frontmatter block"},
+  {"text": "Frontmatter contains a 'name:' field", "passed": true, "evidence": "name: standup-formatter present"},
+  {"text": "Frontmatter contains a 'version:' field", "passed": true, "evidence": "version: \"1.0.0\" present"},
+  {"text": "Description contains 'Use when' or trigger language", "passed": true, "evidence": "description includes 'Use when user mentions standup'"},
+  {"text": "Body defines Yesterday / Today / Blockers sections", "passed": true, "evidence": "**Yesterday**, **Today**, **Blockers** headers present with template"},
+  {"text": "Total line count is under 200 lines", "passed": true, "evidence": "49 lines"}
+]}
