@@ -7,23 +7,33 @@
 <!-- SKILLS-TABLE-START -->
 | Skill | 版本 | 用途 | 来源 |
 |-------|------|------|------|
+| **analogy-safeguard** | - | Validates historical and classical analogies in debate arguments | 自建 |
+| **claim-ledger-update** | - | Manages the claim state machine for a multi-agent debate system | 自建 |
 | **daily-review** | - | 飞书日历日记生成器 | 自建 |
 | **datetime-tool** | - | 获取当前时间、格式化日期、计算日期差值、时区转换 | 自建 |
+| **debate** | - | Launches a multi-agent debate on any topic with real-time evidence verification | 自建 |
+| **debate-turn** | - | Constructs a complete structured debate turn with 5-element reasoning chains | 自建 |
+| **evidence-verify** | - | Performs cross-source verification and credibility validation for debate evidence | 自建 |
 | **feifei-reading** | - | 沉浸式物理共读搭子 | 自建 |
-| **ljg-clip** | - | 内容剪藏到 inbox.org | 社区改 |
-| **ljg-explain-concept** | - | 概念 8 维解构 | 社区 |
-| **ljg-explain-words** | - | 英文单词深度解析 + HTML 卡片 | 社区 |
-| **ljg-paper** | v2.2.0 | 论文深度阅读（原子管线） | 社区 |
-| **ljg-xray-article** | - | 文章深度解剖（4 层漏斗） | 社区 |
-| **ljg-xray-book** | - | 书籍核心结构提取（Epiplexity） | 社区 |
-| **memory-review** | - | 周期性记忆校准 | 自建 |
-| **skill-creator** | v2.1.0 | Skill 创建、迭代与 eval 测评（官方最新） | 官方 |
-| **skill-hub** | - | 跨平台技能搜索安装 | 自建 |
-| **skill-manager** | v3.1 | Skills 生态管理（评估/备份/优化/回退/Git 自动提交） | 自建 |
-| **weather** | - | 天气查询 | 社区 |
-| **web-content-extraction** | - | 9 层网页内容提取工具，自动降级 | 自建 |
+| **final-synthesis** | - | Generates the final debate report with verified facts and watchlists | 自建 |
+| **freshness-check** | - | Validates evidence timeliness and tags freshness status | 自建 |
+| **judge-audit** | - | Performs independent verification and causal chain audit for debate rounds | 自建 |
+| **ljg-card** | v1.6.0 | Content caster (铸). Transforms content into PNG visuals | 社区 |
+| **ljg-clip** | - | On-demand content clipper for L1 intake | 社区 |
+| **ljg-explain-concept** | - | Deep concept anatomist that deconstructs any concept | 社区 |
+| **ljg-explain-words** | - | A deep-dive word mastery tool that deconstructs English words | 社区 |
+| **ljg-paper** | v2.2.0 | Paper deep reader with atom pipeline | 社区 |
+| **ljg-xray-article** | - | X-ray scans articles to extract wisdom cores using a 4-layer funnel | 社区 |
+| **ljg-xray-book** | - | Deep structure extraction from books using the Epiplexity principle | 社区 |
+| **memory-review** | v1.0 | 周期性记忆校准 | 自建 |
+| **skill-creator** | v2.1.0 | Create new skills, modify and improve existing skills | 官方 |
+| **skill-hub** | v1.1.0 | 统一技能管理器，整合 clawhub.ai、skills.sh 和 GitHub 仓库 | 自建 |
+| **skill-manager** | v3.1 | Comprehensive skill management system for Claude Code | 自建 |
+| **source-ingest** | - | Searches, fetches, and normalizes web sources for debate evidence | 自建 |
+| **weather** | - | Get current weather and forecasts | 社区 |
+| **web-content-extraction** | - | 9-layer toolkit for extracting web content from restricted domains | 自建 |
 | **weekly-review** | - | 周报复盘生成器 | 自建 |
-| **xlsx** | - | 电子表格处理 | 社区 |
+| **xlsx** | - | Use this skill any time a spreadsheet file is the primary input | 社区 |
 <!-- SKILLS-TABLE-END -->
 
 ## 安装

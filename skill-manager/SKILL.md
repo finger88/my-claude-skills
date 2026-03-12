@@ -1,7 +1,7 @@
 ---
 name: skill-manager
-version: v3.0
-description: Comprehensive skill management system for Claude Code. 10 core functions: list, evaluate, optimize, backup, rollback, log, auto-git-commit, batch-backup, batch-evaluate, and version diff. Use when user wants to manage skills or maintain the skills ecosystem. Trigger words: '列出 skills', '评估 XXX', '优化 XXX', '备份 XXX', '回退 XXX', '自动提交', '批量备份', '批量评估', '版本对比'.
+version: v3.1
+description: "Comprehensive skill management system for Claude Code. 10 core functions: list, evaluate, optimize, backup, rollback, log, auto-git-commit, batch-backup, batch-evaluate, and version diff. Use when user wants to manage skills or maintain the skills ecosystem. Trigger words: '列出 skills', '评估 XXX', '优化 XXX', '备份 XXX', '回退 XXX', '自动提交', '批量备份', '批量评估', '版本对比'."
 ---
 
 # Skill Manager | 技能管理器
