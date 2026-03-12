@@ -1,0 +1,225 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-03-12",
+  "skills": {
+    "debate": {
+      "category": "debate",
+      "status": "trial",
+      "installedAt": "2026-03-12",
+      "package": "critical-debater",
+      "description": "多Agent辩论系统入口"
+    },
+    "source-ingest": {
+      "category": "debate",
+      "status": "trial",
+      "installedAt": "2026-03-12",
+      "package": "critical-debater",
+      "description": "辩论证据收集"
+    },
+    "freshness-check": {
+      "category": "debate",
+      "status": "trial",
+      "installedAt": "2026-03-12",
+      "package": "critical-debater",
+      "description": "证据时效验证"
+    },
+    "evidence-verify": {
+      "category": "debate",
+      "status": "trial",
+      "installedAt": "2026-03-12",
+      "package": "critical-debater",
+      "description": "跨源证据验证"
+    },
+    "debate-turn": {
+      "category": "debate",
+      "status": "trial",
+      "installedAt": "2026-03-12",
+      "package": "critical-debater",
+      "description": "辩论回合构建"
+    },
+    "analogy-safeguard": {
+      "category": "debate",
+      "status": "trial",
+      "installedAt": "2026-03-12",
+      "package": "critical-debater",
+      "description": "类比验证"
+    },
+    "judge-audit": {
+      "category": "debate",
+      "status": "trial",
+      "installedAt": "2026-03-12",
+      "package": "critical-debater",
+      "description": "裁判审计"
+    },
+    "claim-ledger-update": {
+      "category": "debate",
+      "status": "trial",
+      "installedAt": "2026-03-12",
+      "package": "critical-debater",
+      "description": "声明状态管理"
+    },
+    "final-synthesis": {
+      "category": "debate",
+      "status": "trial",
+      "installedAt": "2026-03-12",
+      "package": "critical-debater",
+      "description": "辩论报告生成"
+    },
+    "daily-review": {
+      "category": "productivity",
+      "status": "formal",
+      "installedAt": "2026-02-01",
+      "description": "飞书日历日记"
+    },
+    "weekly-review": {
+      "category": "productivity",
+      "status": "formal",
+      "installedAt": "2026-02-01",
+      "description": "周报复盘"
+    },
+    "memory-review": {
+      "category": "productivity",
+      "status": "formal",
+      "installedAt": "2026-02-28",
+      "description": "记忆校准"
+    },
+    "datetime-tool": {
+      "category": "utility",
+      "status": "formal",
+      "installedAt": "2026-02-01",
+      "description": "时间日期工具"
+    },
+    "weather": {
+      "category": "utility",
+      "status": "formal",
+      "installedAt": "2026-02-01",
+      "description": "天气查询"
+    },
+    "xlsx": {
+      "category": "utility",
+      "status": "formal",
+      "installedAt": "2026-02-01",
+      "description": "电子表格处理"
+    },
+    "ljg-clip": {
+      "category": "content",
+      "status": "formal",
+      "installedAt": "2026-02-15",
+      "source": "lijigang",
+      "description": "内容剪藏"
+    },
+    "ljg-card": {
+      "category": "content",
+      "status": "formal",
+      "installedAt": "2026-03-01",
+      "source": "lijigang",
+      "description": "内容铸卡"
+    },
+    "ljg-explain-concept": {
+      "category": "content",
+      "status": "formal",
+      "installedAt": "2026-02-01",
+      "source": "lijigang",
+      "description": "概念8维解构"
+    },
+    "ljg-explain-words": {
+      "category": "content",
+      "status": "formal",
+      "installedAt": "2026-02-01",
+      "source": "lijigang",
+      "description": "单词深度解析"
+    },
+    "ljg-paper": {
+      "category": "content",
+      "status": "formal",
+      "installedAt": "2026-02-01",
+      "source": "lijigang",
+      "description": "论文深度阅读"
+    },
+    "ljg-xray-article": {
+      "category": "content",
+      "status": "formal",
+      "installedAt": "2026-02-01",
+      "source": "lijigang",
+      "description": "文章X光解剖"
+    },
+    "ljg-xray-book": {
+      "category": "content",
+      "status": "formal",
+      "installedAt": "2026-02-01",
+      "source": "lijigang",
+      "description": "书籍结构提取"
+    },
+    "web-content-extraction": {
+      "category": "content",
+      "status": "formal",
+      "installedAt": "2026-02-01",
+      "description": "网页内容提取"
+    },
+    "feifei-reading": {
+      "category": "content",
+      "status": "formal",
+      "installedAt": "2026-03-05",
+      "description": "飞飞物理共读"
+    },
+    "skill-manager": {
+      "category": "management",
+      "status": "formal",
+      "installedAt": "2026-02-01",
+      "description": "技能管理系统"
+    },
+    "skill-hub": {
+      "category": "management",
+      "status": "formal",
+      "installedAt": "2026-02-01",
+      "description": "技能搜索安装"
+    },
+    "skill-creator": {
+      "category": "management",
+      "status": "formal",
+      "installedAt": "2026-02-01",
+      "source": "anthropic",
+      "description": "技能创建工具"
+    }
+  },
+  "categories": {
+    "debate": {
+      "name": "辩论系统",
+      "description": "critical-debater 多Agent辩论系统",
+      "icon": "🎭"
+    },
+    "content": {
+      "name": "内容处理",
+      "description": "内容提取、阅读和知识管理",
+      "icon": "📚"
+    },
+    "productivity": {
+      "name": "生产力",
+      "description": "日记、周报、时间管理",
+      "icon": "📅"
+    },
+    "management": {
+      "name": "技能管理",
+      "description": "技能的创建、安装、备份和评估",
+      "icon": "🛠️"
+    },
+    "utility": {
+      "name": "工具",
+      "description": "天气、时间、电子表格等实用工具",
+      "icon": "🔧"
+    }
+  },
+  "packages": {
+    "critical-debater": {
+      "name": "critical-debater",
+      "description": "多Agent辩论系统，包含9个协同技能",
+      "installedAt": "2026-03-12",
+      "status": "trial",
+      "skills": [
+        "debate", "source-ingest", "freshness-check", "evidence-verify",
+        "debate-turn", "analogy-safeguard", "judge-audit", "claim-ledger-update", "final-synthesis"
+      ],
+      "source": "https://github.com/xwxga/critical-debater"
+    }
+  }
+}

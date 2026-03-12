@@ -97,29 +97,24 @@ git push
 
 **说明**: push 完成后自动执行，无需额外配置。如要禁用，设置 `config.json` 中 `git.autoUpdateReadme: false`
 
-**前提**: README.md 中使用标记注释划定自动生成区域：
-```markdown
-<!-- SKILLS-TABLE-START -->
-（表格内容）
-<!-- SKILLS-TABLE-END -->
-```
+**依赖文件**: `registry.json` - 技能注册表，记录分类、状态、安装日期等元数据
+
+**README 结构**（按分类分组显示）：
+- 概览统计（总数/试用期/正式使用）
+- 试用期 Skills（顶部突出显示）
+- 按分类分组：辩论系统、内容处理、生产力、技能管理、工具
 
 **执行步骤**:
 
 1. push 完成后，检查 `config.json` 中 `autoUpdateReadme`（默认为 `true`）
-2. 如为 `false`，跳过此步骤；如为 `true`，继续执行
-3. 扫描 `~/my-claude-skills/*/SKILL.md`
-4. 解析每个文件的 YAML frontmatter（`name`, `version`, `description`）
-5. 生成 Skills 列表表格：
-   - **Skill**: frontmatter `name`（加粗）
-   - **版本**: frontmatter `version`（无则显示 `-`）
-   - **用途**: frontmatter `description` 第一句话（到第一个 `.` 或 `。`），最长 50 中文字符
-   - **来源**: `ljg-*` → 社区，`skill-creator` → 官方，其余 → 自建
-   - **排序**: 按 skill 名称字母顺序
-6. 替换 README.md 中 `<!-- SKILLS-TABLE-START -->` 到 `<!-- SKILLS-TABLE-END -->` 之间的内容
+2. 读取 `registry.json` 获取技能元数据（分类、状态、安装日期）
+3. 扫描 `~/my-claude-skills/*/SKILL.md` 解析版本号
+4. 更新 `registry.json` 中的版本信息
+5. 更新 README 中的统计区域（`<!-- STATS-START -->` 到 `<!-- STATS-END -->`）
+6. 更新试用期表格（计算安装日期至今的天数）
 7. 如有变更：
    ```bash
-   git add README.md
+   git add README.md registry.json
    git commit -m "docs: update README skills table"
    git push
    ```
@@ -132,8 +127,38 @@ git push
 
 | 项目 | 内容 |
 |------|------|
-| Skills 数量 | 17 |
-| 新增 | feifei-reading |
-| 移除 | (无) |
+| Skills 总数 | 27 |
+| 试用期 | 9 ⏳ |
+| 正式使用 | 18 ✅ |
+| 新增 | debate, source-ingest, ... |
 | Commit | b2c3d4e |
+```
+
+---
+
+## 附录: registry.json 格式
+
+```json
+{
+  "version": "1.0",
+  "skills": {
+    "skill-name": {
+      "category": "content",
+      "status": "trial|formal|deprecated",
+      "installedAt": "2026-03-12",
+      "package": "critical-debater",
+      "description": "用途说明"
+    }
+  },
+  "categories": {
+    "content": { "name": "内容处理", "icon": "📚" }
+  },
+  "packages": {
+    "critical-debater": {
+      "name": "critical-debater",
+      "skills": ["debate", "source-ingest", ...],
+      "source": "https://github.com/xwxga/critical-debater"
+    }
+  }
+}
 ```
