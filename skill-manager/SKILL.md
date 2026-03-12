@@ -18,7 +18,7 @@ description: Comprehensive skill management system for Claude Code. 10 core func
 | 4 | **备份技能** | "备份 xxx" | [references/functions/backup.md](references/functions/backup.md) |
 | 5 | **回退技能** | "回退 xxx" | [references/functions/rollback.md](references/functions/rollback.md) |
 | 6 | **记录日志** | "记录修改了 xxx" | [references/functions/log.md](references/functions/log.md) |
-| 7 | **自动 Git 提交** | "自动提交" / "git 提交" | [references/functions/git-auto.md](references/functions/git-auto.md) |
+| 7 | **自动 Git 提交** | "自动提交" / "git 提交" | 含 push 后自动更新 README 表格 | [references/functions/git-auto.md](references/functions/git-auto.md) |
 | 8 | **批量备份** | "批量备份" / "备份所有 skills" | [references/functions/batch-backup.md](references/functions/batch-backup.md) |
 | 9 | **批量评估** | "批量评估" / "检查 skills 质量" | [references/functions/batch-evaluate.md](references/functions/batch-evaluate.md) |
 | 10 | **版本 Diff 对比** | "diff 对比" / "版本对比" | [references/functions/diff.md](references/functions/diff.md) |
@@ -87,6 +87,8 @@ D:\my tool\skills log\            # 日志与备份目录
 ### 功能 7: 自动 Git 提交
 
 支持手动触发或配置自动提交。配置 `config.json` 中 `git.autoCommit: true` 后，修改操作完成后自动执行 git commit/push。
+
+**Push 后自动更新 README**: 默认开启（`autoUpdateReadme: true`），push 完成后自动扫描所有 skills，更新 README.md 中的 skills 表格。
 
 ### 功能 8: 批量备份
 

@@ -11,7 +11,7 @@
   "git": {
     "autoCommit": false,        // 是否启用自动提交
     "autoPush": false,          // 提交后是否自动 push
-    "autoUpdateReadme": false,  // push 后是否自动更新 README skills 表格
+    "autoUpdateReadme": true,   // push 后是否自动更新 README skills 表格（默认开启）
     "commitTemplate": "chore(skills): {message}",  // 提交模板，{message}为占位符
     "alwaysSignoff": false      // 是否添加 Signed-off-by
   }
@@ -28,14 +28,16 @@
 4. 生成提交信息（基于变更内容或用户提供）
 5. 执行 `git add .` 和 `git commit -m "message"`
 6. 如配置了 `autoPush: true`，执行 `git push`
-7. 输出提交结果
+7. **Push 后自动更新 README**: 如 `autoUpdateReadme: true`（默认），自动更新 README skills 表格并再次 push
+8. 输出提交结果
 
 ### 模式 B: 配置自动提交
 
 1. 检查/创建 `config.json` 配置文件
-2. 设置 `autoCommit: true`
-3. 此后所有修改操作（备份/回退/优化）完成后自动执行 Git 提交
-4. 提交信息格式：`chore(skills): {操作类型} {skill-name}`
+2. 设置 `autoCommit: true` 和 `autoPush: true`
+3. 此后所有修改操作（备份/回退/优化）完成后自动执行 Git 提交和 push
+4. **Push 后自动更新 README**: 如 `autoUpdateReadme: true`（默认），push 后自动更新 README skills 表格并再次 push
+5. 提交信息格式：`chore(skills): {操作类型} {skill-name}`
 
 ## Git 命令参考
 
@@ -91,9 +93,9 @@ git push
 
 ---
 
-## 模式 C: README 自动更新（push 后触发）
+## 模式 C: README 自动更新（push 后固定执行）
 
-**配置**: `config.json` 中 `git.autoUpdateReadme: true`
+**说明**: push 完成后自动执行，无需额外配置。如要禁用，设置 `config.json` 中 `git.autoUpdateReadme: false`
 
 **前提**: README.md 中使用标记注释划定自动生成区域：
 ```markdown
@@ -104,23 +106,24 @@ git push
 
 **执行步骤**:
 
-1. push 完成后，检查 `config.json` 中 `autoUpdateReadme` 是否为 `true`
-2. 扫描 `~/my-claude-skills/*/SKILL.md`
-3. 解析每个文件的 YAML frontmatter（`name`, `version`, `description`）
-4. 生成 Skills 列表表格：
+1. push 完成后，检查 `config.json` 中 `autoUpdateReadme`（默认为 `true`）
+2. 如为 `false`，跳过此步骤；如为 `true`，继续执行
+3. 扫描 `~/my-claude-skills/*/SKILL.md`
+4. 解析每个文件的 YAML frontmatter（`name`, `version`, `description`）
+5. 生成 Skills 列表表格：
    - **Skill**: frontmatter `name`（加粗）
    - **版本**: frontmatter `version`（无则显示 `-`）
    - **用途**: frontmatter `description` 第一句话（到第一个 `.` 或 `。`），最长 50 中文字符
    - **来源**: `ljg-*` → 社区，`skill-creator` → 官方，其余 → 自建
    - **排序**: 按 skill 名称字母顺序
-5. 替换 README.md 中 `<!-- SKILLS-TABLE-START -->` 到 `<!-- SKILLS-TABLE-END -->` 之间的内容
-6. 如有变更：
+6. 替换 README.md 中 `<!-- SKILLS-TABLE-START -->` 到 `<!-- SKILLS-TABLE-END -->` 之间的内容
+7. 如有变更：
    ```bash
    git add README.md
    git commit -m "docs: update README skills table"
    git push
    ```
-7. 如无变更，跳过（README 已是最新）
+8. 如无变更，跳过（README 已是最新）
 
 **输出格式**:
 
