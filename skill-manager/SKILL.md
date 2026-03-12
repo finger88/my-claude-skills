@@ -1,7 +1,7 @@
 ---
 name: skill-manager
-version: v3.1
-description: "Comprehensive skill management system for Claude Code. 10 core functions: list, evaluate, optimize, backup, rollback, log, auto-git-commit, batch-backup, batch-evaluate, and version diff. Use when user wants to manage skills or maintain the skills ecosystem. Trigger words: '列出 skills', '评估 XXX', '优化 XXX', '备份 XXX', '回退 XXX', '自动提交', '批量备份', '批量评估', '版本对比'."
+version: v3.2
+description: "Comprehensive skill management system for Claude Code. 14 core functions: list, evaluate, optimize, backup, rollback, log, auto-git-commit, batch-backup, batch-evaluate, version diff, and registry management (register, formalize, remove, trial status). Use when user wants to manage skills or maintain the skills ecosystem. Trigger words: '列出 skills', '评估 XXX', '优化 XXX', '备份 XXX', '回退 XXX', '自动提交', '批量备份', '批量评估', '版本对比', '注册 XXX', '转正 XXX', '删除 XXX', '试用期'."
 ---
 
 # Skill Manager | 技能管理器
@@ -22,6 +22,10 @@ description: "Comprehensive skill management system for Claude Code. 10 core fun
 | 8 | **批量备份** | "批量备份" / "备份所有 skills" | [references/functions/batch-backup.md](references/functions/batch-backup.md) |
 | 9 | **批量评估** | "批量评估" / "检查 skills 质量" | [references/functions/batch-evaluate.md](references/functions/batch-evaluate.md) |
 | 10 | **版本 Diff 对比** | "diff 对比" / "版本对比" | [references/functions/diff.md](references/functions/diff.md) |
+| 11 | **注册技能** | "注册 xxx" / "新增 skill" | [references/functions/registry.md](references/functions/registry.md) |
+| 12 | **转正技能** | "转正 xxx" / "skill 转正" | [references/functions/registry.md](references/functions/registry.md) |
+| 13 | **删除技能** | "删除 xxx" / "卸载 xxx" | [references/functions/registry.md](references/functions/registry.md) |
+| 14 | **查看试用期** | "试用期" / "试用状态" | [references/functions/registry.md](references/functions/registry.md) |
 
 ---
 
@@ -34,6 +38,10 @@ description: "Comprehensive skill management system for Claude Code. 10 core fun
 │   ├── references/
 │   ├── scripts/
 │   └── assets/
+├── packages/                     # 大包/技能集目录
+│   └── package-name/
+│       └── README.md
+├── registry.json                 # 技能注册表（分类/状态/安装日期）
 ├── docs/                         # 管理文档
 └── README.md
 
@@ -48,6 +56,8 @@ D:\my tool\skills log\            # 日志与备份目录
 ```
 
 **架构说明**: `~/.claude/skills/` 下所有目录均为 Junction，指向 `~/my-claude-skills/` Git 仓库。编辑任何 skill 文件会直接修改 Git 仓库中的文件。
+
+**Registry**: `registry.json` 记录技能元数据（分类、试用状态、安装日期），由 skill-manager 统一管理，不影响 Claude 加载 skill。
 
 ---
 
@@ -101,6 +111,31 @@ D:\my tool\skills log\            # 日志与备份目录
 ### 功能 10: 版本 Diff 对比
 
 对比同一 skill 的两个备份版本或当前版本与历史备份，输出结构化差异报告。
+
+### 功能 11-14: Registry 管理
+
+统一管理 `registry.json` 技能注册表，实现试用追踪和分类管理。
+
+**功能 11: 注册技能**
+- 将新安装 skill 添加到 `registry.json`
+- 自动提取分类、版本、描述
+- 默认状态为 `trial`，记录安装日期
+- 支持指定所属包（如 `critical-debater`）
+
+**功能 12: 转正技能**
+- 将 skill 状态从 `trial` 改为 `formal`
+- 更新 `registry.json` 并自动 git commit
+- README 下次 push 后自动更新显示
+
+**功能 13: 删除技能**
+- 从 `registry.json` 移除条目
+- 可选删除 Git 仓库中的 skill 目录
+- 自动清理 Junction 链接
+
+**功能 14: 查看试用期**
+- 列出所有 `trial` 状态技能
+- 显示试用天数（安装日期至今）
+- 提示建议操作（转正/删除）
 
 ---
 
