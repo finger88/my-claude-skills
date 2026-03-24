@@ -7,7 +7,7 @@ description:
   触发场景：用户要求搜索信息、查看网页内容、访问需要登录的网站、操作网页界面、抓取社交媒体内容（小红书、微博、推特等）、读取动态渲染页面、以及任何需要真实浏览器环境的网络任务。
 metadata:
   author: 一泽Eze
-  version: "2.1.0"
+  version: "2.2.0"
 ---
 
 # web-access Skill
@@ -17,11 +17,20 @@ metadata:
 在开始联网操作前，先检查 CDP 模式可用性：
 
 ```bash
-bash ~/.claude/skills/web-access/scripts/check-deps.sh
+bash "$HOME/.claude/skills/web-access/scripts/check-deps.sh"
 ```
 
 - **Node.js 22+**：必需（使用原生 WebSocket）。版本低于 22 可用但需安装 `ws` 模块。
 - **Chrome remote-debugging**：在 Chrome 地址栏打开 `chrome://inspect/#remote-debugging`，勾选 **"Allow remote debugging for this browser instance"** 即可，可能需要重启浏览器。
+
+**授权持久化（推荐）**：为避免每次重启浏览器都需重新授权，可固定 Chrome 用户目录：
+
+```
+# 修改 Chrome 快捷方式目标栏
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\chrome-cdp-profile"
+```
+
+首次用此快捷方式启动后完成授权，后续该配置会保存在指定目录中，不再重复弹授权窗口。
 
 检查通过后再启动 CDP Proxy 执行操作，未通过则引导用户完成设置。
 
@@ -80,7 +89,7 @@ bash ~/.claude/skills/web-access/scripts/check-deps.sh
 ### 启动
 
 ```bash
-bash ~/.claude/skills/web-access/scripts/check-deps.sh
+bash "$HOME/.claude/skills/web-access/scripts/check-deps.sh"
 ```
 
 脚本会依次检查 Node.js、Chrome 端口，并确保 Proxy 已连接（未运行则自动启动并等待）。Proxy 启动后持续运行。
@@ -103,7 +112,7 @@ curl -s "http://localhost:3456/info?target=ID"
 curl -s -X POST "http://localhost:3456/eval?target=ID" -d 'document.title'
 
 # 捕获页面渲染状态（含视频当前帧）
-curl -s "http://localhost:3456/screenshot?target=ID&file=/tmp/shot.png"
+curl -s "http://localhost:3456/screenshot?target=ID&file=${TEMP}/shot.png"
 
 # 导航、后退
 curl -s "http://localhost:3456/navigate?target=ID&url=URL"
@@ -207,7 +216,7 @@ Proxy 持续运行，不建议主动停止——重启后需要在 Chrome 中重
 
 操作中积累的特定网站经验，按域名存储在 `references/site-patterns/` 下。
 
-已有经验的站点：!`ls ${CLAUDE_SKILL_DIR}/references/site-patterns/ 2>/dev/null | sed 's/\.md$//' || echo "暂无"`
+已有经验的站点：!`ls "${CLAUDE_SKILL_DIR}/references/site-patterns/" 2>/dev/null | sed 's/\.md$//' || echo "暂无"`
 
 确定目标网站后，如果上方列表中有匹配的站点，必须读取对应文件获取先验知识（平台特征、有效模式、已知陷阱）。经验内容标注了发现日期，当作可能有效的提示而非保证——如果按经验操作失败，回退通用模式并更新经验文件。
 
