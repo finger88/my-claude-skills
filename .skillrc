@@ -1,0 +1,155 @@
+# Claude Skills 本地管理标准配置文件
+# 版本: v1.0
+# 位置: my-claude-skills/.skillrc (必须与仓库一起提交)
+# 用途: 定义本地 skills 管理标准，供工具和脚本读取
+
+metadata:
+  version: "1.0"
+  last_updated: "2026-03-30"
+  author: "skill-management-system"
+  description: "Claude Skills 本地管理标准配置"
+
+# 目录架构定义
+directory_structure:
+  git_repository:
+    path: "~/my-claude-skills"
+    description: "Skills 源码唯一真源（Git 仓库）"
+    type: "git_repo"
+
+  junction_target:
+    path: "~/.claude/skills"
+    description: "Claude Code 加载入口（必须是 Junction 链接）"
+    type: "junction_container"
+
+  local_dev:
+    path: "~/.claude-local/skills-dev"
+    description: "本地开发 skills（不入库）"
+    type: "local_only"
+    optional: true
+
+# Junction 链接规则
+junction_rules:
+  # 创建命令模板
+  create_command:
+    windows_cmd: 'mklink /J "{target}" "{source}"'
+    msys_bash: 'MSYS_NO_PATHCONV=1 cmd /c "mklink /J {target_windows} {source_windows}"'
+
+  # 验证条件
+  validation:
+    must_be_junction: true
+    must_not_be_directory: true
+    must_not_be_symlink: true
+    target_must_exist: true
+    target_must_be_in_git_repo: true
+
+  # 禁止行为
+  prohibited:
+    - "直接复制目录到 junction_target"
+    - "使用 MSYS2 ln -s 创建软链接"
+    - "在 junction_target 中创建同名文件夹"
+    - "手动修改 junction 目标外的文件"
+
+# 同步工作流
+sync_workflow:
+  # 新 skill 添加步骤
+  add_skill_steps:
+    - step: 1
+      action: "在 git_repository 中创建 skill 目录"
+      path: "~/my-claude-skills/{skill_name}"
+    - step: 2
+      action: "创建必要文件 (SKILL.md, etc.)"
+    - step: 3
+      action: "提交到 Git"
+      commands:
+        - "git add {skill_name}/"
+        - 'git commit -m "Add skill: {skill_name}"'
+        - "git push origin main"
+    - step: 4
+      action: "创建 Junction 链接"
+      command: 'MSYS_NO_PATHCONV=1 cmd /c "mklink /J C:\\Users\\HONOR\\.claude\\skills\\{skill_name} C:\\Users\\HONOR\\my-claude-skills\\{skill_name}"'
+    - step: 5
+      action: "验证 Junction"
+      check: "ls -la ~/.claude/skills/{skill_name}"
+
+  # 删除 skill 步骤
+  remove_skill_steps:
+    - step: 1
+      action: "删除 Junction 链接"
+      command: "rmdir ~/.claude/skills/{skill_name}"
+    - step: 2
+      action: "删除源码目录"
+      command: "rm -rf ~/my-claude-skills/{skill_name}"
+    - step: 3
+      action: "提交删除"
+      commands:
+        - "git add -A"
+        - 'git commit -m "Remove skill: {skill_name}"'
+        - "git push origin main"
+
+# 自动化检查配置
+checks:
+  # 预操作检查（每次 skill 操作前必须执行）
+  pre_operation:
+    - name: "junction_integrity"
+      description: "检查 Junction 链接完整性"
+      critical: true
+      check_items:
+        - "所有在 registry.json 中的 skill 都有对应的 Junction"
+        - "没有重复的目录名"
+        - "没有孤儿 Junction（指向不存在的目标）"
+
+    - name: "git_sync_status"
+      description: "检查 Git 同步状态"
+      critical: false
+      check_items:
+        - "本地是否有未提交的修改"
+        - "远程是否有更新需要拉取"
+
+    - name: "directory_type_check"
+      description: "检查目录类型"
+      critical: true
+      check_items:
+        - ".claude/skills/ 中的项目必须是 Junction"
+        - "不能是实际目录（DIR）"
+        - "不能是 MSYS2 软链接（lrwxrwxrwx）"
+
+  # 定期维护检查
+  maintenance:
+    daily:
+      - "git pull 检查远程更新"
+    weekly:
+      - "运行 fix-junctions.sh 完整性修复"
+    monthly:
+      - "清理 .claude-local/skills-dev/ 中废弃的开发 skill"
+
+# 工具脚本路径
+tools:
+  fix_junctions: "./fix-junctions.sh"
+  registry: "./registry.json"
+  standards_doc: "./docs/standards/01-directory-structure.md"
+
+# 故障排查提示
+troubleshooting:
+  unknown_skill:
+    cause: "Junction 断裂或指向错误"
+    solution: "运行 fix-junctions.sh"
+
+  changes_not_synced:
+    cause: "编辑了 Junction 外的副本"
+    solution: "确认编辑的是 my-claude-skills/ 中的文件"
+
+  git_untracked_large_files:
+    cause: "skill 目录被错误复制到 git 目录"
+    solution: "移动目录到正确位置，删除错误副本，重建 Junction"
+
+  junction_type_error:
+    cause: "使用了软链接而非 Junction"
+    solution: "删除后用 mklink /J 重新创建"
+
+# 命令速查表（供工具快速引用）
+commands:
+  list_skills: "ls -la ~/.claude/skills/"
+  check_junctions_cmd: 'dir /a "C:\Users\HONOR\.claude\skills\"'
+  delete_wrong_dir: "rm -rf ~/.claude/skills/{skill}"
+  create_junction: 'MSYS_NO_PATHCONV=1 cmd /c "mklink /J C:\\Users\\HONOR\\.claude\\skills\\{skill} C:\\Users\\HONOR\\my-claude-skills\\{skill}"'
+  git_sync: "cd ~/my-claude-skills && git pull && git add -A && git commit -m 'Sync' && git push"
