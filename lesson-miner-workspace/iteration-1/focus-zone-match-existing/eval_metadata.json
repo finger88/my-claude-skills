@@ -1,0 +1,13 @@
+{
+  "eval_id": 3,
+  "eval_name": "focus-zone-match-existing",
+  "prompt": "用户在专注区，但对话中明确提到'做饭智能体又出问题了'，说'更新 pitfalls'。",
+  "expected_output": "识别到已有项目'做饭智能体'，询问确认后追加到对应 PITFALLS.md",
+  "assertions": [
+    "从对话中提取到关键词'做饭智能体'",
+    "列出了已有项目供用户确认",
+    "询问用户是新建项目还是更新现有项目",
+    "确认后追加到正确的项目 PITFALLS.md",
+    "没有创建重复的项目目录"
+  ]
+}

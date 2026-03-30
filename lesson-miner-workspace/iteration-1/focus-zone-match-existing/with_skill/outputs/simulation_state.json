@@ -1,0 +1,67 @@
+{
+  "timestamp": "2026-03-25T23:08:24.533858",
+  "scenario": "focus-zone-match-existing",
+  "context": {
+    "location": "focus_zone",
+    "user_input": "做饭智能体又出问题了，飞书 webhook 调用返回 400 错误。更新 pitfalls。",
+    "extracted_project": "做饭智能体"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "detect_context",
+      "result": "focus_zone",
+      "detail": "User is in focus zone (not in project directory)"
+    },
+    {
+      "step": 2,
+      "action": "extract_project",
+      "result": "做饭智能体",
+      "detail": "Extracted from user input dialog"
+    },
+    {
+      "step": 3,
+      "action": "list_projects",
+      "result": [
+        "做饭智能体",
+        "web-content-extraction-practice",
+        "标签智能体"
+      ],
+      "detail": "Found 3 existing projects"
+    },
+    {
+      "step": 4,
+      "action": "user_confirmation",
+      "result": {
+        "selected_project": "做饭智能体",
+        "confirmed": true
+      },
+      "detail": "User selected and confirmed project '做饭智能体'"
+    },
+    {
+      "step": 5,
+      "action": "interactive_capture",
+      "result": {
+        "title": "飞书 webhook 调用返回 400 错误",
+        "phenomenon": "调用飞书 webhook 发送消息时返回 400 Bad Request",
+        "root_cause": "webhook URL 中的 key 参数过期或被重置，导致认证失败",
+        "solution": "1. 进入飞书群设置 → 机器人管理 → 重新复制 webhook URL\n2. 更新环境变量 FEISHU_WEBHOOK_URL\n3. 重启服务",
+        "detection": "看到 webhook 调用返回 400，且消息未送达飞书群",
+        "date": "2026-03-25"
+      },
+      "detail": "Captured 1 pitfall via interactive dialog"
+    },
+    {
+      "step": 6,
+      "action": "update_pitfalls",
+      "result": "zh-CN\\01 你的项目\\做饭智能体\\PITFALLS.md",
+      "detail": "Appended 1 pitfall to zh-CN\\01 你的项目\\做饭智能体\\PITFALLS.md"
+    }
+  ],
+  "final_result": {
+    "success": true,
+    "document_path": "zh-CN\\01 你的项目\\做饭智能体\\PITFALLS.md",
+    "pitfalls_count": 1,
+    "project": "做饭智能体"
+  }
+}

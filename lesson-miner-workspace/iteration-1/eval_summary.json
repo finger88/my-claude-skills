@@ -1,0 +1,78 @@
+{
+  "evals_completed": 5,
+  "skill_name": "lesson-miner",
+  "timestamp": "2026-03-25",
+  "test_cases": [
+    {
+      "id": 1,
+      "name": "focus-zone-new-project",
+      "config": "with_skill",
+      "assertions": [
+        {"text": "创建了正确的项目目录 01 你的项目/web-content-extraction-practice/", "passed": true, "evidence": "PITFALLS.md 路径: web-content-extraction-practice/PITFALLS.md"},
+        {"text": "创建了 PITFALLS.md 文件", "passed": true, "evidence": "文件存在，包含完整结构"},
+        {"text": "录入了3个卡点，每个卡点包含四个维度", "passed": true, "evidence": "包含Windows路径错误、WebFetch安全限制、jina.ai CAPTCHA三个完整卡点"},
+        {"text": "生成了决策树部分", "passed": true, "evidence": "快速决策树包含3个分支，基于检测信号"},
+        {"text": "更新了更新日志", "passed": true, "evidence": "更新日志包含2026-03-25初始版本记录"}
+      ],
+      "summary": {"passed": 5, "failed": 0, "total": 5, "pass_rate": 1.0}
+    },
+    {
+      "id": 2,
+      "name": "project-zone-existing",
+      "config": "with_skill",
+      "assertions": [
+        {"text": "检测到当前项目为 做饭智能体", "passed": true, "evidence": "INTERACTION_LOG.md: '检测到你在项目区: 做饭智能体'"},
+        {"text": "没有询问是否切换项目", "passed": true, "evidence": "流程直接进入确认步骤，没有切换项目询问"},
+        {"text": "直接在现有 PITFALLS.md 中追加了新的卡点记录", "passed": true, "evidence": "PITFALLS_AFTER.md 包含3个卡点（原有2个+新增1个）"},
+        {"text": "更新了更新日志", "passed": true, "evidence": "INTERACTION_LOG.md 显示更新日志已添加"},
+        {"text": "保留了原有的卡点记录", "passed": true, "evidence": "PITFALLS_BEFORE.md 和 AFTER 对比显示原有记录保留"}
+      ],
+      "summary": {"passed": 5, "failed": 0, "total": 5, "pass_rate": 1.0}
+    },
+    {
+      "id": 3,
+      "name": "focus-zone-match-existing",
+      "config": "with_skill",
+      "assertions": [
+        {"text": "从对话中提取到关键词'做饭智能体'", "passed": true, "evidence": "simulation_state.json 显示项目提取成功"},
+        {"text": "列出了已有项目供用户确认", "passed": true, "evidence": "confirmation_dialog.txt 显示项目列表"},
+        {"text": "询问用户是新建项目还是更新现有项目", "passed": true, "evidence": "流程包含确认对话框"},
+        {"text": "确认后追加到正确的项目 PITFALLS.md", "passed": true, "evidence": "pitfalls_update_preview.md 显示正确项目路径"},
+        {"text": "没有创建重复的项目目录", "passed": true, "evidence": "追加模式而非新建"}
+      ],
+      "summary": {"passed": 5, "failed": 0, "total": 5, "pass_rate": 1.0}
+    },
+    {
+      "id": 4,
+      "name": "project-zone-switch-project",
+      "config": "with_skill",
+      "assertions": [
+        {"text": "检测到当前在项目 A 目录下", "passed": true, "evidence": "skill-execution-log.md: 'Detected location: 项目A'"},
+        {"text": "从对话中提取到关键词 B 项目", "passed": true, "evidence": "提取到 '项目B' 关键词"},
+        {"text": "主动询问用户要记录到哪个项目", "passed": true, "evidence": "simulated-conversation.md 显示确认流程"},
+        {"text": "提供选项：当前项目 A 或 对话中提到的项目 B", "passed": true, "evidence": "对话记录显示选项列表"},
+        {"text": "根据用户选择记录到正确的项目", "passed": true, "evidence": "PITFALLS.md 最终写入项目B"}
+      ],
+      "summary": {"passed": 5, "failed": 0, "total": 5, "pass_rate": 1.0}
+    },
+    {
+      "id": 5,
+      "name": "multiple-pitfalls-decision-tree",
+      "config": "with_skill",
+      "assertions": [
+        {"text": "保留了原有的3个卡点记录", "passed": true, "evidence": "PITFALLS_BEFORE.md 和 PITFALLS.md 对比"},
+        {"text": "成功追加了第4个卡点", "passed": true, "evidence": "PITFALLS.md 包含4个卡点"},
+        {"text": "生成了包含4个分支的决策树", "passed": true, "evidence": "DECISION_TREE_COMPARISON.md 显示4分支结构"},
+        {"text": "决策树使用检测信号作为判断条件", "passed": true, "evidence": "每个分支基于检测信号如'Connection pool exhausted'"},
+        {"text": "决策树的逻辑关系正确", "passed": true, "evidence": "树状结构逻辑清晰，覆盖所有卡点"}
+      ],
+      "summary": {"passed": 5, "failed": 0, "total": 5, "pass_rate": 1.0}
+    }
+  ],
+  "aggregate_summary": {
+    "total_assertions": 25,
+    "passed": 25,
+    "failed": 0,
+    "overall_pass_rate": 1.0
+  }
+}

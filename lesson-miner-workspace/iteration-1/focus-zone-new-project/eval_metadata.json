@@ -1,0 +1,13 @@
+{
+  "eval_id": 1,
+  "eval_name": "focus-zone-new-project",
+  "prompt": "用户在专注区工作，对话中提到了使用 web-content-extraction 技能提取微信文章时遇到3个问题：Windows路径错误、WebFetch安全限制、jina.ai触发CAPTCHA。用户说'记录一下刚才的踩坑'。",
+  "expected_output": "识别为新项目，创建 01 你的项目/web-content-extraction-practice/PITFALLS.md，录入3个卡点，生成决策树",
+  "assertions": [
+    "创建了正确的项目目录 01 你的项目/web-content-extraction-practice/",
+    "创建了 PITFALLS.md 文件",
+    "录入了3个卡点，每个卡点包含现象、根因、解决方案、检测信号四个维度",
+    "生成了决策树部分",
+    "更新了更新日志"
+  ]
+}

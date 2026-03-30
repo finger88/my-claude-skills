@@ -1,0 +1,13 @@
+{
+  "eval_id": 2,
+  "eval_name": "project-zone-existing",
+  "prompt": "用户在 01 你的项目/做饭智能体/ 目录下工作，刚才解决了一个飞书API字段格式的问题。用户说'记录踩坑'。",
+  "expected_output": "直接追加到 做饭智能体/PITFALLS.md，不创建新项目",
+  "assertions": [
+    "检测到当前项目为 做饭智能体",
+    "没有询问是否切换项目",
+    "直接在现有 PITFALLS.md 中追加了新的卡点记录",
+    "更新了更新日志",
+    "保留了原有的卡点记录"
+  ]
+}

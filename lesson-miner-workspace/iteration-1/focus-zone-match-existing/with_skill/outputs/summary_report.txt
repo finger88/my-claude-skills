@@ -1,0 +1,28 @@
+======================================================================
+LESSON-MINER SKILL SIMULATION REPORT
+======================================================================
+
+SCENARIO: Focus Zone + Match Existing Project
+
+INPUT:
+  Location: 00 专注区/
+  User input: 做饭智能体又出问题了，飞书 webhook 调用返回 400 错误。更新 pitfalls。
+
+WORKFLOW:
+  1. ✓ Detected focus zone context
+  2. ✓ Extracted '做饭智能体' from dialog
+  3. ✓ Listed 3 existing projects
+  4. ✓ User confirmed project selection
+  5. ✓ Interactive lesson capture
+  6. ✓ Appended to PITFALLS.md
+
+OUTPUT:
+  Document: zh-CN/01 你的项目/做饭智能体/PITFALLS.md
+  Pitfalls recorded: 1
+  Success: YES
+
+FILES GENERATED:
+  - simulation_state.json
+  - confirmation_dialog.txt
+  - pitfalls_update_preview.md
+  - summary_report.txt

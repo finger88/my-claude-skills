@@ -1,0 +1,35 @@
+{
+  "skill_name": "lesson-miner",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "focus-zone-new-project",
+      "prompt": "用户在专注区工作，对话中提到了使用 web-content-extraction 技能提取微信文章时遇到3个问题：Windows路径错误、WebFetch安全限制、jina.ai触发CAPTCHA。用户说'记录一下刚才的踩坑'。",
+      "expected_output": "识别为新项目，创建 01 你的项目/web-content-extraction-practice/PITFALLS.md，录入3个卡点，生成决策树"
+    },
+    {
+      "id": 2,
+      "eval_name": "project-zone-existing",
+      "prompt": "用户在 01 你的项目/做饭智能体/ 目录下工作，刚才解决了一个飞书API字段格式的问题。用户说'记录踩坑'。",
+      "expected_output": "直接追加到 做饭智能体/PITFALLS.md，不创建新项目"
+    },
+    {
+      "id": 3,
+      "eval_name": "focus-zone-match-existing",
+      "prompt": "用户在专注区，但对话中明确提到'做饭智能体又出问题了'，说'更新 pitfalls'。",
+      "expected_output": "识别到已有项目'做饭智能体'，询问确认后追加到对应 PITFALLS.md"
+    },
+    {
+      "id": 4,
+      "eval_name": "project-zone-switch-project",
+      "prompt": "用户在 01 你的项目/A/ 目录下，但对话中一直在聊 B 项目的问题。用户说'记录一下'。",
+      "expected_output": "询问用户是记录到当前项目 A 还是切换到项目 B"
+    },
+    {
+      "id": 5,
+      "eval_name": "multiple-pitfalls-decision-tree",
+      "prompt": "项目中已有3个卡点，用户新录入第4个卡点。完成录入后询问是否生成决策树。",
+      "expected_output": "更新 PITFALLS.md，包含所有4个卡点，决策树正确反映4个分支"
+    }
+  ]
+}
