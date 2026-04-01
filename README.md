@@ -84,7 +84,7 @@ claude "/debate --rounds 3 --depth deep --mode red_team Will AI replace most kno
 | **daily-review** | - | 飞书日历日记生成器 | 自建 |
 | **weekly-review** | - | 周报复盘生成器 | 自建 |
 | **memory-review** | v1.0 | 周期性记忆校准 | 自建 |
-| **pptx-generator** | v1.0 | PPT生成与编辑 | minimax |
+| **pptx-generator** | v1.1 | PPT生成与编辑 | minimax |
 
 ---
 
