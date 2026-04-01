@@ -20,8 +20,8 @@ This skill handles all PowerPoint tasks: reading/analyzing existing presentation
 
 | Task | Approach |
 |------|----------|
-| Read/analyze content | `python -m markitdown presentation.pptx` |
-| Edit or create from template | See [Editing Presentations](references/editing.md) |
+| Read/analyze content | `python read_pptx.py presentation.pptx -o output.md` |
+| Edit or create from template | See [Editing Presentations](references/editing.md). For single-page precision edits, use the **Preview → Confirm → Merge** workflow. |
 | Create from scratch | See [Creating from Scratch](#creating-from-scratch-workflow) below |
 
 | Item | Value |
@@ -51,10 +51,21 @@ This skill handles all PowerPoint tasks: reading/analyzing existing presentation
 
 ## Reading Content
 
+### Windows UTF-8 Fix
+
+On Windows, running `python -m markitdown presentation.pptx` directly in the terminal often produces garbled Chinese text because the console defaults to GBK encoding while markitdown outputs UTF-8.
+
+**Use the included wrapper script instead:**
+
 ```bash
-# Text extraction
-python -m markitdown presentation.pptx
+# Extract to markdown file (recommended)
+python read_pptx.py presentation.pptx -o output.md
+
+# Or print to console
+python read_pptx.py presentation.pptx
 ```
+
+The wrapper forces `PYTHONIOENCODING=utf-8`, captures markitdown output properly, and handles console re-encoding so Chinese characters display correctly.
 
 ---
 
