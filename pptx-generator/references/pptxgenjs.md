@@ -363,6 +363,246 @@ titleSlide.addText("My Title", { placeholder: "title" });
 
 ---
 
+## Chart Recipes
+
+### Stacked Column Chart
+
+```javascript
+slide.addChart(pres.charts.BAR, [
+  { name: "Product A", labels: ["Q1", "Q2", "Q3", "Q4"], values: [30, 45, 35, 50] },
+  { name: "Product B", labels: ["Q1", "Q2", "Q3", "Q4"], values: [20, 25, 40, 35] },
+  { name: "Product C", labels: ["Q1", "Q2", "Q3", "Q4"], values: [15, 20, 25, 30] }
+], {
+  x: 0.5, y: 1, w: 6, h: 3.5,
+  barDir: "col",
+  barGrouping: "stacked",
+  chartColors: [theme.primary, theme.secondary, theme.accent],
+  chartArea: { fill: { color: "FFFFFF" } },
+  catGridLine: { style: "none" },
+  valGridLine: { color: theme.light, size: 0.5 },
+  showValue: false,
+  legendPos: "b",
+  catAxisLabelColor: theme.primary,
+  valAxisLabelColor: theme.primary
+});
+```
+
+### Smooth Area Line Chart
+
+```javascript
+slide.addChart(pres.charts.LINE, [
+  { name: "Revenue", labels: ["Jan", "Feb", "Mar", "Apr", "May"], values: [12, 19, 15, 28, 35] }
+], {
+  x: 0.5, y: 1, w: 6, h: 3.5,
+  lineSize: 3,
+  lineSmooth: true,
+  lineDataSymbol: "circle",
+  lineDataSymbolSize: 8,
+  chartColors: [theme.accent],
+  chartArea: { fill: { color: "FFFFFF" } },
+  showLegend: false,
+  catGridLine: { style: "none" },
+  valGridLine: { color: theme.light, size: 0.5 },
+  dataLabelPosition: "top",
+  showValue: true,
+  dataLabelColor: theme.primary,
+  dataLabelFontSize: 10
+});
+```
+
+### Doughnut Chart with Center Label
+
+```javascript
+slide.addChart(pres.charts.DOUGHNUT, [
+  { name: "Share", labels: ["A", "B", "C"], values: [55, 30, 15] }
+], {
+  x: 0.5, y: 1, w: 4, h: 4,
+  chartColors: [theme.primary, theme.secondary, theme.light],
+  showPercent: true,
+  dataLabelColor: "FFFFFF",
+  dataLabelFontSize: 11,
+  legendPos: "r",
+  holeSize: 60  // percent
+});
+
+// Add center label manually
+slide.addText("55%", {
+  x: 1.25, y: 2.6, w: 1.5, h: 0.6,
+  fontSize: 28, bold: true, color: theme.primary,
+  align: "center", valign: "middle"
+});
+```
+
+### Radar Chart (Competency / Dimension)
+
+```javascript
+slide.addChart(pres.charts.RADAR, [
+  { name: "Current", labels: ["Speed", "Quality", "Cost", "Service", "Innovation"], values: [80, 70, 90, 65, 75] },
+  { name: "Target", labels: ["Speed", "Quality", "Cost", "Service", "Innovation"], values: [90, 90, 85, 85, 90] }
+], {
+  x: 0.5, y: 1, w: 5, h: 4,
+  chartColors: [theme.accent, theme.light],
+  lineSize: 2,
+  showLegend: true,
+  legendPos: "b",
+  radarStyle: "filled"
+});
+```
+
+---
+
+## Shape-Composed Infographics
+
+When native charts are too plain or don't support the desired shape, build infographics from basic shapes. These render flawlessly and are fully palette-controllable.
+
+### Progress Ring (Completion / OKR)
+
+```javascript
+const cx = 2.5, cy = 2.8, r = 1.5, stroke = 0.25;
+const pct = 0.72;
+
+// Background ring
+slide.addShape(pres.shapes.OVAL, {
+  x: cx - r, y: cy - r, w: r * 2, h: r * 2,
+  fill: { color: "FFFFFF" },
+  line: { color: theme.light, width: stroke * 72 }
+});
+
+// Progress arc (simulate with a partial arc shape or overlay blocks)
+// For precise arcs, generate an SVG path and add as image (see External Chart Rendering)
+
+// Center text
+slide.addText("72%", {
+  x: cx - 0.8, y: cy - 0.3, w: 1.6, h: 0.6,
+  fontSize: 36, bold: true, color: theme.primary,
+  align: "center", valign: "middle"
+});
+```
+
+### Funnel (Conversion Stages)
+
+```javascript
+const stages = [
+  { label: "Visitors", value: 10000, color: theme.primary },
+  { label: "Leads", value: 6000, color: theme.secondary },
+  { label: "Customers", value: 2500, color: theme.accent },
+  { label: "Repeat", value: 800, color: theme.light }
+];
+
+let y = 1.0;
+stages.forEach((s, i) => {
+  const maxW = 6;
+  const h = 0.7;
+  const w = maxW * (s.value / stages[0].value);
+  const x = 0.5 + (maxW - w) / 2;
+
+  slide.addShape(pres.shapes.RECTANGLE, {
+    x, y, w, h,
+    fill: { color: s.color },
+    rectRadius: 0.05
+  });
+
+  slide.addText(`${s.label}: ${s.value.toLocaleString()}`, {
+    x, y, w, h,
+    color: "FFFFFF", fontSize: 14, align: "center", valign: "middle"
+  });
+
+  y += h + 0.15;
+});
+```
+
+### Pictogram Bar (Repeated Icons)
+
+```javascript
+// Each icon = 1 unit. 8 icons = value of 8.
+const rows = 3;
+const cols = 10;
+const iconW = 0.35;
+const iconH = 0.35;
+const gap = 0.08;
+const values = [7, 5, 9];
+const labels = ["Team A", "Team B", "Team C"];
+
+values.forEach((val, r) => {
+  const y = 1.5 + r * (iconH + gap + 0.3);
+  slide.addText(labels[r], { x: 0.5, y: y - 0.25, w: 1.2, h: 0.2, fontSize: 12, bold: true, color: theme.primary });
+
+  for (let c = 0; c < cols; c++) {
+    slide.addShape(pres.shapes.RECTANGLE, {
+      x: 1.8 + c * (iconW + gap),
+      y,
+      w: iconW,
+      h: iconH,
+      fill: { color: c < val ? theme.accent : theme.light },
+      rectRadius: 0.03
+    });
+  }
+});
+```
+
+### Horizontal Progress Bars
+
+```javascript
+const items = [
+  { label: "Design", val: 85 },
+  { label: "Engineering", val: 62 },
+  { label: "Marketing", val: 95 }
+];
+
+let y = 1.5;
+items.forEach(item => {
+  const maxW = 5;
+  const h = 0.25;
+
+  // Track
+  slide.addShape(pres.shapes.RECTANGLE, {
+    x: 2, y, w: maxW, h,
+    fill: { color: theme.light },
+    rectRadius: h / 2
+  });
+
+  // Fill
+  slide.addShape(pres.shapes.RECTANGLE, {
+    x: 2, y, w: maxW * (item.val / 100), h,
+    fill: { color: theme.accent },
+    rectRadius: h / 2
+  });
+
+  slide.addText(item.label, { x: 0.5, y: y - 0.02, w: 1.4, h: 0.3, fontSize: 12, color: theme.primary });
+  slide.addText(item.val + "%", { x: 7.2, y: y - 0.02, w: 0.8, h: 0.3, fontSize: 12, bold: true, color: theme.primary });
+
+  y += 0.55;
+});
+```
+
+---
+
+## External Chart Rendering
+
+For charts that exceed PptxGenJS native capabilities (Sankey, Sunburst, Heatmap, advanced Radar, 3DBar, gradient-rich charts), render externally and embed as PNG.
+
+See: [`references/chart-external.md`](./chart-external.md) for the complete ECharts → Sharp → Base64 workflow.
+
+Quick pattern:
+
+```javascript
+// 1. Generate chart as PNG base64 (via Node script using ECharts + Sharp)
+// 2. Embed into slide
+slide.addImage({
+  data: pngBase64String,
+  x: 0.5, y: 1, w: 6, h: 3.5
+});
+```
+
+**When to use external rendering:**
+- Complex categorical heatmaps
+- Hierarchical visuals (treemap, sunburst)
+- Flow diagrams (sankey, graph)
+- Gradient/texture charts where shapes can't substitute
+- Precise arc/pie segments with custom labels
+
+---
+
 ## Common Pitfalls
 
 These issues cause file corruption, visual bugs, or broken output. Avoid them.

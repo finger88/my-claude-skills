@@ -245,14 +245,37 @@ Pick a subtype based on the content. Each content slide belongs to exactly ONE s
 |  and bullets      |                   |
 ```
 
-**Data Visualization** — Chart (SVG bar/progress/ring) + takeaways
+**Data Visualization** — Native chart, composed infographic, or external rendered chart + takeaways
 - Must include data source
+- Every data slide must pair visual with 1-3 key takeaways
 ```
 |  SLIDE TITLE                          |
-|  [SVG Chart]      |  Key Takeaway 1   |
-|                   |  Key Takeaway 2   |
-|                   Source: xxx          |
+|  [Chart/Infographic] | Key Takeaway 1  |
+|                      | Key Takeaway 2  |
+|                      Source: xxx       |
 ```
+
+**Chart Options (choose based on data and visual need):**
+
+| Visual Type | Best For | Implementation |
+|-------------|----------|----------------|
+| Native Bar/Column | Comparisons, rankings | `pres.charts.BAR` with styling |
+| Native Line/Area | Trends over time | `pres.charts.LINE` with smooth curves |
+| Native Pie/Doughnut | Part-to-whole, market share | `pres.charts.PIE` / `DOUGHNUT` |
+| Native Scatter/Bubble | Correlations, distributions | `pres.charts.SCATTER` / `BUBBLE` |
+| Native Radar | Multi-dimensional scores | `pres.charts.RADAR` |
+| Composed Progress Ring | Completion rates, OKRs | Shapes (arc/oval + text) |
+| Composed Funnel | Conversion stages | Stacked trapezoids or rounded rects |
+| Composed Pictogram | People/products/units | Repeated icons scaled to value |
+| Composed Waterfall | Step-by-step gains/losses | Sequential rectangles |
+| External Rendered | Advanced/interactive charts | ECharts → SVG → PNG base64 |
+
+**Data Visualization Rules:**
+1. **No chart without takeaway** — always explain what the data means
+2. **Max 1 chart per slide** — split complex stories across slides
+3. **Match palette** — chart colors must come from the chosen palette
+4. **Label clearly** — axis names, units, and legends must be readable at a glance
+5. **Prefer composed infographics when native charts are too plain** — e.g. donut rings beat basic pie charts for visual impact
 
 **Comparison** — Side-by-side columns or cards (A vs B, pros/cons)
 ```

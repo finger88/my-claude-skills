@@ -3,7 +3,7 @@ name: pptx-generator
 description: "Generate, edit, and read PowerPoint presentations. Create from scratch with PptxGenJS (cover, TOC, content, section divider, summary slides), edit existing PPTX via XML workflows, or extract text with markitdown. Triggers: PPT, PPTX, PowerPoint, presentation, slide, deck, slides."
 license: MIT
 metadata:
-  version: "1.0"
+  version: "1.1"
   category: productivity
   sources:
     - https://gitbrent.github.io/PptxGenJS/
@@ -33,7 +33,8 @@ This skill handles all PowerPoint tasks: reading/analyzing existing presentation
 | **Page badge position** | x: 9.3", y: 5.1" |
 | **Theme keys** | `primary`, `secondary`, `accent`, `light`, `bg` |
 | **Shapes** | RECTANGLE, OVAL, LINE, ROUNDED_RECTANGLE |
-| **Charts** | BAR, LINE, PIE, DOUGHNUT, SCATTER, BUBBLE, RADAR |
+| **Charts (Native)** | BAR, LINE, PIE, DOUGHNUT, SCATTER, BUBBLE, RADAR |
+| **Charts (External)** | ECharts → Sharp → PNG base64 | See [chart-external.md](references/chart-external.md) |
 
 ## Reference Files
 
@@ -43,7 +44,8 @@ This skill handles all PowerPoint tasks: reading/analyzing existing presentation
 | [design-system.md](references/design-system.md) | Color palettes, font reference, style recipes (Sharp/Soft/Rounded/Pill), typography & spacing |
 | [editing.md](references/editing.md) | Template-based editing workflow, XML manipulation, formatting rules, common pitfalls |
 | [pitfalls.md](references/pitfalls.md) | QA process, common mistakes, critical PptxGenJS pitfalls |
-| [pptxgenjs.md](references/pptxgenjs.md) | Complete PptxGenJS API reference |
+| [pptxgenjs.md](references/pptxgenjs.md) | Complete PptxGenJS API reference + native chart recipes + shape-composed infographics |
+| [chart-external.md](references/chart-external.md) | External chart rendering with ECharts + Sharp (SVG → PNG → base64) |
 
 ---
 
@@ -247,3 +249,4 @@ slide.addText("03", {
 - `pip install "markitdown[pptx]"` — text extraction
 - `npm install -g pptxgenjs` — creating from scratch
 - `npm install -g react-icons react react-dom sharp` — icons (optional)
+- `npm install -g echarts sharp` — external charts (optional)
