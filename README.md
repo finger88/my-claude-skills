@@ -9,9 +9,9 @@
 <!-- STATS-START -->
 | 指标 | 数量 |
 |------|------|
-| **总计** | 27 |
-| **正式使用** | 18 |
-| **试用期** | 9 ⏳ |
+| **总计** | 34 |
+| **正式使用** | 25 |
+| **试用期** | 12 ⏳ |
 | **大包** | 1 |
 <!-- STATS-END -->
 
@@ -23,15 +23,18 @@
 
 | Skill | 版本 | 分类 | 用途 | 试用天数 |
 |-------|------|------|------|----------|
-| **debate** | - | 🎭 辩论系统 | 多Agent辩论入口 | 0天 |
-| **source-ingest** | - | 🎭 辩论系统 | 证据收集 | 0天 |
-| **freshness-check** | - | 🎭 辩论系统 | 时效验证 | 0天 |
-| **evidence-verify** | - | 🎭 辩论系统 | 跨源验证 | 0天 |
-| **debate-turn** | - | 🎭 辩论系统 | 辩论回合构建 | 0天 |
-| **analogy-safeguard** | - | 🎭 辩论系统 | 类比验证 | 0天 |
-| **judge-audit** | - | 🎭 辩论系统 | 裁判审计 | 0天 |
-| **claim-ledger-update** | - | 🎭 辩论系统 | 声明管理 | 0天 |
-| **final-synthesis** | - | 🎭 辩论系统 | 报告生成 | 0天 |
+| **debate** | - | 🎭 辩论系统 | 多Agent辩论入口 | 20天 |
+| **source-ingest** | - | 🎭 辩论系统 | 证据收集 | 20天 |
+| **freshness-check** | - | 🎭 辩论系统 | 时效验证 | 20天 |
+| **evidence-verify** | - | 🎭 辩论系统 | 跨源验证 | 20天 |
+| **debate-turn** | - | 🎭 辩论系统 | 辩论回合构建 | 20天 |
+| **analogy-safeguard** | - | 🎭 辩论系统 | 类比验证 | 20天 |
+| **judge-audit** | - | 🎭 辩论系统 | 裁判审计 | 20天 |
+| **claim-ledger-update** | - | 🎭 辩论系统 | 声明管理 | 20天 |
+| **final-synthesis** | - | 🎭 辩论系统 | 报告生成 | 20天 |
+| **_gym-deep-dive** | - | 🧪 青训营 | 技能试用评估 | 2天 |
+| **getnote-mcp** | - | 🔗 集成 | Get笔记MCP集成 | 19天 |
+| **web-access** | - | 🔧 工具 | 网页访问与内容提取 | 2天 |
 
 > 📦 [critical-debater 包详情](./packages/critical-debater/README.md)
 
@@ -66,6 +69,9 @@ claude "/debate --rounds 3 --depth deep --mode red_team Will AI replace most kno
 | **ljg-xray-book** | - | 书籍结构提取 | 社区 |
 | **web-content-extraction** | - | 网页内容提取(9层降级) | 自建 |
 | **feifei-reading** | - | 飞飞物理共读 | 自建 |
+| **touch-reading** | - | 触读法深度阅读 | 自建 |
+| **dream-to-video** | - | 梦境素材转视频 | 自建 |
+| **video-replication-sop-cy** | - | 视频复刻分镜生产SOP | 自建 |
 
 ---
 
@@ -78,6 +84,7 @@ claude "/debate --rounds 3 --depth deep --mode red_team Will AI replace most kno
 | **daily-review** | - | 飞书日历日记生成器 | 自建 |
 | **weekly-review** | - | 周报复盘生成器 | 自建 |
 | **memory-review** | v1.0 | 周期性记忆校准 | 自建 |
+| **pptx-generator** | v1.0 | PPT生成与编辑 | minimax |
 
 ---
 
@@ -93,6 +100,27 @@ claude "/debate --rounds 3 --depth deep --mode red_team Will AI replace most kno
 
 ---
 
+## 🔗 集成
+
+第三方服务和工具集成。
+
+| Skill | 版本 | 用途 | 来源 |
+|-------|------|------|------|
+| **getnote-mcp** | - | Get笔记MCP集成 | 自建 |
+| **getnote-openclaw** | - | Get笔记个人知识库 | 自建 |
+
+---
+
+## 🧪 青训营
+
+技能试用评估与测试。
+
+| Skill | 版本 | 用途 | 来源 |
+|-------|------|------|------|
+| **_gym-deep-dive** | - | 青训营技能评估 | 自建 |
+
+---
+
 ## 🔧 工具
 
 天气、时间、电子表格等实用工具。
@@ -102,6 +130,7 @@ claude "/debate --rounds 3 --depth deep --mode red_team Will AI replace most kno
 | **datetime-tool** | - | 时间日期工具 | 自建 |
 | **weather** | - | 天气查询 | 社区 |
 | **xlsx** | - | 电子表格处理 | 社区 |
+| **web-access** | - | 网页访问与内容提取 | 自建 |
 
 ---
 

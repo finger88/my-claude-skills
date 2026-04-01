@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "lastUpdated": "2026-03-12",
+  "lastUpdated": "2026-04-01",
   "skills": {
     "debate": {
       "category": "debate",
@@ -180,6 +180,67 @@
       "installedAt": "2026-02-01",
       "source": "anthropic",
       "description": "技能创建工具"
+    },
+    "_gym-deep-dive": {
+      "category": "training",
+      "status": "trial",
+      "installedAt": "2026-03-30",
+      "description": "青训营技能评估"
+    },
+    "dream-to-video": {
+      "category": "content",
+      "status": "formal",
+      "installedAt": "2026-03-24",
+      "description": "梦境素材转视频"
+    },
+    "getnote-mcp": {
+      "category": "integration",
+      "status": "trial",
+      "installedAt": "2026-03-13",
+      "description": "Get笔记MCP集成"
+    },
+    "getnote-openclaw": {
+      "category": "integration",
+      "status": "formal",
+      "installedAt": "2026-03-24",
+      "description": "Get笔记个人知识库"
+    },
+    "lesson-miner": {
+      "category": "management",
+      "status": "formal",
+      "installedAt": "2026-03-30",
+      "description": "经验挖掘与PITFALLS维护"
+    },
+    "touch-reading": {
+      "category": "content",
+      "status": "formal",
+      "installedAt": "2026-03-17",
+      "description": "触读法深度阅读"
+    },
+    "video-replication-sop-cy": {
+      "category": "content",
+      "status": "formal",
+      "installedAt": "2026-03-30",
+      "description": "视频复刻分镜生产SOP"
+    },
+    "web-access": {
+      "category": "utility",
+      "status": "trial",
+      "installedAt": "2026-03-30",
+      "description": "网页访问与内容提取"
+    },
+    "wechat-publish": {
+      "category": "utility",
+      "status": "formal",
+      "installedAt": "2026-03-22",
+      "description": "微信公众号草稿发布"
+    },
+    "pptx-generator": {
+      "category": "productivity",
+      "status": "formal",
+      "installedAt": "2026-04-01",
+      "source": "minimax",
+      "description": "PPT生成与编辑：基于PptxGenJS创建新演示文稿，或markitdown读取现有PPT"
     }
   },
   "categories": {
@@ -207,6 +268,16 @@
       "name": "工具",
       "description": "天气、时间、电子表格等实用工具",
       "icon": "🔧"
+    },
+    "integration": {
+      "name": "集成",
+      "description": "第三方服务和工具集成",
+      "icon": "🔗"
+    },
+    "training": {
+      "name": "青训营",
+      "description": "技能试用评估与测试",
+      "icon": "🧪"
     }
   },
   "packages": {
