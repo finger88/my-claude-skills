@@ -9,9 +9,9 @@
 <!-- STATS-START -->
 | 指标 | 数量 |
 |------|------|
-| **总计** | 34 |
+| **总计** | 35 |
 | **正式使用** | 25 |
-| **试用期** | 12 ⏳ |
+| **试用期** | 13 ⏳ |
 | **大包** | 1 |
 <!-- STATS-END -->
 
@@ -35,6 +35,7 @@
 | **_gym-deep-dive** | - | 🧪 青训营 | 技能试用评估 | 2天 |
 | **getnote-mcp** | - | 🔗 集成 | Get笔记MCP集成 | 19天 |
 | **web-access** | - | 🔧 工具 | 网页访问与内容提取 | 2天 |
+| **truth-explorer** | v1.0.0 | 📚 内容处理 | 概念区哲学透视镜头（求真） | 0天 |
 
 > 📦 [critical-debater 包详情](./packages/critical-debater/README.md)
 
@@ -72,6 +73,7 @@ claude "/debate --rounds 3 --depth deep --mode red_team Will AI replace most kno
 | **touch-reading** | - | 触读法深度阅读 | 自建 |
 | **dream-to-video** | - | 梦境素材转视频 | 自建 |
 | **video-replication-sop-cy** | - | 视频复刻分镜生产SOP | 自建 |
+| **truth-explorer** | v1.0.0 | 概念区哲学透视镜头（求真） | 自建 |
 
 ---
 
