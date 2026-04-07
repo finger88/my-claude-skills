@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "lastUpdated": "2026-04-01",
+  "lastUpdated": "2026-04-07",
   "skills": {
     "debate": {
       "category": "debate",
@@ -241,6 +241,12 @@
       "installedAt": "2026-04-01",
       "source": "minimax",
       "description": "PPT生成与编辑：基于PptxGenJS创建新演示文稿，或markitdown读取现有PPT"
+    },
+    "truth-explorer": {
+      "category": "content",
+      "status": "trial",
+      "installedAt": "2026-04-07",
+      "description": "概念区哲学透视镜头（暗号：求真），虚-实二元剖析方法论"
     }
   },
   "categories": {
