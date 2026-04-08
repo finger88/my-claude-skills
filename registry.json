@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "lastUpdated": "2026-04-07",
+  "lastUpdated": "2026-04-08",
   "skills": {
     "debate": {
       "category": "debate",
@@ -247,6 +247,27 @@
       "status": "trial",
       "installedAt": "2026-04-07",
       "description": "概念区哲学透视镜头（暗号：求真），虚-实二元剖析方法论"
+    },
+    "ljg-relationship": {
+      "category": "content",
+      "status": "trial",
+      "installedAt": "2026-04-08",
+      "source": "lijigang",
+      "description": "亲密关系分析顾问，结合结构诊断和精神分析深度"
+    },
+    "ljg-paper-river": {
+      "category": "content",
+      "status": "trial",
+      "installedAt": "2026-04-08",
+      "source": "lijigang",
+      "description": "论文倒读法：追溯问题解决的学术脉络"
+    },
+    "ljg-roundtable": {
+      "category": "content",
+      "status": "trial",
+      "installedAt": "2026-04-08",
+      "source": "lijigang",
+      "description": "圆桌会议讨论框架，多角色深度思辨"
     }
   },
   "categories": {
