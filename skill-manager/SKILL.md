@@ -1,6 +1,6 @@
 ---
 name: skill-manager
-version: v3.2
+version: v3.3
 description: "Comprehensive skill management system for Claude Code. 14 core functions: list, evaluate, optimize, backup, rollback, log, auto-git-commit, batch-backup, batch-evaluate, version diff, and registry management (register, formalize, remove, trial status). Use when user wants to manage skills or maintain the skills ecosystem. Trigger words: '列出 skills', '评估 XXX', '优化 XXX', '备份 XXX', '回退 XXX', '自动提交', '批量备份', '批量评估', '版本对比', '注册 XXX', '转正 XXX', '删除 XXX', '试用期'."
 ---
 
@@ -26,6 +26,7 @@ description: "Comprehensive skill management system for Claude Code. 14 core fun
 | 12 | **转正技能** | "转正 xxx" / "skill 转正" | [references/functions/registry.md](references/functions/registry.md) |
 | 13 | **删除技能** | "删除 xxx" / "卸载 xxx" | [references/functions/registry.md](references/functions/registry.md) |
 | 14 | **查看试用期** | "试用期" / "试用状态" | [references/functions/registry.md](references/functions/registry.md) |
+| 15 | **检查 Junction** | "检查 junctions" / "检查链接" | 检测并修复 skills 目录链接状态 | [references/functions/check-junctions.md](references/functions/check-junctions.md) |
 
 ---
 
@@ -58,6 +59,19 @@ D:\my tool\skills log\            # 日志与备份目录
 **架构说明**: `~/.claude/skills/` 下所有目录均为 Junction，指向 `~/my-claude-skills/` Git 仓库。编辑任何 skill 文件会直接修改 Git 仓库中的文件。
 
 **Registry**: `registry.json` 记录技能元数据（分类、试用状态、安装日期），由 skill-manager 统一管理，不影响 Claude 加载 skill。
+
+---
+
+## 执行协议（必读）
+
+**Claude 在被调用此 Skill 时，必须遵循以下流程：**
+
+1. 根据用户意图匹配「核心功能」表中的功能编号
+2. **使用 Read 工具读取**对应的 `references/functions/*.md` 文件（表中第 4 列的链接路径）
+3. 按该文件中的详细步骤**逐步执行**，产出对应结果
+4. 下方「执行要点」仅为快速参考摘要，**不替代详细步骤文件**——如果只看摘要就回复，功能不完整
+
+> 关键：Skill 加载 ≠ 执行完成。加载只是把指令放入上下文，Claude 必须主动 Read 资源层文件并执行。
 
 ---
 
@@ -157,7 +171,9 @@ Skill 应遵循的核心结构:
 
 ## 注意事项
 
-1. **Junction 架构**: `~/.claude/skills/` 下均为 Junction，修改即写入 Git 仓库
+1. **Junction 架构**: `~/.claude/skills/` 下应为 Junction 指向 Git 仓库，修改即写入 Git 仓库
+   - ⚠️ **关键**: 如果 skill 是实际目录（非 Junction），会导致版本漂移（本地 vs GitHub 不一致）
+   - 备份/修改前自动检查 Junction 状态，发现断裂会提示修复
 2. **备份策略**: 备份到 `skills log\backups\`（独立于 Git），每次修改前自动备份
 3. **Git 提交**:
    - 手动模式：备份/回退/优化完成后提醒用户执行 git commit/push
