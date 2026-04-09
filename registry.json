@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "lastUpdated": "2026-04-08",
+  "lastUpdated": "2026-04-09",
   "skills": {
     "debate": {
       "category": "debate",
@@ -268,6 +268,34 @@
       "installedAt": "2026-04-08",
       "source": "lijigang",
       "description": "圆桌会议讨论框架，多角色深度思辨"
+    },
+    "deep-research": {
+      "category": "research",
+      "status": "trial",
+      "installedAt": "2026-04-09",
+      "source": "Imbad0202",
+      "description": "13-agent深度研究团队，7模式全栈学术研究"
+    },
+    "academic-paper": {
+      "category": "research",
+      "status": "trial",
+      "installedAt": "2026-04-09",
+      "source": "Imbad0202",
+      "description": "12-agent学术论文写作流程，10模式6类型"
+    },
+    "academic-paper-reviewer": {
+      "category": "research",
+      "status": "trial",
+      "installedAt": "2026-04-09",
+      "source": "Imbad0202",
+      "description": "多视角学术论文审稿，5审稿人动态角色"
+    },
+    "academic-pipeline": {
+      "category": "research",
+      "status": "trial",
+      "installedAt": "2026-04-09",
+      "source": "Imbad0202",
+      "description": "学术研究全流程编排器，9阶段完整流程"
     }
   },
   "categories": {
@@ -305,6 +333,11 @@
       "name": "青训营",
       "description": "技能试用评估与测试",
       "icon": "🧪"
+    },
+    "research": {
+      "name": "学术研究",
+      "description": "论文写作、审稿、深度研究",
+      "icon": "🔬"
     }
   },
   "packages": {
