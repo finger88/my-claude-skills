@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root {
+    --bg: #F5F7FA;
+    --text: #1D1D1F;
+    --text-mid: #6E6E73;
+    --text-dim: #ACACB0;
+    --accent: #3D5A80;
+    --rule: #E5E5EA;
+    --font: 'KingHwa_OldSong', 'PingFang SC', system-ui, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 1080px;
+    background: var(--bg);
+  }
+
+  .card {
+    width: 1080px;
+    background: var(--bg);
+    padding: 64px 72px 52px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title-area {
+    flex-shrink: 0;
+    margin-bottom: 52px;
+  }
+
+  .title-area h1 {
+    font: 700 84px/1.15 var(--font);
+    color: var(--text);
+    letter-spacing: -0.03em;
+    margin-bottom: 22px;
+  }
+
+  .title-area::after {
+    content: '';
+    display: block;
+    width: 52px;
+    height: 3px;
+    background: var(--accent);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .content p {
+    font: 400 36px/1.7 var(--font);
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+
+  .content .highlight {
+    font: 500 40px/1.55 var(--font);
+    color: var(--text);
+    padding: 14px 0 14px 26px;
+    border-left: 3px solid var(--accent);
+    margin: 36px 0;
+  }
+
+  .content h2 {
+    font: 600 42px/1.4 var(--font);
+    color: var(--text);
+    margin: 44px 0 22px;
+    letter-spacing: -0.02em;
+  }
+
+  .content h2:first-child {
+    margin-top: 0;
+  }
+
+  .content .subtitle {
+    font: 400 22px/2 var(--font);
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .content .item {
+    margin-bottom: 36px;
+  }
+
+  .content .item:last-child {
+    margin-bottom: 0;
+  }
+
+  .content .item .label {
+    font: 500 36px/1.5 var(--font);
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .content .item p {
+    font: 400 32px/1.65 var(--font);
+    color: var(--text-mid);
+    margin-bottom: 0;
+  }
+
+  .content blockquote {
+    margin: 0 0 28px;
+    padding-left: 26px;
+    border-left: 3px solid var(--rule);
+  }
+
+  .content blockquote p {
+    font: 300 36px/1.7 var(--font);
+    color: var(--text-mid);
+    margin-bottom: 6px;
+  }
+
+  .content strong {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .content .divider {
+    height: 1px;
+    background: var(--rule);
+    margin: 36px 0;
+  }
+
+  .content ul {
+    list-style: none;
+    margin-bottom: 28px;
+  }
+
+  .content ul li {
+    font: 400 36px/1.7 var(--font);
+    color: var(--text);
+    padding: 4px 0 4px 28px;
+    position: relative;
+  }
+
+  .content ul li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--text-mid);
+  }
+
+  .content .dropcap::first-letter {
+    font: 700 128px/0.82 'KingHwa_OldSong', Georgia, serif;
+    float: left;
+    margin: 4px 16px 0 -4px;
+    color: var(--accent);
+  }
+
+  .content::after {
+    content: '∎';
+    display: block;
+    text-align: right;
+    font-size: 16px;
+    color: var(--accent);
+    opacity: 0.4;
+    margin-top: 40px;
+  }
+
+  .footer {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 52px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .footer .author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .footer .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .footer .author-name {
+    font: 400 24px/1.5 var(--font);
+    color: var(--text-mid);
+    letter-spacing: 0.03em;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="title-area">
+      <h1>漫画的遮罩效果</h1>
+    </div>
+    <div class="content">
+      <p class="dropcap">一种视觉引导技术，通过渐变、硬边或纹理边缘隐藏画面部分内容，引导读者视线聚焦于关键区域，同时营造情绪氛围和时空转换感。</p>
+
+      <div class="divider"></div>
+
+      <p class="subtitle">核心洞察</p>
+      <p class="highlight">遮罩是漫画家藏在画面里的「导演椅」——读者以为自己在自由选择观看角度，实际上每一个视线落点都是被预设的。</p>
+
+      <div class="divider"></div>
+
+      <p class="subtitle">八维解剖</p>
+
+      <div class="item">
+        <p class="label">历史溯源</p>
+        <p>从浮世绘「云母摺」到数字图层蒙版，遮罩从物理限制变为无限可逆的创作选择。</p>
+      </div>
+
+      <div class="item">
+        <p class="label">辩证分析</p>
+        <p>遮罩是「导演权」的让渡——用阅读流畅性换取构图决策的外包。</p>
+      </div>
+
+      <div class="item">
+        <p class="label">现象学还原</p>
+        <p>遮罩不是框架，而是门槛——跨过它，才算正式进入画面。</p>
+      </div>
+
+      <div class="item">
+        <p class="label">存在主义审视</p>
+        <p>遮罩揭示现代人的生存困境：自由的幻觉。</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <p class="subtitle">The One 公式</p>
+      <p class="highlight">遮罩效果 = 视觉引导的门槛 × 情绪氛围的容器 × 控制权力的隐喻</p>
+    </div>
+    <div class="footer">
+      <div class="author">
+        <span class="author-name">概念区 · 求真</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

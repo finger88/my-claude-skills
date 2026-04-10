@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap');
+  :root { --bg: #FAFAFA; --ink: #1a1a1a; --ink-mid: #555; --white: #FAFAFA; --tone: #E8E0D8; --serif: 'Noto Serif SC', Georgia, serif; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; background: var(--bg); }
+  .page { width: 1080px; background: var(--bg); padding: 60px; position: relative; }
+  .panel { border: 3px solid var(--ink); background: var(--white); position: relative; }
+  .grid { display: grid; gap: 20px; }
+  .hero { height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(180deg, var(--white) 0%, var(--tone) 100%); position: relative; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: repeating-conic-gradient(var(--ink) 0deg 0.3deg, transparent 0.3deg 8deg) center/100% 100%; opacity: 0.04; }
+  .hero-title { font: 900 72px/1.2 var(--serif); color: var(--ink); letter-spacing: -2px; z-index: 2; text-align: center; }
+  .hero-sub { font: 400 28px/1.5 var(--serif); color: var(--ink-mid); margin-top: 20px; z-index: 2; }
+  .dual { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; background: var(--ink); }
+  .dual-panel { background: var(--white); padding: 40px; min-height: 280px; }
+  .dual-panel h3 { font: 700 36px/1.3 var(--serif); color: var(--ink); margin-bottom: 20px; border-bottom: 2px solid var(--ink); padding-bottom: 10px; }
+  .dual-panel p { font: 400 28px/1.7 var(--serif); color: var(--ink-mid); }
+  .conclusion { padding: 50px; background: var(--ink); color: var(--white); text-align: center; }
+  .conclusion p { font: 700 40px/1.5 var(--serif); color: var(--white); }
+  .sfx { font: 900 48px/1 var(--serif); color: var(--ink); transform: rotate(-5deg); position: absolute; top: 20px; right: 40px; }
+  .footer { margin-top: 30px; text-align: right; font: 400 22px/1 var(--serif); color: var(--ink-mid); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="sfx">求真</div>
+  <div class="grid">
+    <div class="panel hero">
+      <div class="hero-title">遮罩</div>
+      <div class="hero-sub">是引导视线，还是制造「被引导的幻觉」？</div>
+    </div>
+    <div class="panel dual">
+      <div class="dual-panel">
+        <h3>虚 · 内在感知</h3>
+        <p>聚焦需求<br>情绪共鸣<br>记忆唤醒</p>
+      </div>
+      <div class="dual-panel">
+        <h3>实 · 技术实践</h3>
+        <p>硬边/柔边遮罩<br>速度线/网点纸<br>数字工具实现</p>
+      </div>
+    </div>
+    <div class="panel conclusion">
+      <p>读者以为自己在自由阅读<br>实际上每一步都走在预设的路径上</p>
+    </div>
+  </div>
+  <div class="footer">哲学透视 · 井上雄彦风格</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+  :root {
+    --bg: #F5F5F5;
+    --ink: #1a1a1a;
+    --ink-mid: #666;
+    --white: #FAFAFA;
+    --tone: #D0D0D0;
+    --serif: 'Noto Serif SC', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; background: var(--bg); }
+
+  .page {
+    width: 1080px;
+    background: var(--bg);
+    padding: 40px;
+  }
+
+  /* 大友克洋风格 - 精密废墟 */
+  .panel {
+    border: 2.5px solid var(--ink);
+    background: var(--white);
+  }
+
+  .grid {
+    display: grid;
+    gap: 8px;
+  }
+
+  /* 精密布局 */
+  .layout-3col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+  }
+
+  .layout-2col {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 8px;
+  }
+
+  /* 标题格 */
+  .header-panel {
+    grid-column: 1 / -1;
+    padding: 30px 40px;
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .header-title {
+    font: 700 40px/1.2 var(--serif);
+    letter-spacing: 0.05em;
+  }
+
+  .header-sub {
+    font: 400 22px/1.4 var(--serif);
+    margin-top: 8px;
+    opacity: 0.8;
+  }
+
+  /* 数据格 */
+  .data-panel {
+    padding: 24px;
+    position: relative;
+  }
+
+  .data-label {
+    font: 600 18px/1 var(--serif);
+    color: var(--ink-mid);
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .data-content {
+    font: 400 24px/1.5 var(--serif);
+    color: var(--ink);
+  }
+
+  .data-list {
+    list-style: none;
+    font: 400 22px/1.8 var(--serif);
+  }
+
+  .data-list li {
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .data-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ink-mid);
+  }
+
+  /* 中心公式格 */
+  .formula-panel {
+    grid-column: 1 / -1;
+    padding: 40px;
+    background: linear-gradient(180deg, var(--white) 0%, var(--tone) 100%);
+    text-align: center;
+    position: relative;
+  }
+
+  .formula-label {
+    font: 600 20px/1 var(--serif);
+    color: var(--ink-mid);
+    letter-spacing: 0.15em;
+    margin-bottom: 20px;
+  }
+
+  .formula {
+    font: 700 36px/1.4 var(--serif);
+    color: var(--ink);
+  }
+
+  .formula-part {
+    display: inline-block;
+    background: var(--white);
+    border: 2px solid var(--ink);
+    padding: 8px 16px;
+    margin: 0 4px;
+  }
+
+  .formula-op {
+    font: 400 32px/1 var(--serif);
+    color: var(--ink-mid);
+    margin: 0 8px;
+  }
+
+  /* 架构图格 */
+  .arch-panel {
+    padding: 30px;
+    background: var(--white);
+  }
+
+  .arch-title {
+    font: 700 24px/1 var(--serif);
+    color: var(--ink);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--tone);
+  }
+
+  .arch-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .flow-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .flow-box {
+    background: var(--white);
+    border: 2px solid var(--ink);
+    padding: 12px 20px;
+    font: 400 20px/1 var(--serif);
+    flex: 1;
+  }
+
+  .flow-arrow {
+    font: 400 24px/1 var(--serif);
+    color: var(--ink-mid);
+  }
+
+  .colophon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 10px 0;
+    margin-top: 20px;
+    border-top: 2px solid var(--ink);
+    font: 400 22px/1 var(--serif);
+    color: var(--ink-mid);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="grid">
+    <!-- 标题格 -->
+    <div class="panel header-panel">
+      <div class="header-title">结构图谱 · 组成关系</div>
+      <div class="header-sub">视觉形式 + 功能作用 + 技术实现 三层组成</div>
+    </div>
+
+    <!-- 三列数据 -->
+    <div class="layout-3col">
+      <div class="panel data-panel">
+        <div class="data-label">视觉形式</div>
+        <ul class="data-list">
+          <li>硬边遮罩</li>
+          <li>柔边渐变</li>
+          <li>锯齿/不规则</li>
+        </ul>
+      </div>
+
+      <div class="panel data-panel">
+        <div class="data-label">功能作用</div>
+        <ul class="data-list">
+          <li>聚焦引导</li>
+          <li>氛围营造</li>
+          <li>节奏控制</li>
+        </ul>
+      </div>
+
+      <div class="panel data-panel">
+        <div class="data-label">技术实现</div>
+        <ul class="data-list">
+          <li>手绘网点</li>
+          <li>数字蒙版</li>
+          <li>笔刷工具</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 公式格 -->
+    <div class="panel formula-panel">
+      <div class="formula-label">THE ONE 公式</div>
+      <div class="formula">
+        <span class="formula-part">视觉门槛</span>
+        <span class="formula-op">×</span>
+        <span class="formula-part">情绪容器</span>
+        <span class="formula-op">×</span>
+        <span class="formula-part">权力隐喻</span>
+      </div>
+    </div>
+
+    <!-- 架构流程 -->
+    <div class="layout-2col">
+      <div class="panel arch-panel">
+        <div class="arch-title">输入 → 处理 → 输出</div>
+        <div class="arch-flow">
+          <div class="flow-item">
+            <div class="flow-box">[画面内容]</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-box">[遮罩处理]</div>
+          </div>
+          <div class="flow-item" style="justify-content: flex-end;">
+            <span class="flow-arrow">↓</span>
+          </div>
+          <div class="flow-item">
+            <div class="flow-box" style="margin-left: auto;">[读者感知]</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel data-panel">
+        <div class="data-label">关联网络</div>
+        <ul class="data-list">
+          <li>视觉引导</li>
+          <li>分镜构图</li>
+          <li>叙事节奏</li>
+          <li>读者体验</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="colophon">
+    <span>漫画的遮罩效果 · 求真</span>
+    <span>大友克洋风格</span>
+  </div>
+</div>
+</body>
+</html>

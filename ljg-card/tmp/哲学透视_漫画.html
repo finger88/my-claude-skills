@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap');
+
+  :root {
+    --bg: #F0F0F0;
+    --ink: #0A0A0A;
+    --ink-mid: #444;
+    --white: #FAFAFA;
+    --tone: #C0C0C0;
+    --serif: 'Noto Serif SC', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; background: var(--bg); }
+
+  .page {
+    width: 1080px;
+    background: var(--bg);
+    padding: 40px;
+    position: relative;
+  }
+
+  /* 三浦建太郎风格 - 暗黑压迫 */
+  .panel {
+    border: 3px solid var(--ink);
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .grid {
+    display: grid;
+    gap: 12px;
+  }
+
+  /* 顶部大黑格 - 核心冲突 */
+  .hero-panel {
+    grid-column: 1 / -1;
+    background: var(--ink);
+    color: var(--white);
+    padding: 60px 50px;
+    position: relative;
+  }
+
+  .hero-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255,255,255,0.03) 10px,
+      rgba(255,255,255,0.03) 20px
+    );
+  }
+
+  .hero-title {
+    font: 900 56px/1.2 var(--serif);
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .hero-text {
+    font: 400 32px/1.6 var(--serif);
+    opacity: 0.9;
+    position: relative;
+  }
+
+  /* 中间密集格 */
+  .dense-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .observation-panel {
+    padding: 30px;
+    background: var(--white);
+  }
+
+  .observation-panel.dark {
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .panel-label {
+    font: 700 22px/1 var(--serif);
+    color: var(--tone);
+    margin-bottom: 16px;
+    letter-spacing: 0.1em;
+  }
+
+  .observation-panel.dark .panel-label {
+    color: var(--ink-mid);
+  }
+
+  .panel-content {
+    font: 400 26px/1.5 var(--serif);
+  }
+
+  /* 底部质疑格 */
+  .question-panel {
+    grid-column: 1 / -1;
+    padding: 40px 50px;
+    background: linear-gradient(135deg, var(--white) 0%, var(--tone) 100%);
+    position: relative;
+  }
+
+  .question-panel::before {
+    content: '?';
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font: 900 180px/1 var(--serif);
+    color: var(--ink);
+    opacity: 0.06;
+  }
+
+  .question-text {
+    font: 700 36px/1.5 var(--serif);
+    color: var(--ink);
+    position: relative;
+  }
+
+  /* 网点灰效果 */
+  .screentone {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, var(--ink) 1.5px, transparent 1.5px);
+    background-size: 6px 6px;
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
+  .colophon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 10px 0;
+    margin-top: 20px;
+    border-top: 2px solid var(--ink);
+    font: 400 22px/1 var(--serif);
+    color: var(--ink-mid);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="grid">
+    <!-- 顶部大黑格 -->
+    <div class="panel hero-panel">
+      <div class="hero-title">哲学透视 · 质疑本质</div>
+      <div class="hero-text">遮罩不是引导视线，而是制造「被引导的幻觉」——让读者以为自己在自由阅读，实际上每一步都走在预设的路径上。</div>
+    </div>
+
+    <!-- 中间密集格 -->
+    <div class="dense-grid">
+      <div class="panel observation-panel">
+        <div class="screentone"></div>
+        <div class="panel-label">虚 · 内在感受</div>
+        <div class="panel-content">聚焦、沉浸、情绪共鸣<br/>被操控、感知惰性、思维被动</div>
+      </div>
+
+      <div class="panel observation-panel dark">
+        <div class="panel-label">实 · 技术现象</div>
+        <div class="panel-content">硬边/柔边遮罩<br/>速度线、网点纸<br/>数字工具实现</div>
+      </div>
+    </div>
+
+    <!-- 底部质疑格 -->
+    <div class="panel question-panel">
+      <div class="question-text">如果遮罩是为了让重要的东西显形，<br/>那么当一切都可被遮罩框选时，<br/>还有什么能真正重要？</div>
+    </div>
+  </div>
+
+  <div class="colophon">
+    <span>漫画的遮罩效果 · 求真</span>
+    <span>三浦建太郎风格</span>
+  </div>
+</div>
+</body>
+</html>

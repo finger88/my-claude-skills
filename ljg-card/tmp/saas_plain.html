@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root {
+    --bg: #FBF9F1;
+    --text: #1D1D1F;
+    --text-mid: #6E6E73;
+    --text-dim: #ACACB0;
+    --accent: #6B4E3D;
+    --rule: #E5E5EA;
+    --font: 'KingHwa_OldSong', 'PingFang SC', system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; background: var(--bg); }
+  .card {
+    width: 1080px;
+    background: var(--bg);
+    padding: 64px 72px 52px;
+    display: flex;
+    flex-direction: column;
+  }
+  .title-area { flex-shrink: 0; margin-bottom: 52px; }
+  .title-area h1 {
+    font: 700 84px/1.15 var(--font);
+    color: var(--text);
+    letter-spacing: -0.03em;
+    margin-bottom: 22px;
+  }
+  .title-area::after {
+    content: '';
+    display: block;
+    width: 52px;
+    height: 3px;
+    background: var(--accent);
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .content p {
+    font: 400 36px/1.7 var(--font);
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+  .content .highlight {
+    font: 500 48px/1.55 var(--font);
+    color: var(--text);
+    padding: 24px 0 24px 32px;
+    border-left: 4px solid var(--accent);
+    margin: 48px 0;
+  }
+  .content strong { font-weight: 600; color: var(--text); }
+  .content::after {
+    content: '∎';
+    display: block;
+    text-align: right;
+    font-size: 16px;
+    color: var(--accent);
+    opacity: 0.4;
+    margin-top: 40px;
+  }
+  .footer {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 52px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+  }
+  .footer .author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .footer .author-name {
+    font: 400 24px/1.5 var(--font);
+    color: var(--text-mid);
+    letter-spacing: 0.03em;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="title-area">
+      <h1>SaaS · 白话镜头</h1>
+    </div>
+    <div class="content">
+      <p class="highlight">SaaS 就是租房而非买房——<br>你不用盖房子、不用修水管，<br>拎包入住，按月交租。</p>
+
+      <p style="margin-top: 40px;"><strong>龙虾视角：</strong></p>
+      <p>龙虾（AI）是「任意门」——想去哪就去哪，不需要住下来。</p>
+    </div>
+    <div class="footer">
+      <div class="author">
+        <span class="author-name">李继刚</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

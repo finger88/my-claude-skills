@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap');
+  :root { --bg: #FAFAFA; --ink: #1a1a1a; --ink-mid: #666; --white: #FAFAFA; --tone: #E5E5E5; --serif: 'Noto Serif SC', Georgia, serif; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; background: var(--bg); }
+  .page { width: 1080px; background: var(--bg); padding: 50px; }
+  .panel { border: 2px solid var(--ink); background: var(--white); }
+  .scene-header { padding: 40px; text-align: center; border-bottom: 2px solid var(--ink); }
+  .scene-header h1 { font: 900 52px/1.2 var(--serif); color: var(--ink); letter-spacing: 2px; }
+  .scene-header p { font: 400 26px/1.5 var(--serif); color: var(--ink-mid); margin-top: 15px; }
+  .scene-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--ink); border: 2px solid var(--ink); }
+  .scene { background: var(--white); padding: 35px 25px; text-align: center; }
+  .scene-type { font: 900 22px/1 var(--serif); color: var(--white); background: var(--ink); display: inline-block; padding: 8px 20px; margin-bottom: 20px; }
+  .scene-mask { font: 700 28px/1.3 var(--serif); color: var(--ink); margin-bottom: 15px; }
+  .scene-effect { font: 400 24px/1.5 var(--serif); color: var(--ink-mid); }
+  .traps { margin-top: 25px; padding: 35px 40px; background: var(--tone); border: 2px solid var(--ink); }
+  .traps h3 { font: 700 32px/1 var(--serif); color: var(--ink); margin-bottom: 25px; text-align: center; }
+  .trap-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .trap { display: flex; align-items: flex-start; gap: 15px; }
+  .trap-icon { font: 900 28px/1 var(--serif); color: var(--ink); }
+  .trap-text { font: 400 24px/1.5 var(--serif); color: var(--ink); }
+  .footer { margin-top: 30px; text-align: center; font: 400 22px/1 var(--serif); color: var(--ink-mid); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="panel scene-header"><h1>何时使用遮罩？</h1><p>五种典型场景与对应技法</p></div>
+  <div class="scene-grid">
+    <div class="scene"><div class="scene-type">回忆 / 梦境</div><div class="scene-mask">柔边渐变</div><div class="scene-effect">像褪色的老照片<br>营造怀旧感</div></div>
+    <div class="scene"><div class="scene-type">紧张 / 冲击</div><div class="scene-mask">硬边 + 速度线</div><div class="scene-effect">制造紧迫感<br>聚焦关键动作</div></div>
+    <div class="scene"><div class="scene-type">恐怖 / 悬疑</div><div class="scene-mask">不规则黑边</div><div class="scene-effect">限制视野<br>制造未知恐惧</div></div>
+    <div class="scene"><div class="scene-type">温馨 / 日常</div><div class="scene-mask">淡色柔边</div><div class="scene-effect">光线柔和<br>读者放松浏览</div></div>
+    <div class="scene"><div class="scene-type">时空转换</div><div class="scene-mask">多层叠加</div><div class="scene-effect">暗示深度<br>穿越/交织</div></div>
+    <div class="scene"><div class="scene-type">最佳实践</div><div class="scene-mask">少即是多</div><div class="scene-effect">留白勇气<br>服务故事</div></div>
+  </div>
+  <div class="traps">
+    <h3>⚠ 误用陷阱</h3>
+    <div class="trap-list">
+      <div class="trap"><span class="trap-icon">✗</span><span class="trap-text">过度使用 → 视觉疲劳</span></div>
+      <div class="trap"><span class="trap-icon">✗</span><span class="trap-text">风格不统一 → 体验割裂</span></div>
+      <div class="trap"><span class="trap-icon">✗</span><span class="trap-text">技术依赖 → 千篇一律</span></div>
+      <div class="trap"><span class="trap-icon">✗</span><span class="trap-text">忽视内容 → 掩盖弱点</span></div>
+    </div>
+  </div>
+  <div class="footer">场景映射 · 谷口治郎风格</div>
+</div>
+</body>
+</html>

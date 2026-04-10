@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap');
+
+  :root {
+    --bg: #FAF8F4;
+    --ink: #1a1a1a;
+    --ink-mid: #666;
+    --ink-light: #999;
+    --white: #FAFAFA;
+    --tone: #E8E0D8;
+    --serif: 'Noto Serif SC', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; background: var(--bg); }
+
+  .page {
+    width: 1080px;
+    background: var(--bg);
+    padding: 40px;
+  }
+
+  /* 井上雄彦风格 - 水墨留白 */
+  .panel {
+    border: 2.5px solid var(--ink);
+    background: var(--white);
+    position: relative;
+  }
+
+  .layout {
+    display: grid;
+    gap: 16px;
+  }
+
+  /* 大面积留白标题 */
+  .hero-panel {
+    padding: 80px 60px;
+    background: linear-gradient(180deg, var(--white) 0%, var(--tone) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-panel::before {
+    content: '';
+    position: absolute;
+    right: -50px;
+    top: -50px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(26,26,26,0.05) 0%, transparent 70%);
+  }
+
+  .hero-title {
+    font: 700 52px/1.2 var(--serif);
+    color: var(--ink);
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .hero-subtitle {
+    font: 400 28px/1.4 var(--serif);
+    color: var(--ink-mid);
+    position: relative;
+  }
+
+  /* 对比表格 - 两栏 */
+  .compare-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .compare-panel {
+    padding: 40px;
+    position: relative;
+  }
+
+  .compare-panel.left {
+    background: var(--white);
+  }
+
+  .compare-panel.right {
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .compare-label {
+    font: 600 22px/1 var(--serif);
+    letter-spacing: 0.15em;
+    margin-bottom: 20px;
+    opacity: 0.7;
+  }
+
+  .compare-title {
+    font: 900 36px/1.2 var(--serif);
+    margin-bottom: 16px;
+  }
+
+  .compare-desc {
+    font: 400 24px/1.5 var(--serif);
+    opacity: 0.9;
+  }
+
+  .vs-divider {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font: 900 48px/1 var(--serif);
+    color: var(--ink);
+    background: var(--bg);
+    padding: 10px 20px;
+    z-index: 10;
+  }
+
+  /* 金句格 */
+  .quote-panel {
+    padding: 50px 60px;
+    text-align: center;
+    background: var(--white);
+    position: relative;
+  }
+
+  .quote-panel::before {
+    content: '「';
+    position: absolute;
+    left: 30px;
+    top: 20px;
+    font: 900 120px/1 var(--serif);
+    color: var(--tone);
+    opacity: 0.6;
+  }
+
+  .quote-text {
+    font: 700 40px/1.5 var(--serif);
+    color: var(--ink);
+    position: relative;
+  }
+
+  /* 底部对比条 */
+  .contrast-bar {
+    display: flex;
+    border: 2.5px solid var(--ink);
+  }
+
+  .contrast-item {
+    flex: 1;
+    padding: 25px 30px;
+    text-align: center;
+    font: 600 26px/1.4 var(--serif);
+  }
+
+  .contrast-item:nth-child(odd) {
+    background: var(--white);
+    color: var(--ink);
+  }
+
+  .contrast-item:nth-child(even) {
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .contrast-arrow {
+    font: 400 32px/1 var(--serif);
+    opacity: 0.5;
+  }
+
+  .colophon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 10px 0;
+    margin-top: 20px;
+    border-top: 2px solid var(--ink);
+    font: 400 22px/1 var(--serif);
+    color: var(--ink-mid);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="layout">
+    <!-- 大面积留白标题 -->
+    <div class="panel hero-panel">
+      <div class="hero-title">概念碰撞 · 辨析定位</div>
+      <div class="hero-subtitle">遮罩不是什么？它到底是什么？</div>
+    </div>
+
+    <!-- 核心对比 -->
+    <div style="position: relative;">
+      <div class="compare-row">
+        <div class="panel compare-panel left">
+          <div class="compare-label">不是这个</div>
+          <div class="compare-title">画框</div>
+          <div class="compare-desc">画框是「门」<br/>界定画面边界<br/>固定不变</div>
+        </div>
+
+        <div class="panel compare-panel right">
+          <div class="compare-label">也不是这个</div>
+          <div class="compare-title">电影镜头</div>
+          <div class="compare-desc">镜头是「推手」<br/>强制视野范围<br/>线性播放</div>
+        </div>
+      </div>
+      <div class="vs-divider">VS</div>
+    </div>
+
+    <!-- 金句 -->
+    <div class="panel quote-panel">
+      <div class="quote-text">遮罩是「门里的路标」</div>
+    </div>
+
+    <!-- 硬边vs柔边 -->
+    <div class="contrast-bar">
+      <div class="contrast-item">
+        硬边<br/><span style="font-size: 20px; opacity: 0.7;">像断喝</span>
+      </div>
+      <div class="contrast-item">
+        <span class="contrast-arrow">⇄</span>
+      </div>
+      <div class="contrast-item">
+        柔边<br/><span style="font-size: 20px; opacity: 0.7;">像叹息</span>
+      </div>
+    </div>
+
+    <!-- 相似网络 -->
+    <div class="panel" style="padding: 30px 40px; background: linear-gradient(90deg, var(--white) 0%, var(--tone) 100%);">
+      <div style="font: 700 24px/1 var(--serif); color: var(--ink); margin-bottom: 20px;">相似概念网络</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+        <div style="background: var(--white); border: 2px solid var(--ink); padding: 12px 24px; font: 500 20px/1 var(--serif);">视觉引导</div>
+        <div style="background: var(--white); border: 2px solid var(--ink); padding: 12px 24px; font: 500 20px/1 var(--serif);">分镜构图</div>
+        <div style="background: var(--white); border: 2px solid var(--ink); padding: 12px 24px; font: 500 20px/1 var(--serif);">叙事节奏</div>
+        <div style="background: var(--ink); color: var(--white); padding: 12px 24px; font: 500 20px/1 var(--serif);">遮罩效果 ←</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="colophon">
+    <span>漫画的遮罩效果 · 求真</span>
+    <span>井上雄彦风格</span>
+  </div>
+</div>
+</body>
+</html>

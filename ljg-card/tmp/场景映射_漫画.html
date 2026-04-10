@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&display=swap');
+
+  :root {
+    --bg: #F8F8F8;
+    --ink: #1a1a1a;
+    --ink-mid: #777;
+    --white: #FAFAFA;
+    --tone: #E5E5E5;
+    --serif: 'Noto Serif SC', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; background: var(--bg); }
+
+  .page {
+    width: 1080px;
+    background: var(--bg);
+    padding: 40px;
+  }
+
+  /* 谷口治郎风格 - 静谧精描 */
+  .panel {
+    border: 2px solid var(--ink);
+    background: var(--white);
+  }
+
+  .layout {
+    display: grid;
+    gap: 12px;
+  }
+
+  /* 宽银幕标题格 */
+  .cinematic-header {
+    padding: 35px 50px;
+    background: linear-gradient(90deg, var(--ink) 0%, var(--ink-mid) 100%);
+    color: var(--white);
+  }
+
+  .cinematic-title {
+    font: 500 44px/1.2 var(--serif);
+    letter-spacing: 0.08em;
+  }
+
+  /* 场景格 - 电影宽银幕 */
+  .scene-panel {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    min-height: 120px;
+  }
+
+  .scene-tag {
+    background: var(--tone);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font: 700 20px/1 var(--serif);
+    color: var(--ink);
+    letter-spacing: 0.3em;
+    padding: 20px 0;
+  }
+
+  .scene-content {
+    padding: 28px 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .scene-usage {
+    font: 500 26px/1.4 var(--serif);
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .scene-effect {
+    font: 400 20px/1.5 var(--serif);
+    color: var(--ink-mid);
+  }
+
+  /* 陷阱格 */
+  .warning-panel {
+    padding: 35px 45px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--white),
+      var(--white) 20px,
+      var(--tone) 20px,
+      var(--tone) 40px
+    );
+    position: relative;
+  }
+
+  .warning-title {
+    font: 700 28px/1 var(--serif);
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .warning-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .warning-item {
+    background: var(--white);
+    border-left: 3px solid var(--ink);
+    padding: 16px 20px;
+  }
+
+  .warning-label {
+    font: 600 18px/1 var(--serif);
+    color: var(--ink-mid);
+    margin-bottom: 6px;
+  }
+
+  .warning-text {
+    font: 400 22px/1.4 var(--serif);
+    color: var(--ink);
+  }
+
+  /* 最佳实践 */
+  .practice-panel {
+    padding: 30px 40px;
+    background: var(--white);
+  }
+
+  .practice-title {
+    font: 700 24px/1 var(--serif);
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .practice-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .practice-tag {
+    background: var(--tone);
+    padding: 10px 20px;
+    font: 500 20px/1 var(--serif);
+    color: var(--ink);
+  }
+
+  .colophon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 10px 0;
+    margin-top: 20px;
+    border-top: 2px solid var(--ink);
+    font: 400 22px/1 var(--serif);
+    color: var(--ink-mid);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="layout">
+    <!-- 宽银幕标题 -->
+    <div class="panel cinematic-header">
+      <div class="cinematic-title">场景映射 · 何时使用</div>
+    </div>
+
+    <!-- 五个场景 -->
+    <div class="panel scene-panel">
+      <div class="scene-tag">回忆</div>
+      <div class="scene-content">
+        <div class="scene-usage">柔边渐变遮罩</div>
+        <div class="scene-effect">像褪色的老照片，区分现在与过去，营造怀旧感</div>
+      </div>
+    </div>
+
+    <div class="panel scene-panel">
+      <div class="scene-tag">冲击</div>
+      <div class="scene-content">
+        <div class="scene-usage">硬边遮罩 + 速度线</div>
+        <div class="scene-effect">画面被切割，动态线条指向中心，制造紧迫感</div>
+      </div>
+    </div>
+
+    <div class="panel scene-panel">
+      <div class="scene-tag">恐怖</div>
+      <div class="scene-content">
+        <div class="scene-usage">不规则黑边遮罩</div>
+        <div class="scene-effect">画面被黑暗吞噬，只剩局部可见，制造未知恐惧</div>
+      </div>
+    </div>
+
+    <div class="panel scene-panel">
+      <div class="scene-tag">日常</div>
+      <div class="scene-content">
+        <div class="scene-usage">淡色柔边或无遮罩</div>
+        <div class="scene-effect">画面完整呈现，光线柔和，营造舒适感</div>
+      </div>
+    </div>
+
+    <!-- 陷阱警告 -->
+    <div class="panel warning-panel">
+      <div class="warning-title">⚠ 误用陷阱</div>
+      <div class="warning-grid">
+        <div class="warning-item">
+          <div class="warning-label">过度使用</div>
+          <div class="warning-text">每个格子都有复杂遮罩 → 视觉疲劳</div>
+        </div>
+        <div class="warning-item">
+          <div class="warning-label">技术依赖</div>
+          <div class="warning-text">一键套用不做调整 → 千篇一律</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 最佳实践 -->
+    <div class="panel practice-panel">
+      <div class="practice-title">最佳实践</div>
+      <div class="practice-list">
+        <div class="practice-tag">少即是多</div>
+        <div class="practice-tag">风格统一</div>
+        <div class="practice-tag">服务故事</div>
+        <div class="practice-tag">留白勇气</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="colophon">
+    <span>漫画的遮罩效果 · 求真</span>
+    <span>谷口治郎风格</span>
+  </div>
+</div>
+</body>
+</html>

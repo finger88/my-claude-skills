@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root {
+    --bg: #F5F7FA;
+    --text: #1D1D1F;
+    --text-mid: #6E6E73;
+    --text-dim: #ACACB0;
+    --accent: #3D5A80;
+    --rule: #E5E5EA;
+    --font: 'KingHwa_OldSong', 'PingFang SC', system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; background: var(--bg); }
+  .card {
+    width: 1080px;
+    background: var(--bg);
+    padding: 64px 72px 52px;
+    display: flex;
+    flex-direction: column;
+  }
+  .title-area { flex-shrink: 0; margin-bottom: 52px; }
+  .title-area h1 {
+    font: 700 84px/1.15 var(--font);
+    color: var(--text);
+    letter-spacing: -0.03em;
+    margin-bottom: 22px;
+  }
+  .title-area::after {
+    content: '';
+    display: block;
+    width: 52px;
+    height: 3px;
+    background: var(--accent);
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .content p {
+    font: 400 36px/1.7 var(--font);
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+  .content .highlight {
+    font: 500 40px/1.55 var(--font);
+    color: var(--text);
+    padding: 14px 0 14px 26px;
+    border-left: 3px solid var(--accent);
+    margin: 36px 0;
+  }
+  .content h2 {
+    font: 600 42px/1.4 var(--font);
+    color: var(--text);
+    margin: 44px 0 22px;
+    letter-spacing: -0.02em;
+  }
+  .content h2:first-child { margin-top: 0; }
+  .content .subtitle {
+    font: 400 22px/2 var(--font);
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .content .item { margin-bottom: 36px; }
+  .content .item:last-child { margin-bottom: 0; }
+  .content .item .label {
+    font: 500 36px/1.5 var(--font);
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .content .item p {
+    font: 400 32px/1.65 var(--font);
+    color: var(--text-mid);
+    margin-bottom: 0;
+  }
+  .content strong { font-weight: 600; color: var(--text); }
+  .content::after {
+    content: '∎';
+    display: block;
+    text-align: right;
+    font-size: 16px;
+    color: var(--accent);
+    opacity: 0.4;
+    margin-top: 40px;
+  }
+  .footer {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 52px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+  }
+  .footer .author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .footer .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .footer .author-name {
+    font: 400 24px/1.5 var(--font);
+    color: var(--text-mid);
+    letter-spacing: 0.03em;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="title-area">
+      <h1>SaaS · 语义镜头</h1>
+    </div>
+    <div class="content">
+      <p class="subtitle">ETYMOLOGY</p>
+      <h2>词源拆解</h2>
+      <p><strong>S</strong>oftware <strong>a</strong>s <strong>a</strong> <strong>S</strong>ervice</p>
+      <p>从「程序」到「应用」再到「服务」——交付形态的三次跃迁。</p>
+
+      <div class="divider"></div>
+
+      <h2>XaaS 谱系演进</h2>
+      <div class="item">
+        <p class="label">IaaS</p>
+        <p>基础设施即服务 —— 砖瓦水泥</p>
+      </div>
+      <div class="item">
+        <p class="label">PaaS</p>
+        <p>平台即服务 —— 脚手架</p>
+      </div>
+      <div class="item">
+        <p class="label">SaaS</p>
+        <p>软件即服务 —— 精装房</p>
+      </div>
+      <div class="item">
+        <p class="label">AIaaS?</p>
+        <p>智能即服务 —— 任意门</p>
+      </div>
+
+      <p class="highlight">龙虾时代：从「拥有软件」到「使用服务」再到「意图满足」</p>
+    </div>
+    <div class="footer">
+      <div class="author">
+        <span class="author-name">李继刚</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

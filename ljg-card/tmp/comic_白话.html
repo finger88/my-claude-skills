@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap');
+  :root { --bg: #FAFAFA; --ink: #1a1a1a; --white: #FAFAFA; --tone: #E0E0E0; --serif: 'Noto Serif SC', Georgia, serif; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; background: var(--bg); }
+  .page { width: 1080px; background: var(--bg); padding: 50px; position: relative; }
+  .panel { border: 4px solid var(--ink); background: var(--white); margin-bottom: 20px; position: relative; }
+  .panel-slant { transform: rotate(-2deg); margin-left: -10px; }
+  .panel-slant-reverse { transform: rotate(2deg); margin-right: -10px; }
+  .shout { clip-path: polygon(0% 20%, 5% 0%, 15% 15%, 25% 0%, 35% 10%, 50% 0%, 65% 10%, 75% 0%, 85% 15%, 95% 0%, 100% 20%, 95% 35%, 100% 50%, 95% 65%, 100% 80%, 95% 100%, 85% 85%, 75% 100%, 65% 90%, 50% 100%, 35% 90%, 25% 100%, 15% 85%, 5% 100%, 0% 80%, 5% 65%, 0% 50%, 5% 35%); background: var(--white); padding: 40px 50px; text-align: center; margin-bottom: 30px; }
+  .shout h1 { font: 900 80px/1 var(--serif); color: var(--ink); letter-spacing: -3px; }
+  .content-box { padding: 40px; }
+  .content-box h2 { font: 900 56px/1.2 var(--serif); color: var(--ink); margin-bottom: 30px; transform: skewX(-5deg); }
+  .content-box p { font: 700 36px/1.6 var(--serif); color: var(--ink); }
+  .highlight { background: var(--ink); color: var(--white); padding: 5px 15px; display: inline-block; transform: rotate(-3deg); }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .compare-box { border: 3px solid var(--ink); padding: 30px; }
+  .compare-box h3 { font: 900 32px/1 var(--serif); margin-bottom: 15px; }
+  .compare-box p { font: 700 26px/1.5 var(--serif); }
+  .no-mask { background: var(--tone); }
+  .with-mask { background: var(--ink); color: var(--white); }
+  .with-mask h3, .with-mask p { color: var(--white); }
+  .footer { margin-top: 30px; text-align: right; font: 700 24px/1 var(--serif); color: var(--ink); transform: skewX(-5deg); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="shout"><h1>遮罩是什么？</h1></div>
+  <div class="panel panel-slant content-box">
+    <h2>就是漫画家的 <span class="highlight">「手电筒」</span></h2>
+    <p>没有遮罩 = 全开灯的房间，不知道看哪<br>有遮罩 = 有人用手电筒<span class="highlight">引导你</span></p>
+  </div>
+  <div class="compare">
+    <div class="compare-box no-mask">
+      <h3>❌ 没有遮罩</h3>
+      <p>眼睛乱飘<br>找不到重点<br>阅读很累</p>
+    </div>
+    <div class="compare-box with-mask panel-slant-reverse">
+      <h3>✓ 有遮罩</h3>
+      <p>自动聚焦<br>一步一步<br>跟着故事走</p>
+    </div>
+  </div>
+  <div class="footer">白话解释 · 松本大洋风格</div>
+</div>
+</body>
+</html>

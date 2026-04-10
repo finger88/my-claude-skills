@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root {
+    --bg: #1a1a2e;
+    --text: #eee;
+    --text-mid: #aaa;
+    --text-dim: #777;
+    --accent: #e94560;
+    --rule: #333;
+    --font: 'KingHwa_OldSong', 'PingFang SC', system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; background: var(--bg); }
+  .card {
+    width: 1080px;
+    background: var(--bg);
+    padding: 64px 72px 52px;
+    display: flex;
+    flex-direction: column;
+    min-height: 800px;
+  }
+  .title-area { flex-shrink: 0; margin-bottom: 52px; }
+  .title-area h1 {
+    font: 700 72px/1.15 var(--font);
+    color: var(--accent);
+    letter-spacing: -0.03em;
+    margin-bottom: 22px;
+  }
+  .title-area::after {
+    content: '';
+    display: block;
+    width: 52px;
+    height: 3px;
+    background: var(--accent);
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+  }
+  .golden {
+    margin-top: 30px;
+    padding: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    text-align: center;
+    font: 400 42px/1.8 var(--font);
+    font-style: italic;
+    color: white;
+  }
+  .content::after {
+    content: '∎';
+    display: block;
+    text-align: right;
+    font-size: 16px;
+    color: var(--accent);
+    opacity: 0.4;
+    margin-top: 40px;
+  }
+  .footer {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 52px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+  }
+  .footer .author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .footer .author-name {
+    font: 400 24px/1.5 var(--font);
+    color: var(--text-mid);
+    letter-spacing: 0.03em;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="title-area">
+      <h1>SaaS · 哲学镜头</h1>
+    </div>
+    <div class="content">
+      <div class="golden">
+        "SaaS 把软件变成了服务，<br>AI 把服务变成了空气——<br>你感受不到它的存在，<br>但离不开它的供养。"
+      </div>
+    </div>
+    <div class="footer">
+      <div class="author">
+        <span class="author-name">李继刚</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

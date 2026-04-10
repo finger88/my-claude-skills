@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root {
+    --bg: #1a1a2e;
+    --text: #eee;
+    --text-mid: #aaa;
+    --accent: #e94560;
+    --rule: #333;
+    --font: 'KingHwa_OldSong', 'PingFang SC', system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; background: var(--bg); }
+  .card {
+    width: 1080px;
+    background: var(--bg);
+    padding: 64px 72px 52px;
+    display: flex;
+    flex-direction: column;
+    min-height: 900px;
+  }
+  .title-area { flex-shrink: 0; margin-bottom: 52px; }
+  .title-area h1 {
+    font: 700 72px/1.15 var(--font);
+    color: var(--accent);
+    letter-spacing: -0.03em;
+    margin-bottom: 22px;
+  }
+  .title-area::after {
+    content: '';
+    display: block;
+    width: 52px;
+    height: 3px;
+    background: var(--accent);
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+  }
+  .duality {
+    display: flex;
+    gap: 40px;
+    margin: 40px 0;
+  }
+  .side {
+    flex: 1;
+    padding: 30px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    border: 1px solid var(--rule);
+  }
+  .side h3 {
+    font: 600 28px/1.4 var(--font);
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .side p {
+    font: 400 24px/1.7 var(--font);
+    color: var(--text-mid);
+  }
+  .golden {
+    margin-top: 50px;
+    padding: 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    text-align: center;
+    font: 400 36px/1.8 var(--font);
+    font-style: italic;
+    color: white;
+  }
+  .content::after {
+    content: '∎';
+    display: block;
+    text-align: right;
+    font-size: 16px;
+    color: var(--accent);
+    opacity: 0.4;
+    margin-top: 40px;
+  }
+  .footer {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 52px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+  }
+  .footer .author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .footer .author-name {
+    font: 400 24px/1.5 var(--font);
+    color: var(--text-mid);
+    letter-spacing: 0.03em;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="title-area">
+      <h1>BibTeX · 哲学镜头</h1>
+    </div>
+    <div class="content">
+      <div class="duality">
+        <div class="side">
+          <h3>虚 · 权力</h3>
+          <p>.bst 样式是隐性的规训机器——决定谁被看见，谁被隐去</p>
+        </div>
+        <div class="side">
+          <h3>实 · 原子</h3>
+          <p>给每篇文献唯一的、可解析的、可追踪的身份标识</p>
+        </div>
+      </div>
+      <div class="golden">
+        "BibTeX 是学术世界的户籍系统——<br>
+        它不关心你是谁，<br>
+        只确保每个知识贡献者都有身份证，<br>
+        可以被追溯、被验证、被记住。"
+      </div>
+    </div>
+    <div class="footer">
+      <div class="author">
+        <span class="author-name">李继刚</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

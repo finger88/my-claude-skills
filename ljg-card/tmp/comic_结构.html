@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap');
+  :root { --bg: #FAFAFA; --ink: #1a1a1a; --ink-mid: #666; --white: #FAFAFA; --tone: #D0D0D0; --serif: 'Noto Serif SC', Georgia, serif; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; background: var(--bg); }
+  .page { width: 1080px; background: var(--bg); padding: 50px; }
+  .panel { border: 2.5px solid var(--ink); background: var(--white); }
+  .header { display: flex; justify-content: space-between; align-items: center; padding: 30px 40px; border-bottom: 2.5px solid var(--ink); margin-bottom: 20px; }
+  .header h1 { font: 900 56px/1 var(--serif); color: var(--ink); letter-spacing: -1px; }
+  .header .meta { font: 400 24px/1 var(--serif); color: var(--ink-mid); }
+  .structure-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: auto auto; gap: 15px; }
+  .cell { border: 2px solid var(--ink); padding: 25px; background: var(--white); }
+  .cell h3 { font: 700 28px/1.3 var(--serif); color: var(--ink); margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+  .cell ul { list-style: none; }
+  .cell li { font: 400 24px/1.6 var(--serif); color: var(--ink); padding: 5px 0; border-bottom: 1px dotted var(--tone); }
+  .cell li:last-child { border-bottom: none; }
+  .formula { grid-column: 1 / 4; background: var(--ink); color: var(--white); text-align: center; padding: 35px; }
+  .formula h3 { color: var(--white); border-bottom-color: var(--white); font-size: 24px; margin-bottom: 20px; }
+  .formula p { font: 700 36px/1.4 var(--serif); color: var(--white); }
+  .connector { position: relative; }
+  .connector::after { content: ''; position: absolute; right: -17px; top: 50%; width: 15px; height: 2px; background: var(--ink); }
+  .footer { margin-top: 25px; text-align: right; font: 400 22px/1 var(--serif); color: var(--ink-mid); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <h1>遮罩效果 · 结构解剖</h1>
+    <div class="meta">SYSTEM ARCHITECTURE</div>
+  </div>
+  <div class="structure-grid">
+    <div class="cell connector">
+      <h3>视觉形式</h3>
+      <ul><li>硬边遮罩 — 几何切割</li><li>柔边遮罩 — 渐变/雾化</li><li>速度线 — 动态暗示</li><li>网点纸 — 纹理填充</li></ul>
+    </div>
+    <div class="cell connector">
+      <h3>功能作用</h3>
+      <ul><li>聚焦引导</li><li>氛围营造</li><li>节奏控制</li><li>时空转换</li></ul>
+    </div>
+    <div class="cell">
+      <h3>技术实现</h3>
+      <ul><li>手绘时代：网点纸</li><li>手绘时代：留白胶</li><li>数字时代：图层蒙版</li><li>数字时代：笔刷工具</li></ul>
+    </div>
+    <div class="cell formula">
+      <h3>THE ONE FORMULA</h3>
+      <p>遮罩效果 = 视觉引导的门槛 × 情绪氛围的容器 × 控制权力的隐喻</p>
+    </div>
+  </div>
+  <div class="footer">结构图谱 · 大友克洋风格</div>
+</div>
+</body>
+</html>
