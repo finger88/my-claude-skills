@@ -296,6 +296,12 @@
       "installedAt": "2026-04-09",
       "source": "Imbad0202",
       "description": "学术研究全流程编排器，9阶段完整流程"
+    },
+    "doc-gap-filler": {
+      "category": "content",
+      "status": "trial",
+      "installedAt": "2026-04-15",
+      "description": "基于参考资料补全文档缺失内容，支持模板学习与事实整合"
     }
   },
   "categories": {

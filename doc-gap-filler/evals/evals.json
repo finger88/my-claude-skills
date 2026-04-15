@@ -1,0 +1,17 @@
+{
+  "skill_name": "doc-gap-filler",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "D:\\test\\report.docx 是一份项目汇报材料，其中第四、第五部分标有【待补充】。D:\\test\\contract.pdf 是项目合同，包含详细的工作内容。D:\\test\\template.doc 是已完成的参考模板，展示了汇报材料的写作风格。请帮我补全 report.docx 中的缺失内容，并生成一个新的可编辑 Word 文档。",
+      "expected_output": "生成一个补全后的 .docx 文件，第四、五部分的内容与合同一致，风格与参考模板一致，所有【待补充】标记已被替换。",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "帮我根据这份合同把验收报告里的空白填上。报告在 project_report.docx 里，合同是 project_contract.pdf，报告前面两章是写好的，后面三章还是【待补充】状态。",
+      "expected_output": "识别出 project_report.docx 中的三个【待补充】位置，从合同中提取对应内容，模仿前两章风格完成补全，输出新的 Word 文档。",
+      "files": []
+    }
+  ]
+}
