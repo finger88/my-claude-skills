@@ -1,0 +1,4 @@
+interface:
+  display_name: "看见我卡片"
+  short_description: "从微信读书想法和划线中显影每日自我理解文字卡片流程"
+  default_prompt: "Use $see-me-card to generate today's 看见我 card from WeRead notes."

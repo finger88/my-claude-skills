@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "lastUpdated": "2026-04-09",
+  "lastUpdated": "2026-05-21",
   "skills": {
     "debate": {
       "category": "debate",
@@ -302,6 +302,12 @@
       "status": "trial",
       "installedAt": "2026-04-15",
       "description": "基于参考资料补全文档缺失内容，支持模板学习与事实整合"
+    },
+    "see-me-card": {
+      "category": "content",
+      "status": "trial",
+      "installedAt": "2026-05-21",
+      "description": "每日“看见我”卡片工作流：从微信读书想法显影自我并生成文字卡片"
     }
   },
   "categories": {

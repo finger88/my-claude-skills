@@ -9,9 +9,9 @@
 <!-- STATS-START -->
 | 指标 | 数量 |
 |------|------|
-| **总计** | 36 |
+| **总计** | 37 |
 | **正式使用** | 25 |
-| **试用期** | 14 ⏳ |
+| **试用期** | 15 ⏳ |
 | **大包** | 1 |
 <!-- STATS-END -->
 
@@ -37,6 +37,7 @@
 | **web-access** | - | 🔧 工具 | 网页访问与内容提取 | 2天 |
 | **truth-explorer** | v1.0.0 | 📚 内容处理 | 概念区哲学透视镜头（求真） | 0天 |
 | **doc-gap-filler** | v1.0.0 | 📚 内容处理 | 基于参考资料补全文档缺失内容 | 0天 |
+| **see-me-card** | - | 📚 内容处理 | 每日“看见我”卡片：微信读书显影自我 | 0天 |
 
 > 📦 [critical-debater 包详情](./packages/critical-debater/README.md)
 
@@ -76,6 +77,7 @@ claude "/debate --rounds 3 --depth deep --mode red_team Will AI replace most kno
 | **video-replication-sop-cy** | - | 视频复刻分镜生产SOP | 自建 |
 | **truth-explorer** | v1.0.0 | 概念区哲学透视镜头（求真） | 自建 |
 | **doc-gap-filler** | v1.0.0 | 基于参考资料补全文档缺失内容 | 自建 |
+| **see-me-card** | - | 每日“看见我”卡片：微信读书显影自我 | 自建 |
 
 ---
 
