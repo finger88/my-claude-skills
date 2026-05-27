@@ -203,6 +203,7 @@ function html(spec) {
     padding-top: 22px;
     border-top: 1px solid var(--rule);
   }
+  .node-1 { margin-top: 44px; }
   .node-2 { margin-top: 44px; }
   .node-3 { margin-left: 58px; }
   .node-number {
